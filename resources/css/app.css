@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 * {
-    @apply font-plusjkt;
+    @apply font-plusjkt text-red-950;
 }

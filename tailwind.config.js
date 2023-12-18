@@ -6,6 +6,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        'node_modules/preline/dist/*.js',
     ],
     theme: {
         extend: {
@@ -13,9 +14,12 @@ export default {
                 // Add any custom text colors here if needed
             },
             fontFamily: {
-                plusjkt: ['"PlusJakartaSans"', ...defaultTheme.fontFamily.sans],
+                plusjkt: ['"Plus Jakarta Sans"', ...defaultTheme.fontFamily.sans],
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require('preline/plugin'),
+        require('@tailwindcss/forms'),
+    ],
 };
