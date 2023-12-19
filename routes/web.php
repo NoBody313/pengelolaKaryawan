@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\VerifikasiDataController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index']);
+// Admin Dashboard
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('dashboard-admin');
+Route::get('/admin/tambah-data', [AdminDashboardController::class, 'create'])->name('create-data-form');
+Route::post('/admin/store-data', [AdminDashboardController::class, 'store'])->name('store-data-form');
+
+// User Dashboard
 Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);

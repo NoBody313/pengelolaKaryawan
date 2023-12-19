@@ -3,7 +3,7 @@
 
     <div class="flex flex-col justify-center items-center w-full gap-16">
         <div class="flex flex-col w-full justify-center items-center gap-4">
-            <a href="#"
+            <a href="/admin/tambah-data"
                 class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <mask id="mask0_80_63" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"

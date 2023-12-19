@@ -12,7 +12,7 @@
 
 <body>
     <div class="m-14">
-        @include('components.form-data')
+        @include('admin.form-data')
     </div>
 </body>
 
