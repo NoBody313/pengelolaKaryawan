@@ -4,7 +4,7 @@
     <div class="flex flex-col justify-center items-center w-full gap-16">
         <div class="flex flex-col w-full justify-center items-center gap-4">
             <a href="/admin/tambah-data"
-                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
+                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0 {{ request()->is('admin/tambah-data') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <mask id="mask0_80_63" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                         height="24">
@@ -19,8 +19,8 @@
                 <p class="font-medium text-base">Tambah Data</p>
             </a>
 
-            <a href="{{ route ('list-data-karyawan') }}"
-                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
+            <a href="{{ route('list-data-karyawan') }}"
+                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0 {{ request()->routeIs('list-data-karyawan') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">
                     <mask id="mask0_80_68" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
@@ -45,7 +45,8 @@
 
             <a href="#"
                 class="flex w-full items-center px-4 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none">
                     <mask id="mask0_80_74" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                         height="24">
                         <rect width="24" height="24" fill="#D9D9D9" />
@@ -61,3 +62,21 @@
         </div>
     </div>
 </nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Menghapus kelas 'active' dari semua link
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // Menambahkan kelas 'active' ke link yang diklik
+                link.classList.add('active');
+            });
+        });
+    });
+</script>

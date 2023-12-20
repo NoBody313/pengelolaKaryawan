@@ -45,17 +45,29 @@ class AdminDashboardController extends Controller
     {
         $pegawaiData = PegawaiData::find($nik_admedika);
 
-        return view('edit-data', ['pegawaiData' => $pegawaiData]);
+        if (!$pegawaiData) {
+            abort(404);
+        }
+
+        return view('admin.edit-data', ['pegawaiData' => $pegawaiData]);
     }
 
     // Tambahkan action update
-    public function update(Request $request, $nik_admedika)
+    public function update(Request $request, $id)
     {
-        $pegawaiData = PegawaiData::find($nik_admedika);
+        $pegawaiData = PegawaiData::find($id);
+
+        if (!$pegawaiData) {
+            // Handle the case where the record is not found, for example, redirect to a 404 page
+            abort(404);
+        }
+
+        // Update the data only if it exists
         $pegawaiData->update($request->all());
 
         return redirect()->route('dashboard-admin')->with('success', 'Data Pegawai berhasil diupdate.');
     }
+
 
     // Tambahkan action delete
     public function destroy($nik_admedika)

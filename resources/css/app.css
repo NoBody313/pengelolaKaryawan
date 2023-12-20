@@ -5,3 +5,7 @@
 * {
     @apply font-plusjkt text-red-950;
 }
+
+.active {
+    @apply border rounded-md border-red-950;
+  }

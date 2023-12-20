@@ -20,8 +20,8 @@ Route::get('/admin', [AdminDashboardController::class, 'index'])->name('dashboar
 Route::get('/admin/tambah-data', [AdminDashboardController::class, 'create'])->name('create-data-form');
 Route::post('/admin/store-data', [AdminDashboardController::class, 'store'])->name('store-data-form');
 Route::get('/admin/list-data', [AdminDashboardController::class, 'show'])->name('list-data-karyawan');
-Route::get('/admin/edit-data/{nik_admedika}', [AdminDashboardController::class, 'edit'])->name('edit-data-karyawan');
-Route::put('/admin/update-data/{nik_admedika}', [AdminDashboardController::class, 'update'])->name('update-data-karyawan');
+Route::get('/admin/edit-data/{id}', [AdminDashboardController::class, 'edit'])->name('edit-data-karyawan');
+Route::put('/admin/update-data/{id}', [AdminDashboardController::class, 'update'])->name('update-data-karyawan');
 Route::delete('/admin/delete-data/{nik_admedika}', [AdminDashboardController::class, 'destroy'])->name('delete-data-karyawan');
 
 // User Dashboard

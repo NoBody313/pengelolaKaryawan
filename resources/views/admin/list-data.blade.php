@@ -14,7 +14,8 @@
 <body>
     <div class="flex flex-row gap-10">
         @include('shared.admin-sidebar')
-        <div class="w-full m-14">
+        <div class="w-full mx-14 my-8">
+            <h1 class="py-3 font-medium text-base">Daftar Data Karyawan</h1>
             <table class="w-full divide-y divide-gray-200 border-2 border-red-100">
                 <thead class="bg-red-100">
                     <tr>
@@ -47,7 +48,7 @@
                             <td class="w-auto justify-center items-center text-center text-sm px-6 py-4">
                                 {{ $pegawaiData->nama }}</td>
                             <td class="flex flex-row justify-center items-center gap-2">
-                                <a href="{{ route('edit-data-karyawan', $pegawaiData->nik_admedika) }}"
+                                <a href="{{ route('edit-data-karyawan', $pegawaiData->id) }}"
                                     class="w-1/2 p-3 text-center bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 m-2 rounded-md">Edit</a>
                                 <a href="#" onclick="openConfirmationModal({{ $pegawaiData->nik_admedika }})"
                                     class="w-1/2 p-3 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 m-2 rounded-md"
