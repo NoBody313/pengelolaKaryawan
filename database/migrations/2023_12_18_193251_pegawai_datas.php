@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pegawai_datas', function (Blueprint $table) {
             $table->id();
-            $table->integer('nik_admedika')->unsigned()->length(6);
-            $table->integer('nik_tg',)->unsigned()->length(6);
+            $table->integer('nik_admedika');
+            $table->integer('nik_tg');
             $table->string('nama');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->enum('agama', [
@@ -24,28 +24,29 @@ return new class extends Migration
                 'Hindu',
                 'Buddha',
                 'Konghucu'
-            ]);
+            ])->default('Islam');
             $table->string('kota_lahir');
             $table->dateTime('tanggal_lahir');
             $table->integer('tahun_lahir');
-            $table->bigInteger('no_ktp',)->length(16)->unsigned();
+            $table->bigInteger('no_ktp');
+
             $table->text('alamat_ktp');
             $table->text('kab_kota_ktp');
             $table->text('provinsi_ktp');
-            $table->string('kodepos_ktp', 10);
+            $table->string('kodepos_ktp');
             $table->text('alamat_domisili');
             $table->text('kab_kota_domisili');
             $table->text('provinsi_domisili');
-            $table->string('kodepos_domisili', 10);
+            $table->string('kodepos_domisili');
+
             $table->enum('status_pernikahan', [
-                'Belum Kawin',
-                'Kawin',
+                'Belum Menikah',
+                'Menikah',
                 'Cerai Hidup',
                 'Cerai Mati'
             ]);
             $table->dateTime('tanggal_pernikahan')->nullable();
             $table->integer('jumlah_anak')->nullable();
-
             $table->enum('pendidikan_terakhir', [
                 'Tidak Sekolah',
                 'SD/Sederajat',
@@ -57,18 +58,18 @@ return new class extends Migration
                 'S3'
             ]);
             $table->text('jurusan_pendidikan_terakhir');
-            $table->text('nama_institusi')->comment("Nama institusi tempat pendidikan terakhir");
+            $table->text('nama_institusi');
             $table->text('kota_institusi');
             $table->year('lulus_thn_pendidikan_terakhir');
 
             $table->string('email_pribadi');
-            $table->char('no_hp_tsel', 15);
-            $table->char('no_hp_nontsel', 15);
-            $table->char('no_hp_emergency', 15);
+            $table->char('no_hp_tsel');
+            $table->char('no_hp_nontsel');
+            $table->char('no_hp_emergency');
             $table->text('nama_kontak_emergency');
             $table->text('hubungan_kontak_emergency');
-
             $table->text('nama_ibu');
+
             $table->timestamps();
         });
     }

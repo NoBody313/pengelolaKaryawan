@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PegawaiData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AdminDashboardController extends Controller
 {
@@ -20,9 +21,15 @@ class AdminDashboardController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate(PegawaiData::$rules);
+        // $validator = Validator::make($request->all(), PegawaiData::$rules);
+
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+
         PegawaiData::create($request->all());
-        return redirect()->route('admin.dashboard')->with('success', 'Pegawai Data Berhasil Dibuat');
+
+        return redirect()->route('dashboard-admin')->with('success', 'Pegawai Data Berhasil Dibuat');
     }
 
     // Other Panel
