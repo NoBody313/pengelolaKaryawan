@@ -19,7 +19,7 @@
                 <p class="font-medium text-base">Tambah Data</p>
             </a>
 
-            <a href="#"
+            <a href="{{ route ('list-data-karyawan') }}"
                 class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">

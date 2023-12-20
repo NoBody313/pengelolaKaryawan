@@ -33,29 +33,36 @@ class AdminDashboardController extends Controller
     }
 
     // Other Panel
-    // public function show(AdminDashboardController $pegawaiData)
-    // {
-    //     return view('pegawaiData.show', compact('pegawaiData'));
-    // }
+    public function show()
+    {
+        $pegawaiDatas = PegawaiData::paginate(10); // Ubah angka 10 sesuai dengan jumlah data yang ingin ditampilkan per halaman
 
-    // public function edit(AdminDashboardController $pegawaiData)
-    // {
-    //     return view('pegawaiData.edit', compact('pegawaiData'));
-    // }
+        return view('admin.list-data', compact('pegawaiDatas'));
+    }
 
-    // public function update(Request $request)
-    // {
-    //     $request->validate(PegawaiData::$rules);
+    // Tambahkan action edit
+    public function edit($nik_admedika)
+    {
+        $pegawaiData = PegawaiData::find($nik_admedika);
 
-    //     $pegawaiData = PegawaiData::findOrFail();
-    //     $pegawaiData->update($request->all());
+        return view('edit-data', ['pegawaiData' => $pegawaiData]);
+    }
 
-    //     return redirect()->route('pegawaiData.index')->with('success', 'Pegawai Data Berhasil Diperbarui');
-    // }
+    // Tambahkan action update
+    public function update(Request $request, $nik_admedika)
+    {
+        $pegawaiData = PegawaiData::find($nik_admedika);
+        $pegawaiData->update($request->all());
 
-    // public function destroy(AdminDashboardController $pegawaiData)
-    // {
-    //     $pegawaiData->delete();
-    //     return redirect()->route('pegawaiData.index')->with('success', 'Pegawai Data Berhasil Dihapus');
-    // }
+        return redirect()->route('dashboard-admin')->with('success', 'Data Pegawai berhasil diupdate.');
+    }
+
+    // Tambahkan action delete
+    public function destroy($nik_admedika)
+    {
+        $pegawaiData = PegawaiData::find($nik_admedika);
+        $pegawaiData->delete();
+
+        return redirect()->route('dashboard-admin')->with('success', 'Data Pegawai berhasil dihapus.');
+    }
 }
