@@ -1,7 +1,9 @@
 <nav class="flex flex-col py-16 px-5 items-center shrink-0 gap-16 w-64 h-screen bg-red-50 border-red-950 border-r-2">
-    <img src="{{ asset('/images/admedLogo.png') }}" alt="Logo Admedika" class="shrink-0 w-[72px] h-auto">
+    <a href="{{ route ('dashboard-admin') }}">
+        <img src="{{ asset('/images/admedLogo.png') }}" alt="Logo Admedika" class="shrink-0 w-[72px] h-auto">
+    </a>
 
-    <div class="flex flex-col justify-center items-center w-full gap-16">
+    <div class="flex flex-col justify-center items-center w-full gap-8">
         <div class="flex flex-col w-full justify-center items-center gap-4">
             <a href="/admin/tambah-data"
                 class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0 {{ request()->is('admin/tambah-data') ? 'active' : '' }}">

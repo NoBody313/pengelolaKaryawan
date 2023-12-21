@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class PegawaiData extends Model
 {
     protected $table = 'pegawai_datas';
 
     protected $fillable = [
+        'urutan',
         'nik_admedika',
         'nik_tg',
         'nama',
@@ -47,6 +49,7 @@ class PegawaiData extends Model
     ];
 
     public static $rules = [
+        'urutan' => 'nullable|integer',
         'nik_admedika' => 'required',
         'nik_tg' => 'required',
         'nama' => 'required',
@@ -80,6 +83,33 @@ class PegawaiData extends Model
         'hubungan_kontak_emergency' => 'required',
         'nama_ibu' => 'required',
     ];
+
+    protected static function booted()
+    {
+        static::created(function ($model) {
+            // Otomatis atur urutan saat pembuatan
+            if (!$model->urutan) {
+                $model->urutan = $model->id;
+                $model->save();
+            }
+        });
+
+        static::deleted(function ($model) {
+            // Hapus dan atur ulang urutan
+            $model->resetUrutan();
+        });
+    }
+
+    public function resetUrutan()
+    {
+        // Ambil semua data dengan urutan lebih besar dari yang dihapus
+        $affectedRows = self::where('urutan', '>', $this->urutan)
+            ->decrement('urutan');
+
+        // Atur ulang urutan
+        DB::statement('SET @count = 0;');
+        DB::statement('UPDATE pegawai_datas SET urutan = @count:= @count + 1;');
+    }
 
     use HasFactory;
 }

@@ -94,7 +94,20 @@ class AdminDashboardController extends Controller
         $request->validate([
             'file' => 'required|mimes:xlsx,xls',
         ]);
-        Excel::import(new PegawaiImport, request()->file('file')); // Assuming the file input name is 'file'
+
+        $lastUrutan = PegawaiData::max('urutan');
+
+        Excel::import(new PegawaiImport, request()->file('file'));
+
+        // Mendapatkan data yang diimpor
+        $importedData = PegawaiData::where('urutan', '>', $lastUrutan)->get();
+
+        // Menetapkan nilai urutan yang sesuai
+        foreach ($importedData as $data) {
+            $lastUrutan++;
+            $data->urutan = $lastUrutan;
+            $data->save();
+        }
 
         return back();
     }
