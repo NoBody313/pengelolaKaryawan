@@ -15,7 +15,19 @@
     <div class="flex flex-row gap-10">
         @include('shared.admin-sidebar')
         <div class="w-full mx-14 my-8">
-            <h1 class="py-3 font-medium text-base">Daftar Data Karyawan</h1>
+            <div class="flex flex-row justify-between w-full py-2">
+                <h1 class="py-3 font-medium text-base">Daftar Data Karyawan</h1>
+                <div class="flex flex-row justify-center items-center gap-2">
+                    <form action="{{ route('import_excel') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="file" accept=".xlsx, .xls">
+                        <button type="submit">Import Excel</button>
+                    </form>
+                    <a href="{{ route('karyawan-export') }}"
+                        class="p-3 bg-green-600 font-medium text-base text-white rounded-md" target="_blank">Export ke
+                        Excel</a>
+                </div>
+            </div>
             <table class="w-full divide-y divide-gray-200 border-2 border-red-100">
                 <thead class="bg-red-100">
                     <tr>

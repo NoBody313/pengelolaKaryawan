@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\PegawaiData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Exports\PegawaiExport;
+use App\Imports\PegawaiImport;
+use Maatwebsite\Excel\Facades\Excel;
+
+use Session;
+
 
 class AdminDashboardController extends Controller
 {
@@ -75,6 +81,21 @@ class AdminDashboardController extends Controller
         $pegawaiData = PegawaiData::find($nik_admedika);
         $pegawaiData->delete();
 
-        return redirect()->route('dashboard-admin')->with('success', 'Data Pegawai berhasil dihapus.');
+        return redirect()->route('list-data-karyawan')->with('success', 'Data Pegawai berhasil dihapus.');
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new PegawaiExport, 'dataPegawai.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+        Excel::import(new PegawaiImport, request()->file('file')); // Assuming the file input name is 'file'
+
+        return back();
     }
 }
