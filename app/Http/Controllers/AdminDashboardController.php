@@ -22,7 +22,7 @@ class AdminDashboardController extends Controller
     // Tambah Data Form
     public function create()
     {
-        return view('tambah-data');
+        return view('admin.tambah-data');
     }
 
     public function store(Request $request)

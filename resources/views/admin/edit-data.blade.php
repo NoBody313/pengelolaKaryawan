@@ -102,8 +102,7 @@
                                     class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                                     id="input-nikTg" type="number" inputmode="numeric"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    maxlength="6" pattern="[0-9]{6}"
-                                    value="{{ optional($pegawaiData)->nik_tg }}">
+                                    maxlength="6" pattern="[0-9]{6}" value="{{ optional($pegawaiData)->nik_tg }}">
                             </div>
                         </div>
                         <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
@@ -154,8 +153,7 @@
                                 <label class="block text-sm font-medium mb-2" for="input-ttl">Tanggal Lahir</label>
                                 <input name="tanggal_lahir"
                                     class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                    id="input-ttl" type="date"
-                                    value="{{ optional($pegawaiData)->tanggal_lahir }}">
+                                    id="input-ttl" type="date" value="{{ optional($pegawaiData)->tanggal_lahir }}">
                             </div>
                         </div>
                         <div class="flex flex-row justify-center items-center self-stretch gap-4 w-full">
@@ -166,8 +164,7 @@
                                     class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                                     id="input-tahunLahir" type="number" inputmode="numeric"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    min="0" maxlength="4"
-                                    value="{{ optional($pegawaiData)->tahun_lahir }}">
+                                    min="0" maxlength="4" value="{{ optional($pegawaiData)->tahun_lahir }}">
                             </div>
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                 <label class="block text-sm font-medium mb-2" for="input-noKTP">No. KTP</label>
@@ -175,8 +172,7 @@
                                     class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                                     id="input-noKTP" type="number" inputmode="numeric"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    min="0" maxlength="16"
-                                    value="{{ optional($pegawaiData)->no_ktp }}">
+                                    min="0" maxlength="16" value="{{ optional($pegawaiData)->no_ktp }}">
                             </div>
                         </div>
                     </div>
@@ -317,7 +313,8 @@
                                         <option>SMP/Sederajat</option>
                                         <option>SMA/Sederajat</option>
                                         <option>D3</option>
-                                        <option>D4/S1</option>
+                                        <option>D4</option>
+                                        <option>S1</option>
                                         <option>S2</option>
                                         <option>S3</option>
                                     </select>
@@ -370,14 +367,8 @@
                     style="display: none;">
                     <div class="flex flex-col justify-center items-center px-8 gap-4 w-full">
                         <div class="flex flex-row justify-center items-center self-stretch gap-4 w-full">
-                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                <label class="block text-sm font-medium mb-2" for="input-emailPribadi">Email
-                                    Pribadi</label>
-                                <input name="email_pribadi"
-                                    class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                    id="input-emailPribadi" type="email"
-                                    value="{{ optional($pegawaiData)->email_pribadi }}">
-                            </div>
+                        </div>
+                        <div class="flex flex-row justify-center items-center self-stretch gap-4 w-full">
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                 <label class="block text-sm font-medium mb-2" for="input-nomorTsel">Nomor Handphone
                                     Telkomsel</label>
@@ -385,11 +376,9 @@
                                     class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                                     id="input-nomorTsel" type="tel" inputmode="numeric"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    value="{{ optional($pegawaiData)->no_hp_tsel }}" min="10"
-                                    maxlength="15" pattern="[0-9]{10,14}">
+                                    value="{{ optional($pegawaiData)->no_hp_tsel }}" min="10" maxlength="15"
+                                    pattern="[0-9]{10,14}">
                             </div>
-                        </div>
-                        <div class="flex flex-row justify-center items-center self-stretch gap-4 w-full">
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                 <label class="block text-sm font-medium mb-2" for="input-nomorNon-tsel">Nomor
                                     Handphone
@@ -399,17 +388,6 @@
                                     id="input-nama" type="tel" inputmode="numeric"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     value="{{ optional($pegawaiData)->no_hp_nontsel }}" min="10"
-                                    maxlength="15" pattern="[0-9]{10,14}">
-                            </div>
-                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                <label class="block text-sm font-medium mb-2" for="input-nomorEmergency">Nomor
-                                    Handphone
-                                    Emergency</label>
-                                <input name="no_hp_emergency"
-                                    class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                    id="input-nomorEmergency" type="tel" inputmode="numeric"
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    value="{{ optional($pegawaiData)->no_hp_emergency }}" min="10"
                                     maxlength="15" pattern="[0-9]{10,14}">
                             </div>
                         </div>
@@ -432,14 +410,35 @@
                                     id="input-hubunganKontakEmergency" type="text"
                                     value="{{ optional($pegawaiData)->hubungan_kontak_emergency }}">
                             </div>
+                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                <label class="block text-sm font-medium mb-2" for="input-nomorEmergency">Nomor
+                                    Handphone
+                                    Emergency</label>
+                                <input name="no_hp_emergency"
+                                    class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                    id="input-nomorEmergency" type="tel" inputmode="numeric"
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    value="{{ optional($pegawaiData)->no_hp_emergency }}" min="10"
+                                    maxlength="15" pattern="[0-9]{10,14}">
+                            </div>
                         </div>
-                        <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                            <label class="block text-sm font-medium mb-2" for="input-ibuKandung">Nama Ibu
-                                Kandung</label>
-                            <input name="nama_ibu"
-                                class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                id="input-ibuKandung" type="text"
-                                value="{{ optional($pegawaiData)->nama_ibu }}">
+                        <div class="flex flex-row justify-center items-center self-stretch gap-4 w-full">
+                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                <label class="block text-sm font-medium mb-2" for="input-emailPribadi">Email
+                                    Pribadi</label>
+                                <input name="email_pribadi"
+                                    class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                    id="input-emailPribadi" type="email"
+                                    value="{{ optional($pegawaiData)->email_pribadi }}">
+                            </div>
+                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                <label class="block text-sm font-medium mb-2" for="input-ibuKandung">Nama Ibu
+                                    Kandung</label>
+                                <input name="nama_ibu"
+                                    class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                    id="input-ibuKandung" type="text"
+                                    value="{{ optional($pegawaiData)->nama_ibu }}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -479,6 +478,7 @@
             </div>
         </form>
     </div>
+    @include('helper.helper-script')
 </body>
 
 </html>
