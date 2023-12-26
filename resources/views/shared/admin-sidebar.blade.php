@@ -3,10 +3,10 @@
         <img src="{{ asset('/images/admedLogo.png') }}" alt="Logo Admedika" class="shrink-0 w-[72px] h-auto">
     </a>
 
-    <div class="flex flex-col justify-center items-center w-full gap-8">
+    <div class="flex flex-col justify-center items-center w-full gap-8 ">
         <div class="flex flex-col w-full justify-center items-center gap-4">
             <a href="/admin/tambah-data"
-                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0 {{ request()->is('admin/tambah-data') ? 'active' : '' }}">
+                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0 {{ request()->is('admin/tambah-data') ? 'menu-active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <mask id="mask0_80_63" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                         height="24">
@@ -22,7 +22,7 @@
             </a>
 
             <a href="{{ route('list-data-karyawan') }}"
-                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0 {{ request()->routeIs('list-data-karyawan') ? 'active' : '' }}">
+                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0 {{ request()->routeIs('list-data-karyawan') ? 'menu-active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">
                     <mask id="mask0_80_68" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"

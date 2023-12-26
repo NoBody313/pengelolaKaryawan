@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\PegawaiData;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Exports\PegawaiExport;
 use App\Imports\PegawaiImport;
 use Maatwebsite\Excel\Facades\Excel;
-
-use Session;
-
 
 class AdminDashboardController extends Controller
 {
@@ -27,21 +23,53 @@ class AdminDashboardController extends Controller
 
     public function store(Request $request)
     {
-        // $validator = Validator::make($request->all(), PegawaiData::$rules);
-
-        // if ($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
+        request()->validate([
+            'nik_admedika' => 'required',
+            'nik_tg' => 'required',
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'kota_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'tahun_lahir' => 'required',
+            'no_ktp' => 'required',
+            'alamat_ktp' => 'required',
+            'provinsi_ktp' => 'required',
+            'kab_kota_ktp' => 'required',
+            'kec_ktp' => 'required',
+            'kel_ktp' => 'required',
+            'kodepos_ktp' => 'required',
+            'alamat_domisili' => 'required',
+            'provinsi_domisili' => 'required',
+            'kab_kota_domisili' => 'required',
+            'kec_domisili' => 'required',
+            'kel_domisili' => 'required',
+            'kodepos_domisili' => 'required',
+            'status_pernikahan' => 'required',
+            'tanggal_pernikahan' => 'required',
+            'jumlah_anak' => 'required',
+            'pendidikan_terakhir' => 'required',
+            'jurusan_pendidikan_terakhir' => 'required',
+            'nama_institusi' => 'required',
+            'kota_institusi' => 'required',
+            'lulus_thn_pendidikan_terakhir' => 'required',
+            'email_pribadi' => 'required',
+            'no_hp_tsel' => 'required',
+            'no_hp_nontsel' => 'required',
+            'nama_kontak_emergency' => 'required',
+            'no_hp_emergency' => 'required',
+            'hubungan_kontak_emergency' => 'required',
+            'nama_ibu' => 'required',
+        ]);
 
         PegawaiData::create($request->all());
-
         return redirect()->route('dashboard-admin')->with('success', 'Pegawai Data Berhasil Dibuat');
     }
 
     // Other Panel
     public function show()
     {
-        $pegawaiDatas = PegawaiData::paginate(10); // Ubah angka 10 sesuai dengan jumlah data yang ingin ditampilkan per halaman
+        $pegawaiDatas = PegawaiData::paginate(10);
 
         return view('admin.list-data', compact('pegawaiDatas'));
     }
@@ -64,18 +92,15 @@ class AdminDashboardController extends Controller
         $pegawaiData = PegawaiData::find($id);
 
         if (!$pegawaiData) {
-            // Handle the case where the record is not found, for example, redirect to a 404 page
             abort(404);
         }
 
-        // Update the data only if it exists
         $pegawaiData->update($request->all());
 
         return redirect()->route('dashboard-admin')->with('success', 'Data Pegawai berhasil diupdate.');
     }
 
 
-    // Tambahkan action delete
     public function destroy($nik_admedika)
     {
         $pegawaiData = PegawaiData::find($nik_admedika);
@@ -99,10 +124,8 @@ class AdminDashboardController extends Controller
 
         Excel::import(new PegawaiImport, request()->file('file'));
 
-        // Mendapatkan data yang diimpor
         $importedData = PegawaiData::where('urutan', '>', $lastUrutan)->get();
 
-        // Menetapkan nilai urutan yang sesuai
         foreach ($importedData as $data) {
             $lastUrutan++;
             $data->urutan = $lastUrutan;
