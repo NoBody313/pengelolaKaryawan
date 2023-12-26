@@ -30,7 +30,7 @@ Route::post('/admin/list-data/import_excel', [AdminDashboardController::class, '
 // User Dashboard
 Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
 
-Route::get('/selectProv', [WilayahIndonesiaController::class, 'provinsi'])->name('provinsi.index');
-Route::get('/selectKab/{id}', [WilayahIndonesiaController::class, 'kabupaten']);
+Route::get('selectProv', [WilayahIndonesiaController::class, 'provinsi'])->name('provinsi.index');
+Route::get('selectKab/{id}', [WilayahIndonesiaController::class, 'kabupaten']);
 Route::get('selectKec/{id}', [WilayahIndonesiaController::class, 'kecamatan']);
-Route::get('selectDesa/{id}', [WilayahIndonesiaController::class, 'desa']);
+Route::get('selectKel/{id}', [WilayahIndonesiaController::class, 'kelurahan']);

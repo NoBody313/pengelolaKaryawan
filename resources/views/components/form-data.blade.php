@@ -171,28 +171,31 @@
                             </div>
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                 <label class="block text-sm font-medium mb-2" for="input-provinsiKTP">Provinsi</label>
-                                <select name="provinsi_ktp" class="input-field" id="selectProv" required></select>
+                                <select name="provinsi_ktp" id="selectProv" class="input-field" required>
+                                    <option disabled selected>Pilih Provinsi</option>
+                                </select>
                             </div>
                         </div>
                         <div class="flex flex-row justify-center items-center self-stretch gap-4 w-full">
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                 <label class="block text-sm font-medium mb-2"
                                     for="input-kabKotaDomisili">Kab/Kota</label>
-                                <input name="kab_kota_domisili" class="input-field" id="input-kabKotaDomisili"
-                                    type="text" required placeholder="Masukan kab/kota domisili">
+                                <select name="kabupaten" id="selectKab" class="input-field" required>
+                                    <option value="" disabled selected>Pilih Kabupaten</option>
+                                </select>
                             </div>
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                 <label class="block text-sm font-medium mb-2" for="input-provinsi">Kecamatan</label>
-                                <input name="provinsi_ktp" id="selectKec" class="input-field" id="input-provinsi"
-                                    type="text" required placeholder="Masukkan provinsi sesuai KTP">
+                                <select name="provinsi_ktp" id="selectKec" class="input-field" id="input-provinsi"
+                                    type="text" required placeholder="Masukkan provinsi sesuai KTP"></select>
                             </div>
                         </div>
                         <div class="flex flex-row justify-center items-center self-stretch gap-4 w-full">
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                 <label class="block text-sm font-medium mb-2" for="input-kabKota">Desa /
                                     Kelurahan</label>
-                                <input name="kab_kota_ktp" id="selectDesa" class="input-field" id="input-kabKota"
-                                    type="text" required placeholder="Masukkan Kab/Kota sesuai KTP">
+                                <select name="kab_kota_ktp" id="selectKel" class="input-field" type="text"
+                                    required placeholder="Masukkan Kab/Kota sesuai KTP"></select>
                             </div>
 
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">

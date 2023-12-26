@@ -28,13 +28,58 @@ class WilayahIndonesiaController extends Controller
 
     public function kabupaten($id)
     {
-        $data = Kabupaten::where('provinsi_id', $id)->where(
-            'name',
-            'LIKE',
-            '%' . request('q') . '%'
-        );
-        return response()->json($data);
+        $query = request('q');
+
+        $kabupatens = Kabupaten::where('provinsi_id', $id)
+            ->where('name', 'LIKE', "%$query%")
+            ->get();
+
+        $formattedData = $kabupatens->map(function ($kabupaten) {
+            return [
+                'id' => $kabupaten->id,
+                'text' => $kabupaten->name,
+            ];
+        });
+
+        return response()->json($formattedData);
     }
+
+    public function kecamatan($id)
+    {
+        $query = request('q');
+
+        $kecamatans = Kecamatan::where('kabupaten_id', $id)
+            ->where('name', 'LIKE', "%$query%")
+            ->get();
+
+        $formattedData = $kecamatans->map(function ($kecamatans) {
+            return [
+                'id' => $kecamatans->id,
+                'text' => $kecamatans->name,
+            ];
+        });
+
+        return response()->json($formattedData);
+    }
+
+    public function kelurahan($id)
+    {
+        $query = request('q');
+
+        $kelurahans = Kelurahan::where('kecamatan_id', $id)
+            ->where('name', 'LIKE', "%$query%")
+            ->get();
+
+        $formattedData = $kelurahans->map(function ($kelurahans) {
+            return [
+                'id' => $kelurahans->id,
+                'text' => $kelurahans->name,
+            ];
+        });
+
+        return response()->json($formattedData);
+    }
+
 
     // public function kecamatan($kabupaten_id)
     // {
