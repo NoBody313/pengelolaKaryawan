@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 * {
-    @apply font-plusjkt;
+    @apply font-plusjkt text-red-950;
+}
+
+.active {
+    @apply border rounded-md border-red-950;
+}
+
+.input-field {
+    @apply py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none;
 }
