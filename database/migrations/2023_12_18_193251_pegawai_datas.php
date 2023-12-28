@@ -23,7 +23,6 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->string('tahun_lahir');
             $table->bigInteger('no_ktp');
-
             // KTP
             $table->text('alamat_ktp');
             $table->text('provinsi_ktp');
