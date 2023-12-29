@@ -11,6 +11,7 @@ class PegawaiData extends Model
     protected $table = 'pegawai_datas';
 
     protected $fillable = [
+        'urutan',
         'nik_admedika',
         'nik_tg',
         'nama',
@@ -47,7 +48,6 @@ class PegawaiData extends Model
         'no_hp_emergency',
         'hubungan_kontak_emergency',
         'nama_ibu',
-        'urutan',
         'created_at',
         'updated_at',
     ];
