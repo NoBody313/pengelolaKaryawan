@@ -23,45 +23,6 @@ class AdminDashboardController extends Controller
 
     public function store(Request $request)
     {
-        request()->validate([
-            'nik_admedika' => 'required',
-            'nik_tg' => 'required',
-            'nama' => 'required',
-            'jenis_kelamin' => 'required',
-            'agama' => 'required',
-            'kota_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-            'tahun_lahir' => 'required',
-            'no_ktp' => 'required',
-            'alamat_ktp' => 'required',
-            'provinsi_ktp' => 'required',
-            'kab_kota_ktp' => 'required',
-            'kec_ktp' => 'required',
-            'kel_ktp' => 'required',
-            'kodepos_ktp' => 'required',
-            'alamat_domisili' => 'required',
-            'provinsi_domisili' => 'required',
-            'kab_kota_domisili' => 'required',
-            'kec_domisili' => 'required',
-            'kel_domisili' => 'required',
-            'kodepos_domisili' => 'required',
-            'status_pernikahan' => 'required',
-            'tanggal_pernikahan' => 'required',
-            'jumlah_anak' => 'required',
-            'pendidikan_terakhir' => 'required',
-            'jurusan_pendidikan_terakhir' => 'required',
-            'nama_institusi' => 'required',
-            'kota_institusi' => 'required',
-            'lulus_thn_pendidikan_terakhir' => 'required',
-            'email_pribadi' => 'required',
-            'no_hp_tsel' => 'required',
-            'no_hp_nontsel' => 'required',
-            'nama_kontak_emergency' => 'required',
-            'no_hp_emergency' => 'required',
-            'hubungan_kontak_emergency' => 'required',
-            'nama_ibu' => 'required',
-        ]);
-
         PegawaiData::create($request->all());
         return redirect()->route('dashboard-admin')->with('success', 'Pegawai Data Berhasil Dibuat');
     }
