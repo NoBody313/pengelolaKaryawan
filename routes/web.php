@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VerifikasiDataController;
 use App\Http\Controllers\WilayahIndonesiaController;
 use Illuminate\Support\Facades\Route;
