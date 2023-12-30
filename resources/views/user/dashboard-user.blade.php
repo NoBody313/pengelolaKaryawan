@@ -12,7 +12,7 @@
 
 <body>
     <div class="flex flex-row gap-10">
-        @include('shared.user-sidebar')
+        @include('shared.user-sidebar', ['data' => $data])
         <div class="w-full mt-14 mr-14">
             @include('components.header')
         </div>

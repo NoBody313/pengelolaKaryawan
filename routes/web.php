@@ -3,8 +3,10 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerifikasiDataController;
 use App\Http\Controllers\WilayahIndonesiaController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,19 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// User Dashboard
+Route::middleware('checkUserSession')->group(function () {
+    // Routes that require a valid user session
+    Route::get('/user/{nik_admedika}', [UserController::class, 'index'])->name('user-dashboard');
+    Route::get('/logout/{nik_admedika}', [UserController::class, 'logout'])->name('logout');
+});
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [LoginController::class, 'showForm']);
+    Route::post('/cek-data', [LoginController::class, 'cekData'])->name('login.cekData');
+});
+// Login Routes
+
+// Logout
 
 // Admin Dashboard
 Route::get('/admin', [AdminDashboardController::class, 'index'])->name('dashboard-admin');
@@ -31,6 +46,7 @@ Route::post('/admin/list-data/import_excel', [AdminDashboardController::class, '
 
 // User Dashboard
 Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
+
 
 Route::get('selectProv', [WilayahIndonesiaController::class, 'provinsi'])->name('provinsi.index');
 Route::get('selectKab/{id}', [WilayahIndonesiaController::class, 'kabupaten']);
