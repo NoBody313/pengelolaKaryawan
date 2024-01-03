@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // User Dashboard
-Route::middleware('checkUserSession')->group(function () {
-    // Routes that require a valid user session
+Route::group(['middleware' => 'web'], function () {
+    // Definisi rute-rute Anda di sini
+
     Route::get('/user/{nik_admedika}', [UserController::class, 'index'])->name('user-dashboard');
     Route::get('/user/edit-data/{nik_admedika}', [UserController::class, 'edit'])->name('edit-data');
     Route::put('/user/update-data/{nik_admedika}', [UserController::class, 'update'])->name('update-data');
@@ -30,12 +31,10 @@ Route::middleware('checkUserSession')->group(function () {
 
 // Login Routes
 Route::middleware('check.session')->group(function () {
-    Route::get('/', [LoginController::class, 'showForm'])->name('login.form');
-    Route::post('/cek-data', [LoginController::class, 'cekData'])->name('login.cekData');
 });
-// Route::get('/', [LoginController::class, 'showForm']);
-// Route::post('/cek-data', [LoginController::class, 'cekData'])->name('login.cekData');
 
+Route::get('/', [LoginController::class, 'showForm'])->name('login.form');
+Route::post('/cek-data', [LoginController::class, 'cekData'])->name('login.cekData');
 // Logout
 
 // Admin Dashboard
