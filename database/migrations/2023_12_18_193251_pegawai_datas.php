@@ -25,12 +25,17 @@ return new class extends Migration
             $table->bigInteger('no_ktp')->nullable();
 
             $table->text('alamat_ktp')->nullable();
-            $table->text('kab_kota_ktp')->nullable();
             $table->text('provinsi_ktp')->nullable();
+            $table->text('kab_kota_ktp')->nullable();
+            $table->text('kec_ktp')->nullable();
+            $table->text('kel_ktp')->nullable();
             $table->string('kodepos_ktp')->nullable();
+
             $table->text('alamat_domisili')->nullable();
-            $table->text('kab_kota_domisili')->nullable();
             $table->text('provinsi_domisili')->nullable();
+            $table->text('kab_kota_domisili')->nullable();
+            $table->text('kec_domisili')->nullable();
+            $table->text('kel_domisili')->nullable();
             $table->string('kodepos_domisili')->nullable();
 
             $table->string('status_pernikahan')->nullable();

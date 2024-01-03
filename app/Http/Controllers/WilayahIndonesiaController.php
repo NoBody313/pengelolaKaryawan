@@ -26,11 +26,18 @@ class WilayahIndonesiaController extends Controller
         return response()->json($formattedProvinsis);
     }
 
-    public function kabupaten($id)
+    public function kabupaten($name)
     {
         $query = request('q');
 
-        $kabupatens = Kabupaten::where('provinsi_id', $id)
+        $provinsi = Provinsi::where('name', $name)->first();
+
+        if (!$provinsi) {
+            // Handle ketika provinsi tidak ditemukan
+            return response()->json([]);
+        }
+
+        $kabupatens = Kabupaten::where('provinsi_id', $provinsi->id)
             ->where('name', 'LIKE', "%$query%")
             ->get();
 
@@ -44,11 +51,18 @@ class WilayahIndonesiaController extends Controller
         return response()->json($formattedData);
     }
 
-    public function kecamatan($id)
+    public function kecamatan($name)
     {
         $query = request('q');
 
-        $kecamatans = Kecamatan::where('kabupaten_id', $id)
+        $kabupaten = Kabupaten::where('name', $name)->first();
+
+        if (!$kabupaten) {
+            // Handle ketika provinsi tidak ditemukan
+            return response()->json([]);
+        }
+
+        $kecamatans = Kecamatan::where('kabupaten_id', $kabupaten->id)
             ->where('name', 'LIKE', "%$query%")
             ->get();
 
@@ -62,11 +76,18 @@ class WilayahIndonesiaController extends Controller
         return response()->json($formattedData);
     }
 
-    public function kelurahan($id)
+    public function kelurahan($name)
     {
         $query = request('q');
 
-        $kelurahans = Kelurahan::where('kecamatan_id', $id)
+        $kecamatan = Kecamatan::where('name', $name)->first();
+
+        if (!$kecamatan) {
+            // Handle ketika provinsi tidak ditemukan
+            return response()->json([]);
+        }
+
+        $kelurahans = Kelurahan::where('kecamatan_id', $kecamatan->id)
             ->where('name', 'LIKE', "%$query%")
             ->get();
 
@@ -79,29 +100,4 @@ class WilayahIndonesiaController extends Controller
 
         return response()->json($formattedData);
     }
-
-
-    // public function kecamatan($kabupaten_id)
-    // {
-    //     $data = Kecamatan::where(
-    //         'kabupaten_id',
-    //         'name',
-    //         'code',
-    //         'full_code',
-    //         'LIKE',
-    //         '%' . request('q') . '%'
-    //     );
-    //     return response()->json($data);
-    // }
-
-    // public function desa($kabupaten_id)
-    // {
-    //     $data = Kelurahan::where(
-    //         'name',
-    //         'kabupaten_id',
-    //         'LIKE',
-    //         '%' . request('q') . '%'
-    //     );
-    //     return response()->json($data);
-    // }
 }

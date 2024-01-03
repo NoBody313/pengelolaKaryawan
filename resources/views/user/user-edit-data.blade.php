@@ -16,7 +16,7 @@
             <div class="flex flex-col md:flex-row items-center justify-center">
                 <ul class="flex flex-wrap justify-center items-center gap-4 w-full max-w-3xl">
                     <li>
-                        <a href="/admin" class="w-fit my-4 mx-10 py-2 px-2 text-sm flex items-center gap-2">
+                        <a href="{{ route('user-dashboard', ['nik_admedika' => $pegawaiData->nik_admedika]) }}" class="w-fit my-4 mx-10 py-2 px-2 text-sm flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40"
                                 fill="none">
                                 <mask id="mask0_418_673" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -133,7 +133,7 @@
             <!-- End Stepper Nav -->
 
             <div class="flex flex-col justify-center items-center py-4">
-                <form action="{{ route('update-data-karyawan', ['id' => $pegawaiData->id]) }}" method="POST"
+                <form action="{{ route('update-data', ['nik_admedika' => $pegawaiData->nik_admedika]) }}" method="POST"
                     class="flex flex-col w-full">
                     @csrf
                     @method('PUT')
@@ -184,8 +184,8 @@
                                         <label class="input-label" for="hs-select" name="label-agama">Agama</label>
                                         <select name="agama"
                                             class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                            id="hs-select">
-                                            <option disabled selected>{{ $pegawaiData->agama }}</option>
+                                            id="hs-select" name="label-agama">
+                                            <option disabled selected>{{ $pegawaiData->agama}}</option>
                                             <option>Islam</option>
                                             <option>Kristen</option>
                                             <option>Katolik</option>
@@ -254,7 +254,7 @@
                                             class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                             <label class="input-label" for="input-provinsi">Provinsi</label>
                                             <select name="provinsi_ktp" class="input-field-form" id="input-provinsi">
-                                                <option>{{ $pegawaiData->provinsi_ktp }}</option>
+                                                <option value="{{ optional($pegawaiData)->provinsi_ktp }}"></option>
                                             </select>
                                         </div>
                                     </div>
@@ -264,14 +264,14 @@
                                             class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                             <label class="input-label" for="input-kabKota">Kab/Kota</label>
                                             <select name="kab_kota_ktp" class="input-field-form" id="input-kabKota">
-                                                <option>{{ $pegawaiData->kab_kota_ktp }}</option>
+                                                <option value="{{ optional($pegawaiData)->kab_kota_ktp }}"></option>
                                             </select>
                                         </div>
                                         <div
                                             class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                             <label class="input-label" for="input-kabKota">Kecamatan</label>
-                                            <select name="kec_ktp" class="input-field-form" id="input-kabKota">
-                                                <option>{{ $pegawaiData->kec_ktp }}</option>
+                                            <select name="kab_kota_ktp" class="input-field-form" id="input-kabKota">
+                                                <option value="{{ optional($pegawaiData)->kecamatan_ktp }}"></option>
                                             </select>
                                         </div>
                                     </div>
@@ -280,8 +280,9 @@
                                         <div
                                             class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                             <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
-                                            <select name="kel_ktp" class="input-field-form" id="input-kelurahan">
-                                                <option>{{ $pegawaiData->kel_ktp }}</option>
+                                            <select name="kelurahan_ktp" class="input-field-form"
+                                                id="input-kelurahan">
+                                                <option value="{{ optional($pegawaiData)->provinsi_ktp }}"></option>
                                             </select>
                                         </div>
                                         <div
@@ -292,7 +293,7 @@
                                                 type="number" inputmode="numeric"
                                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                 min="0" maxlength="5"
-                                                value="{{ optional($pegawaiData)->kodepos_ktp }}">
+                                                value="{{ optional($pegawaiData)->provinsi_ktp }}">
                                         </div>
                                     </div>
                                 </div>
@@ -316,8 +317,7 @@
                                             <label class="input-label" for="input-provinsi">Provinsi</label>
                                             <select name="provinsi_domisili" class="input-field-form"
                                                 id="selectProvDomisili">
-                                                <option>
-                                                    {{ $pegawaiData->provinsi_domisili }}
+                                                <option value="{{ optional($pegawaiData)->provinsi_domisili }}">
                                                 </option>
                                             </select>
                                         </div>
@@ -329,18 +329,16 @@
                                             <label class="input-label" for="input-kabKota">Kab/Kota</label>
                                             <select name="kab_kota_domisili" class="input-field-form"
                                                 id="selectKabDomisili">
-                                                <option>
-                                                    {{ $pegawaiData->kab_kota_domisili }}
+                                                <option value="{{ optional($pegawaiData)->kab_kota_domisili }}">
                                                 </option>
                                             </select>
                                         </div>
                                         <div
                                             class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                             <label class="input-label" for="input-kabKota">Kecamatan</label>
-                                            <select name="kec_domisili" class="input-field-form"
+                                            <select name="kab_kota_domisili" class="input-field-form"
                                                 id="selectKecDomisili">
-                                                <option>
-                                                    {{ $pegawaiData->kec_domisili }}
+                                                <option value="{{ optional($pegawaiData)->kecamatan_domisili }}">
                                                 </option>
                                             </select>
                                         </div>
@@ -350,10 +348,9 @@
                                         <div
                                             class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                             <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
-                                            <select name="kel_domisili" class="input-field-form"
+                                            <select name="kelurahan_domisili" class="input-field-form"
                                                 id="selectKelDomisili">
-                                                <option>
-                                                    {{ $pegawaiData->kel_domisili }}
+                                                <option value="{{ optional($pegawaiData)->kelurahan_domisili }}">
                                                 </option>
                                             </select>
                                         </div>
@@ -503,11 +500,9 @@
                                         id="input-hubunganKontakEmergency" type="text"
                                         value="{{ optional($pegawaiData)->hubungan_kontak_emergency }}">
                                 </div>
-                            </div>
-
-                            <div class="form-container w-full">
                                 <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                    <label class="input-label" for="input-nomorEmergency">Nomor Handphone
+                                    <label class="input-label" for="input-nomorEmergency">Nomor
+                                        Handphone
                                         Emergency</label>
                                     <input name="no_hp_emergency" class="input-field-form" id="input-nomorEmergency"
                                         type="tel" inputmode="numeric"
@@ -515,19 +510,20 @@
                                         value="{{ optional($pegawaiData)->no_hp_emergency }}" min="10"
                                         maxlength="15" pattern="[0-9]{10,14}">
                                 </div>
+                            </div>
+                            <div class="form-container w-full">
                                 <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
                                     <label class="input-label" for="input-emailPribadi">Email
                                         Pribadi</label>
                                     <input name="email_pribadi" class="input-field-form" id="input-emailPribadi"
                                         type="email" value="{{ optional($pegawaiData)->email_pribadi }}">
                                 </div>
-                            </div>
-
-                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                <label class="input-label" for="input-ibuKandung">Nama Ibu
-                                    Kandung</label>
-                                <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
-                                    value="{{ optional($pegawaiData)->nama_ibu }}">
+                                <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                    <label class="input-label" for="input-ibuKandung">Nama Ibu
+                                        Kandung</label>
+                                    <input name="nama_ibu" class="input-field-form" id="input-ibuKandung"
+                                        type="text" value="{{ optional($pegawaiData)->nama_ibu }}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -562,9 +558,10 @@
                         </button>
                     </div>
                     <!-- End Button Group -->
-                </form>
             </div>
+            </form>
         </div>
+    </div>
     </div>
 </body>
 

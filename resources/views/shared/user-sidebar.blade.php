@@ -1,14 +1,14 @@
 <nav class="flex flex-col py-16 px-5 items-center shrink-0 gap-16 w-64 h-screen bg-red-50 border-red-950 border-r-2">
-    <a href="{{ route ('user.dashboard-user') }}">
-        <img src="{{ asset('/images/admedLogo.png') }}" alt="Logo Admedika" class="shrink-0 w-[72px] h-auto">
-    </a>
+    @if (isset($data))
+        <a href="{{ route('user-dashboard', ['nik_admedika' => $data->nik_admedika]) }}">
+            <img src="{{ asset('/images/admedLogo.png') }}" alt="Logo Admedika" class="shrink-0 w-[72px] h-auto">
+        </a>
 
-    <div class="flex flex-col justify-center items-center w-full gap-16">
-        <div class="flex flex-col w-full justify-center items-center gap-4">
-            <a href="{{ route ('data-karyawan') }}"
+        <div class="flex flex-col justify-center items-center w-full gap-16">
+            <div class="flex flex-col w-full justify-center items-center gap-4">
+            <a href="{{ route('edit-data', $data->nik_admedika) }}"
                 class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <mask id="mask0_80_68" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                         height="24">
                         <rect width="24" height="24" fill="#D9D9D9" />
@@ -22,14 +22,14 @@
                 <p class="font-medium text-base">Lihat Data</p>
             </a>
         </div>
-
+        @endif
         <svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="2" viewBox="0 0 218 2" fill="none">
             <path d="M1 1H217" stroke="#450A0A" stroke-linecap="round" />
         </svg>
 
         <div class="w-full">
 
-            <a href="#"
+            <a href="{{ route('logout', ['nik_admedika' => $data->nik_admedika]) }}"
                 class="flex w-full items-center px-4 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">

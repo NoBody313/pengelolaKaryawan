@@ -394,7 +394,7 @@
     {
         "id": 50,
         "type": "Kota",
-        "name": "Serang",
+        "name": "Kota Serang",
         "code": "73",
         "full_code": "3673",
         "provinsi_id": 3
@@ -402,7 +402,7 @@
     {
         "id": 51,
         "type": "Kabupaten",
-        "name": "Serang",
+        "name": "Kabupaten Serang",
         "code": "04",
         "full_code": "3604",
         "provinsi_id": 3
@@ -458,7 +458,7 @@
     {
         "id": 58,
         "type": "Kota",
-        "name": "Bandung",
+        "name": "Kota Bandung",
         "code": "73",
         "full_code": "3273",
         "provinsi_id": 9
@@ -466,7 +466,7 @@
     {
         "id": 59,
         "type": "Kabupaten",
-        "name": "Bandung",
+        "name": "Kabupaten Bandung",
         "code": "04",
         "full_code": "3204",
         "provinsi_id": 9
@@ -722,7 +722,7 @@
     {
         "id": 91,
         "type": "Kota",
-        "name": "Bekasi",
+        "name": "Kota Bekasi",
         "code": "75",
         "full_code": "3275",
         "provinsi_id": 9
@@ -730,7 +730,7 @@
     {
         "id": 92,
         "type": "Kabupaten",
-        "name": "Bekasi",
+        "name": "Kabupaten Bekasi",
         "code": "16",
         "full_code": "3216",
         "provinsi_id": 9
@@ -1154,7 +1154,7 @@
     {
         "id": 145,
         "type": "Kabupaten",
-        "name": "Bogor",
+        "name": "Kabupaten Bogor",
         "code": "01",
         "full_code": "3201",
         "provinsi_id": 9
@@ -1178,7 +1178,7 @@
     {
         "id": 148,
         "type": "Kota",
-        "name": "Bogor",
+        "name": "Kota Bogor",
         "code": "71",
         "full_code": "3271",
         "provinsi_id": 9
@@ -1434,7 +1434,7 @@
     {
         "id": 180,
         "type": "Kota",
-        "name": "Sukabumi",
+        "name": "Kota Sukabumi",
         "code": "72",
         "full_code": "3272",
         "provinsi_id": 9
@@ -1466,7 +1466,7 @@
     {
         "id": 184,
         "type": "Kabupaten",
-        "name": "Sukabumi",
+        "name": "Kabupaten Sukabumi",
         "code": "02",
         "full_code": "3202",
         "provinsi_id": 9
@@ -1866,7 +1866,7 @@
     {
         "id": 234,
         "type": "Kota",
-        "name": "Cirebon",
+        "name": "Kota Cirebon",
         "code": "74",
         "full_code": "3274",
         "provinsi_id": 9
@@ -1914,7 +1914,7 @@
     {
         "id": 240,
         "type": "Kabupaten",
-        "name": "Cirebon",
+        "name": "Kabupaten Cirebon",
         "code": "09",
         "full_code": "3209",
         "provinsi_id": 9
@@ -2074,7 +2074,7 @@
     {
         "id": 260,
         "type": "Kota",
-        "name": "Tangerang",
+        "name": "Kota Tangerang",
         "code": "71",
         "full_code": "3671",
         "provinsi_id": 3
@@ -2090,7 +2090,7 @@
     {
         "id": 262,
         "type": "Kabupaten",
-        "name": "Tangerang",
+        "name": "Kabupaten Tangerang",
         "code": "03",
         "full_code": "3603",
         "provinsi_id": 3
@@ -2282,7 +2282,7 @@
     {
         "id": 286,
         "type": "Kota",
-        "name": "Tasikmalaya",
+        "name": "Kota Tasikmalaya",
         "code": "78",
         "full_code": "3278",
         "provinsi_id": 9
@@ -2322,7 +2322,7 @@
     {
         "id": 291,
         "type": "Kabupaten",
-        "name": "Tasikmalaya",
+        "name": "Kabupaten Tasikmalaya",
         "code": "06",
         "full_code": "3206",
         "provinsi_id": 9
@@ -2650,7 +2650,7 @@
     {
         "id": 332,
         "type": "Kabupaten",
-        "name": "Gorontalo",
+        "name": "Kabupaten Gorontalo",
         "code": "01",
         "full_code": "7501",
         "provinsi_id": 7
@@ -2690,7 +2690,7 @@
     {
         "id": 337,
         "type": "Kota",
-        "name": "Gorontalo",
+        "name": "Kota Gorontalo",
         "code": "71",
         "full_code": "7571",
         "provinsi_id": 7
