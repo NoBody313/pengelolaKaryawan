@@ -25,4 +25,31 @@ class UserController extends Controller
         // Redirect to the login form or any other page
         return redirect('/');
     }
+
+     // Tambahkan action edit
+     public function edit($nik_admedika)
+     {
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+         if (!$data) {
+             abort(404);
+         }
+
+         return view('user.user-edit-data', ['pegawaiData' => $data]);
+     }
+
+     // Tambahkan action update
+     public function update(Request $request, $nik_admedika)
+    {
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        // Update the data with the validated request
+        $data->update($request->all());
+
+        return redirect()->route('user-dashboard', ['nik_admedika' => $nik_admedika])->with('success', 'Data Pegawai berhasil diupdate.');
+    }
 }

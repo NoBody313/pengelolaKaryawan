@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         'checkUserSession' => \App\Http\Middleware\CheckUserSession::class,
+        'check.session' => \App\Http\Middleware\RedirectIfSessionActive::class,
     ];
 }

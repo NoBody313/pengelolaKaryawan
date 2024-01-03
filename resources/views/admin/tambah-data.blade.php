@@ -22,31 +22,35 @@
         $(document).ready(function() {
             // Fungsi untuk mengisi dropdown provinsi
             function fillProvinsiDropdown() {
-                // Implementasi AJAX untuk mengambil data provinsi
                 $.ajax({
                     url: "{{ route('provinsi.index') }}",
                     data: {
                         q: $('#selectProvKTP').val()
                     },
                     success: function(data) {
-                        // Hapus semua opsi sebelum menambahkan yang baru
                         $('#selectProvKTP').empty();
 
-                        // Tambahkan opsi placeholder
                         $('#selectProvKTP').append(
                             '<option value="" disabled selected>Pilih Provinsi</option>');
 
-                        // Tambahkan opsi baru berdasarkan data yang diterima
                         data.forEach(function(item) {
-                            $('#selectProvKTP').append('<option value="' + item.id + '">' + item
-                                .text + '</option>');
+                            $('#selectProvKTP').append('<option value="' + item.text + '">' +
+                                item.text + '</option>');
                         });
 
-                        // Memanggil fungsi untuk mengisi dropdown kabupaten
                         fillKabupatenDropdown();
                     }
                 });
             }
+
+            $(document).ready(function() {
+                fillProvinsiDropdown();
+
+                $("#selectProvKTP").change(function() {
+                    fillKabupatenDropdown();
+                });
+            });
+
 
             // Mengisi dropdown provinsi saat halaman dimuat
             fillProvinsiDropdown();
@@ -74,8 +78,8 @@
 
                         // Tambahkan opsi baru berdasarkan data yang diterima
                         data.forEach(function(item) {
-                            $('#selectKabKTP').append('<option value="' + item.id + '">' + item
-                                .text + '</option>');
+                            $('#selectKabKTP').append('<option value="' + item.text + '">' +
+                                item.text + '</option>');
                         });
 
                         // Memanggil fungsi untuk mengisi dropdown kecamatan
@@ -107,8 +111,8 @@
 
                         // Tambahkan opsi baru berdasarkan data yang diterima
                         data.forEach(function(item) {
-                            $('#selectKecKTP').append('<option value="' + item.id + '">' + item
-                                .text + '</option>');
+                            $('#selectKecKTP').append('<option value="' + item.text + '">' +
+                                item.text + '</option>');
                         });
 
                         // Memanggil fungsi untuk mengisi dropdown kelurahan
@@ -140,8 +144,8 @@
 
                         // Tambahkan opsi baru berdasarkan data yang diterima
                         data.forEach(function(item) {
-                            $('#selectKelKTP').append('<option value="' + item.id + '">' + item
-                                .text + '</option>');
+                            $('#selectKelKTP').append('<option value="' + item.text + '">' +
+                                item.text + '</option>');
                         });
                     }
                 });
@@ -168,9 +172,8 @@
 
                         // Tambahkan opsi baru berdasarkan data yang diterima
                         data.forEach(function(item) {
-                            $('#selectProvDomisili').append('<option value="' + item.id + '">' +
-                                item
-                                .text + '</option>');
+                            $('#selectProvDomisili').append('<option value="' + item.text + '">' +
+                                item.text + '</option>');
                         });
 
                         // Memanggil fungsi untuk mengisi dropdown kabupaten
@@ -205,9 +208,8 @@
 
                         // Tambahkan opsi baru berdasarkan data yang diterima
                         data.forEach(function(item) {
-                            $('#selectKabDomisili').append('<option value="' + item.id + '">' +
-                                item
-                                .text + '</option>');
+                            $('#selectKabDomisili').append('<option value="' + item.text + '">' +
+                                item.text + '</option>');
                         });
 
                         // Memanggil fungsi untuk mengisi dropdown kecamatan
@@ -239,9 +241,8 @@
 
                         // Tambahkan opsi baru berdasarkan data yang diterima
                         data.forEach(function(item) {
-                            $('#selectKecDomisili').append('<option value="' + item.id + '">' +
-                                item
-                                .text + '</option>');
+                            $('#selectKecDomisili').append('<option value="' + item.text + '">' +
+                                item.text + '</option>');
                         });
 
                         // Memanggil fungsi untuk mengisi dropdown kelurahan
@@ -273,9 +274,8 @@
 
                         // Tambahkan opsi baru berdasarkan data yang diterima
                         data.forEach(function(item) {
-                            $('#selectKelDomisili').append('<option value="' + item.id + '">' +
-                                item
-                                .text + '</option>');
+                            $('#selectKelDomisili').append('<option value="' + item.text + '">' +
+                                item.text + '</option>');
                         });
                     }
                 });

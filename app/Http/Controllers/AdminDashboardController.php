@@ -6,6 +6,7 @@ use App\Models\PegawaiData;
 use Illuminate\Http\Request;
 use App\Exports\PegawaiExport;
 use App\Imports\PegawaiImport;
+use App\Models\Provinsi;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminDashboardController extends Controller
@@ -36,15 +37,22 @@ class AdminDashboardController extends Controller
     }
 
     // Tambahkan action edit
-    public function edit($nik_admedika)
+    // In your controller
+
+    public function edit($id)
     {
-        $pegawaiData = PegawaiData::find($nik_admedika);
+        $pegawaiData = PegawaiData::find($id);
 
         if (!$pegawaiData) {
             abort(404);
         }
 
-        return view('admin.edit-data', ['pegawaiData' => $pegawaiData]);
+        // Store the selected provinsi in session
+        session()->put('provinsi', $pegawaiData->provinsi_ktp);
+
+        $provinsiList = Provinsi::all();
+
+        return view('admin.edit-data', ['provinsiList' => $provinsiList, 'pegawaiData' => $pegawaiData]);
     }
 
     // Tambahkan action update
@@ -58,8 +66,12 @@ class AdminDashboardController extends Controller
 
         $pegawaiData->update($request->all());
 
+        // Remove the provinsi from session after update
+        session()->remove('provinsi');
+
         return redirect()->route('dashboard-admin')->with('success', 'Data Pegawai berhasil diupdate.');
     }
+
 
 
     public function destroy($nik_admedika)
