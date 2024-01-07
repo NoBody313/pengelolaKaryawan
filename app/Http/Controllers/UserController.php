@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index($nik_admedika)
     {
         // Periksa apakah sesi pegawai atau admin aktif
-        if (!Session::has('pegawai') && !Session::has('admin')) {
+        if (!Session::has('pegawai')) {
             // Jika tidak aktif, redirect ke halaman login atau halaman lain
             return redirect('/'); // Gantilah dengan URL yang sesuai
         }
@@ -32,7 +32,6 @@ class UserController extends Controller
     {
         // Hapus data sesuai dengan kebutuhan
         Session::forget('pegawai');
-        Session::forget('admin');
 
         // Hancurkan sesi
         Session::flush();

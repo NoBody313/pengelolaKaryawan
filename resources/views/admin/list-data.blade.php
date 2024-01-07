@@ -22,7 +22,6 @@
                         <form action="{{ route('import_excel') }}" method="post" enctype="multipart/form-data"
                             class="flex flex-row justify-between gap-2">
                             @csrf
-                            {{-- <input type="file" name="file" accept=".xlsx, .xls"> --}}
                             <label for="file" class="sr-only">Choose file</label>
                             <input type="file" name="file" accept=".xlsx, .xls"
                                 class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:border-0 file:bg-gray-100 file:me-4 file:py-3 file:px-4">
@@ -52,6 +51,9 @@
                                 Nama
                             </th>
                             <th scope="col" class="w-1/5 px-6 py-4 text-center text-base font-medium">
+                                Role
+                            </th>
+                            <th scope="col" class="w-1/5 px-6 py-4 text-center text-base font-medium">
                                 Action
                             </th>
                         </tr>
@@ -67,6 +69,8 @@
                                     {{ $pegawaiData->nik_tg }}</td>
                                 <td class="w-auto justify-center items-center text-center text-sm px-6 py-4">
                                     {{ $pegawaiData->nama }}</td>
+                                <td class="w-auto justify-center items-center text-center text-sm px-6 py-4">
+                                    {{ $pegawaiData->role }}</td>
                                 <td class="flex flex-row justify-center items-center gap-2">
                                     <a href="{{ route('edit-data-karyawan', $pegawaiData->id) }}"
                                         class="w-1/2 p-2 text-center bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 m-2 rounded-md">Edit</a>

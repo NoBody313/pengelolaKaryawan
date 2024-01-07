@@ -522,12 +522,24 @@
                                         type="email" value="{{ optional($pegawaiData)->email_pribadi }}">
                                 </div>
                             </div>
-
-                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                <label class="input-label" for="input-ibuKandung">Nama Ibu
-                                    Kandung</label>
-                                <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
-                                    value="{{ optional($pegawaiData)->nama_ibu }}">
+                            <div class="form-container w-full">
+                                <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                    <label class="input-label" for="input-ibuKandung">Nama Ibu
+                                        Kandung</label>
+                                    <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
+                                        value="{{ optional($pegawaiData)->nama_ibu }}">
+                                </div>
+                                <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                    <label class="input-label" for="hs-select"
+                                        name="role">Role</label>
+                                    <select name="role"
+                                        class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                        id="hs-select">
+                                        <option disabled selected>{{ $pegawaiData->role }}</option>
+                                        <option>Admin</option>
+                                        <option>Pegawai</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 // User Dashboard
 Route::group(['middleware' => 'web'], function () {
     // Definisi rute-rute Anda di sini
-
     Route::get('/user/{nik_admedika}', [UserController::class, 'index'])->name('user-dashboard');
     Route::get('/user/edit-data/{nik_admedika}', [UserController::class, 'edit'])->name('edit-data');
     Route::put('/user/update-data/{nik_admedika}', [UserController::class, 'update'])->name('update-data');
@@ -38,10 +37,10 @@ Route::post('/cek-data', [LoginController::class, 'cekData'])->name('login.cekDa
 // Logout
 
 // Admin Dashboard
-Route::get('/admin', [AdminDashboardController::class, 'index'])->name('dashboard-admin');
-Route::get('/admin/tambah-data', [AdminDashboardController::class, 'create'])->name('create-data-form');
+Route::get('/admin/{nik_admedika}', [AdminDashboardController::class, 'index'])->name('dashboard-admin');
+Route::get('/admin/{nik_admedika}/tambah-data', [AdminDashboardController::class, 'create'])->name('create-data-form');
 Route::post('/admin/store-data', [AdminDashboardController::class, 'store'])->name('store-data-form');
-Route::get('/admin/list-data', [AdminDashboardController::class, 'show'])->name('list-data-karyawan');
+Route::get('/admin/{nik_admedika}/list-data', [AdminDashboardController::class, 'show'])->name('list-data-karyawan');
 Route::get('/admin/edit-data/{id}', [AdminDashboardController::class, 'edit'])->name('edit-data-karyawan');
 Route::put('/admin/update-data/{id}', [AdminDashboardController::class, 'update'])->name('update-data-karyawan');
 Route::delete('/admin/delete-data/{nik_admedika}', [AdminDashboardController::class, 'destroy'])->name('delete-data-karyawan');
@@ -50,7 +49,6 @@ Route::post('/admin/list-data/import_excel', [AdminDashboardController::class, '
 
 // User Dashboard
 Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
-
 
 Route::get('selectProv', [WilayahIndonesiaController::class, 'provinsi'])->name('provinsi.index');
 Route::get('selectKab/{id}', [WilayahIndonesiaController::class, 'kabupaten']);

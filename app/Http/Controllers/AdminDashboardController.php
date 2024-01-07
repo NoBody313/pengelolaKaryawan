@@ -7,19 +7,47 @@ use Illuminate\Http\Request;
 use App\Exports\PegawaiExport;
 use App\Imports\PegawaiImport;
 use App\Models\Provinsi;
+use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminDashboardController extends Controller
 {
-    public function index()
+    public function index($nik_admedika)
     {
-        return view('admin.dashboard');
+        if (!Session::has('admin')) {
+            return view('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        return view('admin.dashboard', ['data' => $data]);
+    }
+
+    public function logout()
+    {
+        Session::forget('admin');
+        Session::flush();
+        auth()->logout();
+
+        if (session_status() == PHP_SESSION_ACTIVE) {
+            session_destroy();
+        }
+
+        return redirect('/');
     }
 
     // Tambah Data Form
-    public function create()
+    public function create($nik_admedika)
     {
-        return view('admin.tambah-data');
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        return view('admin.tambah-data', ['nik_admedika' => $nik_admedika]);
     }
 
     public function store(Request $request)
@@ -29,16 +57,23 @@ class AdminDashboardController extends Controller
     }
 
     // Other Panel
-    public function show()
+    public function show($nik_admedika)
     {
-        $pegawaiDatas = PegawaiData::paginate(10);
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
 
-        return view('admin.list-data', compact('pegawaiDatas'));
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        $pegawaiDatas = PegawaiData::paginate(10);
+        return view('admin.list-data', ['pegawaiDatas' => $pegawaiDatas, 'nik_admedika' => $nik_admedika, 'data' => $data]);
     }
 
     // Tambahkan action edit
-    // In your controller
-
     public function edit($id)
     {
         $pegawaiData = PegawaiData::find($id);
@@ -47,15 +82,12 @@ class AdminDashboardController extends Controller
             abort(404);
         }
 
-        // Store the selected provinsi in session
         session()->put('provinsi', $pegawaiData->provinsi_ktp);
-
         $provinsiList = Provinsi::all();
 
         return view('admin.edit-data', ['provinsiList' => $provinsiList, 'pegawaiData' => $pegawaiData]);
     }
 
-    // Tambahkan action update
     public function update(Request $request, $id)
     {
         $pegawaiData = PegawaiData::find($id);
@@ -65,14 +97,9 @@ class AdminDashboardController extends Controller
         }
 
         $pegawaiData->update($request->all());
-
-        // Remove the provinsi from session after update
         session()->remove('provinsi');
-
         return redirect()->route('dashboard-admin')->with('success', 'Data Pegawai berhasil diupdate.');
     }
-
-
 
     public function destroy($nik_admedika)
     {
