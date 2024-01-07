@@ -41,7 +41,7 @@ Route::get('/admin/{nik_admedika}', [AdminDashboardController::class, 'index'])-
 Route::get('/admin/{nik_admedika}/tambah-data', [AdminDashboardController::class, 'create'])->name('create-data-form');
 Route::post('/admin/store-data', [AdminDashboardController::class, 'store'])->name('store-data-form');
 Route::get('/admin/{nik_admedika}/list-data', [AdminDashboardController::class, 'show'])->name('list-data-karyawan');
-Route::get('/admin/edit-data/{id}', [AdminDashboardController::class, 'edit'])->name('edit-data-karyawan');
+Route::get('/admin/{nik_admedika}/edit-data/{id}', [AdminDashboardController::class, 'edit'])->name('edit-data-karyawan');
 Route::put('/admin/update-data/{id}', [AdminDashboardController::class, 'update'])->name('update-data-karyawan');
 Route::delete('/admin/delete-data/{nik_admedika}', [AdminDashboardController::class, 'destroy'])->name('delete-data-karyawan');
 Route::get('/admin/list-data/export_excel', [AdminDashboardController::class, 'export_excel'])->name('karyawan-export');

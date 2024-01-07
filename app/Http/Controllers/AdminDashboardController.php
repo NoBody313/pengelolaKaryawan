@@ -74,8 +74,19 @@ class AdminDashboardController extends Controller
     }
 
     // Tambahkan action edit
-    public function edit($id)
+    public function edit($nik_admedika, $id)
     {
+
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
         $pegawaiData = PegawaiData::find($id);
 
         if (!$pegawaiData) {
@@ -85,7 +96,7 @@ class AdminDashboardController extends Controller
         session()->put('provinsi', $pegawaiData->provinsi_ktp);
         $provinsiList = Provinsi::all();
 
-        return view('admin.edit-data', ['provinsiList' => $provinsiList, 'pegawaiData' => $pegawaiData]);
+        return view('admin.edit-data', ['provinsiList' => $provinsiList, 'pegawaiData' => $pegawaiData, 'data' => $data]);
     }
 
     public function update(Request $request, $id)

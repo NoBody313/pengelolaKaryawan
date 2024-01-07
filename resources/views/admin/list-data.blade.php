@@ -72,7 +72,7 @@
                                 <td class="w-auto justify-center items-center text-center text-sm px-6 py-4">
                                     {{ $pegawaiData->role }}</td>
                                 <td class="flex flex-row justify-center items-center gap-2">
-                                    <a href="{{ route('edit-data-karyawan', $pegawaiData->id) }}"
+                                    <a href="{{ route('edit-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
                                         class="w-1/2 p-2 text-center bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 m-2 rounded-md">Edit</a>
                                     <a href="#" onclick="openConfirmationModal({{ $pegawaiData->nik_admedika }})"
                                         class="w-1/2 p-2 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 m-2 rounded-md cursor-pointer">Hapus</a>
