@@ -47,7 +47,7 @@
 
             <div class="w-full">
 
-                <a href="#"
+                <a href="{{ route('logout', ['nik_admedika' => $data->nik_admedika]) }}"
                     class="flex w-full items-center px-4 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none">

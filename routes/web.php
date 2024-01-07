@@ -46,6 +46,7 @@ Route::put('/admin/update-data/{id}', [AdminDashboardController::class, 'update'
 Route::delete('/admin/delete-data/{nik_admedika}', [AdminDashboardController::class, 'destroy'])->name('delete-data-karyawan');
 Route::get('/admin/list-data/export_excel', [AdminDashboardController::class, 'export_excel'])->name('karyawan-export');
 Route::post('/admin/list-data/import_excel', [AdminDashboardController::class, 'import'])->name('import_excel');
+Route::get('/admin/logout/{nik_admedika}', [AdminDashboardController::class, 'logout'])->name('logout');
 
 // User Dashboard
 Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
