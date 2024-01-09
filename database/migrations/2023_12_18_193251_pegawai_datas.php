@@ -55,6 +55,8 @@ return new class extends Migration
             $table->text('hubungan_kontak_emergency')->nullable();
             $table->text('nama_ibu')->nullable();
 
+            $table->enum('role', ['pegawai', 'admin'])->default('pegawai');
+
             $table->timestamps();
         });
     }

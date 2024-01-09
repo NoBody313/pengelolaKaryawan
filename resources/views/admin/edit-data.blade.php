@@ -16,7 +16,7 @@
             <div class="flex flex-col md:flex-row items-center justify-center">
                 <ul class="flex flex-wrap justify-center items-center gap-4 w-full max-w-3xl">
                     <li>
-                        <a href="/admin" class="w-fit my-4 mx-10 py-2 px-2 text-sm flex items-center gap-2">
+                        <a href="{{ route('dashboard-admin', ['nik_admedika' => $data->nik_admedika]) }}" class="w-fit my-4 mx-10 py-2 px-2 text-sm flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40"
                                 fill="none">
                                 <mask id="mask0_418_673" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -133,7 +133,7 @@
             <!-- End Stepper Nav -->
 
             <div class="flex flex-col justify-center items-center py-4">
-                <form action="{{ route('update-data-karyawan', ['id' => $pegawaiData->id]) }}" method="POST"
+                <form action="{{ route('update-data-karyawan', ['nik_admedika' => $data->nik_admedika ,'id' => $pegawaiData->id]) }}" method="POST"
                     class="flex flex-col w-full">
                     @csrf
                     @method('PUT')
@@ -170,7 +170,7 @@
                                 </div>
                                 <div class="form-container">
                                     <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                        <label class="input-label" for="hs-select name="" -label-jenisKelamin">Jenis
+                                        <label class="input-label" for="jenis-kelamin">Jenis
                                             Kelamin</label>
                                         <select name="jenis_kelamin"
                                             class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
@@ -248,7 +248,7 @@
                                             <label class="input-label" for="input-alamatKTP">Alamat
                                                 Lengkap</label>
                                             <input name="alamat_ktp" class="input-field-form" id="input-alamatKTP"
-                                                type="text" value="{{ optional($pegawaiData)->alamat_ktp }}">
+                                                type="text" value="{{ $pegawaiData->alamat_ktp }}">
                                         </div>
                                         <div
                                             class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
@@ -522,12 +522,24 @@
                                         type="email" value="{{ optional($pegawaiData)->email_pribadi }}">
                                 </div>
                             </div>
-
-                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                <label class="input-label" for="input-ibuKandung">Nama Ibu
-                                    Kandung</label>
-                                <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
-                                    value="{{ optional($pegawaiData)->nama_ibu }}">
+                            <div class="form-container w-full">
+                                <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                    <label class="input-label" for="input-ibuKandung">Nama Ibu
+                                        Kandung</label>
+                                    <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
+                                        value="{{ optional($pegawaiData)->nama_ibu }}">
+                                </div>
+                                <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                    <label class="input-label" for="hs-select"
+                                        name="role">Role</label>
+                                    <select name="role"
+                                        class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                        id="hs-select">
+                                        <option disabled selected>{{ $pegawaiData->role }}</option>
+                                        <option>Admin</option>
+                                        <option>Pegawai</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

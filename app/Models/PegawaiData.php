@@ -48,6 +48,7 @@ class PegawaiData extends Model
         'no_hp_emergency',
         'hubungan_kontak_emergency',
         'nama_ibu',
+        'role',
         'created_at',
         'updated_at',
     ];

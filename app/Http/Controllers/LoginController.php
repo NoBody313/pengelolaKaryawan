@@ -3,41 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Models\PegawaiData;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
     public function showForm()
     {
-        if (Session::has('pegawai_data_' . request('nik_admedika'))) {
-            return redirect()->route('user-dashboard', ['nik_admedika' => request('nik_admedika')]);
+        // Jika sudah ada sesi aktif, redirect ke halaman yang sesuai
+        if (Session::has('pegawai') || Session::has('admin')) {
+            // Gantilah {nik_admedika} dengan nilai sesuai yang sesuai dengan kebutuhan Anda
+            $nik_admedika = Session::get('pegawai') ?? Session::get('admin');
+            return redirect("/user/{$nik_admedika}");
         }
         return view('login');
     }
 
     public function cekData(Request $request)
     {
-        $nikAdmedika = $request->input('nik_admedika');
-        $tanggalLahir = $request->input('tanggal_lahir');
+        $nik_admedika = $request->input('nik_admedika');
+        $tanggal_lahir = $request->input('tanggal_lahir');
 
-        $data = PegawaiData::where('nik_admedika', $nikAdmedika)
-            ->where('tanggal_lahir', $tanggalLahir)
+        $user = PegawaiData::where('nik_admedika', $nik_admedika)
+            ->where('tanggal_lahir', $tanggal_lahir)
             ->first();
 
-        if ($data) {
-            $sessionKey = 'pegawai_data_' . $data->nik_admedika;
-
-            Session::put($sessionKey, $data);
-            return $this->redirectToUserDashboard($data->nik_admedika);
+        if ($user && $user->role === 'pegawai') {
+            Session::put('pegawai', $nik_admedika); // Menggunakan sesi Laravel
+            return redirect("/user/{$nik_admedika}");
+        } elseif ($user && $user->role === 'admin') {
+            Session::put('admin', $nik_admedika); // Menggunakan sesi Laravel
+            return redirect("/admin/{$nik_admedika}");
         } else {
-            return redirect('/')->with('message', 'Data tidak ditemukan');
+            // Otentikasi gagal, mungkin tampilkan pesan kesalahan atau atur variabel sesuai kebutuhan
+            $pesanError = 'Username atau password salah';
+            return redirect()->back()->with('pesanError', $pesanError);
         }
-    }
-
-    protected function redirectToUserDashboard($nik_admedika): RedirectResponse
-    {
-        return redirect()->route('user-dashboard', ['nik_admedika' => $nik_admedika]);
     }
 }
