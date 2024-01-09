@@ -23,6 +23,8 @@ class PegawaiExport implements FromCollection
             'tanggal_lahir',
             'tahun_lahir',
             'no_ktp',
+            'nama_ibu',
+            'nama_ayah',
             'alamat_ktp',
             'provinsi_ktp',
             'kab_kota_ktp',
@@ -37,19 +39,20 @@ class PegawaiExport implements FromCollection
             'kodepos_domisili',
             'status_pernikahan',
             'tanggal_pernikahan',
+            'nama_pasangan',
             'jumlah_anak',
             'pendidikan_terakhir',
             'jurusan_pendidikan_terakhir',
             'nama_institusi',
             'kota_institusi',
             'lulus_thn_pendidikan_terakhir',
-            'email_pribadi',
             'no_hp_tsel',
             'no_hp_nontsel',
             'nama_kontak_emergency',
-            'no_hp_emergency',
             'hubungan_kontak_emergency',
-            'nama_ibu'
+            'no_hp_emergency',
+            'email_pribadi',
+            'role',
         )->get();
     }
 }

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('tanggal_lahir')->nullable();
             $table->string('tahun_lahir')->nullable();
             $table->bigInteger('no_ktp')->nullable();
+            $table->text('nama_ibu')->nullable();
+            $table->text('nama_ayah')->nullable();
 
             $table->text('alamat_ktp')->nullable();
             $table->text('provinsi_ktp')->nullable();
@@ -39,7 +41,8 @@ return new class extends Migration
             $table->string('kodepos_domisili')->nullable();
 
             $table->string('status_pernikahan')->nullable();
-            $table->date('tanggal_pernikahan')->nullable();
+            $table->date('tanggal_pernikahan')->default('-')->nullable();
+            $table->string('nama_pasangan')->nullable();
             $table->integer('jumlah_anak')->nullable();
             $table->string('pendidikan_terakhir')->nullable();
             $table->text('jurusan_pendidikan_terakhir')->nullable();
@@ -53,9 +56,8 @@ return new class extends Migration
             $table->char('no_hp_emergency')->nullable();
             $table->text('nama_kontak_emergency')->nullable();
             $table->text('hubungan_kontak_emergency')->nullable();
-            $table->text('nama_ibu')->nullable();
 
-            $table->enum('role', ['Pegawai', 'Admin'])->default('Pegawai');
+            $table->enum('role', ['pegawai', 'admin'])->default('pegawai');
 
             $table->timestamps();
         });
