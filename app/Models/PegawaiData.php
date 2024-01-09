@@ -53,31 +53,36 @@ class PegawaiData extends Model
         'updated_at',
     ];
 
-    protected static function booted()
+    protected static function boot()
     {
-        static::created(function ($model) {
-            // Otomatis atur urutan saat pembuatan
+        parent::boot();
+
+        static::creating(function ($model) {
+            // Set the next sequence number if not provided
             if (!$model->urutan) {
-                $model->urutan = $model->id;
-                $model->save();
+                $model->urutan = self::getNextSequenceNumber();
             }
         });
 
         static::deleted(function ($model) {
-            // Hapus dan atur ulang urutan
-            $model->resetUrutan();
+            // Reassign sequence numbers after deletion
+            self::reassignSequenceNumbers();
         });
     }
 
-    public function resetUrutan()
+    private static function getNextSequenceNumber()
     {
-        // Ambil semua data dengan urutan lebih besar dari yang dihapus
-        $affectedRows = self::where('urutan', '>', $this->urutan)
-            ->decrement('urutan');
+        return self::max('urutan') + 1;
+    }
 
-        // Atur ulang urutan
-        DB::statement('SET @count = 0;');
-        DB::statement('UPDATE pegawai_datas SET urutan = @count:= @count + 1;');
+    private static function reassignSequenceNumbers()
+    {
+        $records = self::orderBy('urutan')->get();
+
+        foreach ($records as $key => $record) {
+            $record->urutan = $key + 1;
+            $record->save();
+        }
     }
 
     use HasFactory;
