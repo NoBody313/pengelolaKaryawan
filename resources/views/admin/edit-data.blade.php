@@ -248,7 +248,7 @@
                                             <label class="input-label" for="input-alamatKTP">Alamat
                                                 Lengkap</label>
                                             <input name="alamat_ktp" class="input-field-form" id="input-alamatKTP"
-                                                type="text" value="{{ optional($pegawaiData)->alamat_ktp }}">
+                                                type="text" value="{{ $pegawaiData->alamat_ktp }}">
                                         </div>
                                         <div
                                             class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
