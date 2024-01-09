@@ -39,13 +39,13 @@ Route::post('/cek-data', [LoginController::class, 'cekData'])->name('login.cekDa
 // Admin Dashboard
 Route::get('/admin/{nik_admedika}', [AdminDashboardController::class, 'index'])->name('dashboard-admin');
 Route::get('/admin/{nik_admedika}/tambah-data', [AdminDashboardController::class, 'create'])->name('create-data-form');
-Route::post('/admin/store-data', [AdminDashboardController::class, 'store'])->name('store-data-form');
+Route::post('/admin/{nik_admedika}/store-data/', [AdminDashboardController::class, 'store'])->name('store-data-form');
 Route::get('/admin/{nik_admedika}/list-data', [AdminDashboardController::class, 'show'])->name('list-data-karyawan');
 Route::get('/admin/{nik_admedika}/edit-data/{id}', [AdminDashboardController::class, 'edit'])->name('edit-data-karyawan');
-Route::put('/admin/update-data/{id}', [AdminDashboardController::class, 'update'])->name('update-data-karyawan');
-Route::delete('/admin/delete-data/{nik_admedika}', [AdminDashboardController::class, 'destroy'])->name('delete-data-karyawan');
-Route::get('/admin/list-data/export_excel', [AdminDashboardController::class, 'export_excel'])->name('karyawan-export');
-Route::post('/admin/list-data/import_excel', [AdminDashboardController::class, 'import'])->name('import_excel');
+Route::put('/admin/{nik_admedika}/update-data/{id}', [AdminDashboardController::class, 'update'])->name('update-data-karyawan');
+Route::delete('/admin/{nik_admedika}/delete-data/{id}', [AdminDashboardController::class, 'destroy'])->name('delete-data-karyawan');
+Route::get('/admin/{nik_admedika}/list-data/export_excel', [AdminDashboardController::class, 'export_excel'])->name('karyawan-export');
+Route::post('/admin/{nik_admedika}/list-data/import_excel', [AdminDashboardController::class, 'import'])->name('import_excel');
 Route::get('/admin/logout/{nik_admedika}', [AdminDashboardController::class, 'logout'])->name('logout');
 
 // User Dashboard

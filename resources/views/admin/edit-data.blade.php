@@ -133,7 +133,7 @@
             <!-- End Stepper Nav -->
 
             <div class="flex flex-col justify-center items-center py-4">
-                <form action="{{ route('update-data-karyawan', ['id' => $pegawaiData->id]) }}" method="POST"
+                <form action="{{ route('update-data-karyawan', ['nik_admedika' => $data->nik_admedika ,'id' => $pegawaiData->id]) }}" method="POST"
                     class="flex flex-col w-full">
                     @csrf
                     @method('PUT')
@@ -170,7 +170,7 @@
                                 </div>
                                 <div class="form-container">
                                     <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                        <label class="input-label" for="hs-select name="" -label-jenisKelamin">Jenis
+                                        <label class="input-label" for="jenis-kelamin">Jenis
                                             Kelamin</label>
                                         <select name="jenis_kelamin"
                                             class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"

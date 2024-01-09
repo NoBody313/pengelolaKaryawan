@@ -4,7 +4,7 @@
     <div class="flex flex-col md:flex-row items-center justify-center">
         <ul class="flex flex-wrap justify-center items-center gap-4 w-full max-w-3xl">
             <li>
-                <a href="{{ route('dashboard-admin', ['nik_admedika' => $nik_admedika]) }}" class="w-fit my-4 mx-10 py-2 px-2 text-sm flex items-center gap-2">
+                <a href="{{ url('/admin', ['nik_admedika' => $data->nik_admedika]) }}" class="w-fit my-4 mx-10 py-2 px-2 text-sm flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
                         <mask id="mask0_418_673" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                             width="40" height="40">
@@ -120,7 +120,7 @@
 
     <div class="flex flex-col justify-center items-center py-4">
 
-        <form action="{{ route('store-data-form') }}" method="POST" class="flex flex-col w-full">
+        <form action="{{ route('store-data-form', ['nik_admedika' => $data->nik_admedika]) }}" method="POST" class="flex flex-col w-full">
             @csrf
             <!-- Stepper Content -->
             <div class="flex flex-col my-4 w-full">

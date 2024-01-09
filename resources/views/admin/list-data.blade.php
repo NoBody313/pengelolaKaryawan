@@ -19,7 +19,7 @@
                 <div class="flex flex-row justify-between w-full py-4">
                     <h1 class="py-3 font-medium text-base">Daftar Data Karyawan</h1>
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <form action="{{ route('import_excel') }}" method="post" enctype="multipart/form-data"
+                        <form action="{{ route('import_excel', ['nik_admedika' => $data->nik_admedika]) }}" method="post" enctype="multipart/form-data"
                             class="flex flex-row justify-between gap-2">
                             @csrf
                             <label for="file" class="sr-only">Choose file</label>
@@ -29,7 +29,7 @@
                                 class="inline-flex w-44 justify-center items-center bg-blue-500 text-white rounded-md">Import
                                 Excel</button>
                         </form>
-                        <a href="{{ route('karyawan-export') }}"
+                        <a href="{{ route('karyawan-export', ['nik_admedika' => $data->nik_admedika]) }}"
                             class="p-3 bg-green-600 font-medium text-base text-white rounded-md" target="_blank">Export
                             ke
                             Excel</a>
@@ -74,7 +74,7 @@
                                 <td class="flex flex-row justify-center items-center gap-2">
                                     <a href="{{ route('edit-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
                                         class="w-1/2 p-2 text-center bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 m-2 rounded-md">Edit</a>
-                                    <a href="#" onclick="openConfirmationModal({{ $pegawaiData->nik_admedika }})"
+                                    <a href="#" onclick="openConfirmationModal('{{ $pegawaiData->nik_admedika }}')"
                                         class="w-1/2 p-2 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 m-2 rounded-md cursor-pointer">Hapus</a>
                                     <!-- Modal -->
                                     <div class="fixed inset-0 overflow-y-auto hidden"
@@ -106,11 +106,11 @@
                                                         class="w-1/2 inline-flex justify-center rounded-md px-5 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:text-sm">
                                                         Batal
                                                     </a>
-                                                    <a href="{{ route('delete-data-karyawan', $pegawaiData->id) }}"
+                                                    <a href="{{ route('delete-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
                                                         class="w-1/2 p-2 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 m-2 rounded-md cursor-pointer"
                                                         onclick="event.preventDefault(); document.getElementById('delete-form-{{ $pegawaiData->id }}').submit();">Hapus</a>
                                                     <form id="delete-form-{{ $pegawaiData->id }}"
-                                                        action="{{ route('delete-data-karyawan', $pegawaiData->id) }}"
+                                                        action="{{ route('delete-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
                                                         method="POST" style="display: none;">
                                                         @csrf
                                                         @method('delete')

@@ -47,7 +47,13 @@ class AdminDashboardController extends Controller
             return redirect('/');
         }
 
-        return view('admin.tambah-data', ['nik_admedika' => $nik_admedika]);
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        return view('admin.tambah-data', ['data' => $data]);
     }
 
     public function store(Request $request)
@@ -99,8 +105,19 @@ class AdminDashboardController extends Controller
         return view('admin.edit-data', ['provinsiList' => $provinsiList, 'pegawaiData' => $pegawaiData, 'data' => $data]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $nik_admedika, $id)
     {
+
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
         $pegawaiData = PegawaiData::find($id);
 
         if (!$pegawaiData) {
@@ -109,24 +126,56 @@ class AdminDashboardController extends Controller
 
         $pegawaiData->update($request->all());
         session()->remove('provinsi');
-        return redirect()->route('dashboard-admin')->with('success', 'Data Pegawai berhasil diupdate.');
+        return redirect()->route('dashboard-admin', ['nik_admedika' => $data->nik_admedika])->with('success', 'Data Pegawai berhasil diupdate.');
     }
 
-    public function destroy($nik_admedika)
+    public function destroy($nik_admedika, $id)
     {
-        $pegawaiData = PegawaiData::find($nik_admedika);
+
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        $pegawaiData = PegawaiData::find($id);
         $pegawaiData->delete();
 
-        return redirect()->route('list-data-karyawan')->with('success', 'Data Pegawai berhasil dihapus.');
+        return redirect()->route('list-data-karyawan', ['data' => $data, 'pegawaiData' => $pegawaiData->id, 'nik_admedika' => $data->nik_admedika])->with('success', 'Data Pegawai berhasil dihapus.');
     }
 
-    public function export_excel()
+    public function export_excel($nik_admedika)
     {
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->firstOrFail();
+
+        if (!$data) {
+            abort(404);
+        }
+
         return Excel::download(new PegawaiExport, 'dataPegawai.xlsx');
     }
 
-    public function import(Request $request)
+    public function import(Request $request, $nik_admedika)
     {
+
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->firstOrFail();
+
+        if (!$data) {
+            abort(404);
+        }
+
         $request->validate([
             'file' => 'required|mimes:xlsx,xls',
         ]);
