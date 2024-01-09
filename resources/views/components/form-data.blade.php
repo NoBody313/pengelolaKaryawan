@@ -120,7 +120,7 @@
 
     <div class="flex flex-col justify-center items-center py-4">
 
-        <form action="{{ route('store-data-form', ['nik_admedika' => $data->nik_admedika]) }}" method="POST" class="flex flex-col w-full">
+        <form action="{{ route('store-data-form',['nik_admedika' => $data->nik_admedika]) }}" method="POST" class="flex flex-col w-full">
             @csrf
             <!-- Stepper Content -->
             <div class="flex flex-col my-4 w-full">
@@ -207,6 +207,20 @@
                                     required inputmode="numeric"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     min="0" maxlength="16" placeholder="Masukkan nomor KTP">
+                            </div>
+                        </div>
+                        <div class="form-container w-full">
+                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                <label class="input-label" for="input-ibuKandung">Nama Ibu
+                                    Kandung</label>
+                                <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
+                                    required placeholder="Masukan nama ibu kandung">
+                            </div>
+                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                <label class="input-label" for="nama_ibu">Nama Ayah
+                                    Kandung</label>
+                                <input name="nama_ayah" class="input-field-form" id="nama_ibu" type="text"
+                                    required placeholder="Masukan nama ayah kandung">
                             </div>
                         </div>
                     </div>
@@ -360,15 +374,22 @@
                                 <input name="tanggal_pernikahan" class="input-field-form" id="input-ttl"
                                     type="date" placeholder="Masukkan tanggal lahir sesuai KTP">
                             </div>
-                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                <label class="input-label" for="input-jumlah-anak">Jumlah
-                                    Anak</label>
-                                <input name="jumlah_anak" class="input-field-form" id="input-kotaKelahiran"
-                                    type="number" placeholder="Masukkan kota kelahiran">
-                            </div>
                         </div>
                         <div class="form-container w-full">
                             <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                <label class="input-label" for="nama_pasangan">Nama Pasangan</label>
+                                <input name="nama_pasangan" class="input-field-form" id="nama_pasangan"
+                                    type="text" placeholder="Masukkan Nama Pasangan">
+                            </div>
+                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
+                                <label class="input-label" for="input-jumlah-anak">Jumlah
+                                    Anak</label>
+                                <input name="jumlah_anak" class="input-field-form" id="jumlah_anak" type="number"
+                                    placeholder="Masukkan Jumlah Anak">
+                            </div>
+                        </div>
+                        <div class="form-container w-full">
+                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-1/3">
                                 <label class="input-label" for="input-pendidikan">Pendidikan
                                     Terakhir</label>
                                 <select name="pendidikan_terakhir" class="input-field-form pe-9"
@@ -478,26 +499,15 @@
                             </div>
                         </div>
 
-                        <div class="form-container w-full">
-                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                <label class="input-label" for="input-ibuKandung">Nama Ibu
-                                    Kandung</label>
-                                <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
-                                    required placeholder="Masukan nama ibu kandung">
-                            </div>
-
-                            <div class="flex flex-col justify-center items-start gap-2 self-stretch w-full">
-                                <label class="input-label" for="hs-select"
-                                    name="role">Role</label>
-                                <select name="role"
-                                    class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                    id="hs-select">
-                                    <option disabled selected>Buka untuk memilih</option>
-                                    <option>Admin</option>
-                                    <option>Pegawai</option>
-                                </select>
-                            </div>
-
+                        <div class="flex flex-col justify-center items-start gap-2 self-stretch w-1/4">
+                            <label class="input-label" for="hs-select" name="role">Role</label>
+                            <select name="role"
+                                class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                id="hs-select">
+                                <option disabled selected>Buka untuk memilih</option>
+                                <option>Admin</option>
+                                <option>Pegawai</option>
+                            </select>
                         </div>
                     </div>
                 </div>

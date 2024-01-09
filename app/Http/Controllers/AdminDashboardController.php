@@ -65,7 +65,7 @@ class AdminDashboardController extends Controller
         $nik_admedika = Session::get('admin');
 
         PegawaiData::create($request->all());
-        return redirect()->route('dashboard-admin',['nik_admedika' => $nik_admedika])->with('success', 'Pegawai Data Berhasil Dibuat');
+        return redirect()->route('dashboard-admin', ['nik_admedika' => $nik_admedika])->with('success', 'Pegawai Data Berhasil Dibuat');
     }
 
     // Other Panel
