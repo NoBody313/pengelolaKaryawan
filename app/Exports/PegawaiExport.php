@@ -12,7 +12,7 @@ class PegawaiExport implements FromCollection
      */
     public function collection()
     {
-        return PegawaiData::select(
+        $pegawaiData = PegawaiData::select(
             'urutan',
             'nik_admedika',
             'nik_tg',
@@ -54,5 +54,12 @@ class PegawaiExport implements FromCollection
             'email_pribadi',
             'role',
         )->get();
+
+        $pegawaiData = $pegawaiData->map(function ($item) {
+            $item['no_ktp'] = "'" . $item['no_ktp'];
+            return $item;
+        });
+
+        return $pegawaiData;
     }
 }
