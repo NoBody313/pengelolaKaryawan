@@ -20,16 +20,18 @@
             </div>
             <div class="form-container">
                 <div class="input-layout">
-                    <label class="input-label flex flex-col justify-center items-start gap-2 self-stretch w-full md:w-[640px]" for="input-nama">Nama</label>
-                    <input name="nama" class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize" id="input-nama" type="text"
-                    value="{{ optional($pegawaiData)->nama }}">
+                    <label
+                        class="input-label flex flex-col justify-center items-start gap-2 self-stretch w-full md:w-[640px]"
+                        for="input-nama">Nama</label>
+                    <input name="nama"
+                        class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize"
+                        id="input-nama" type="text" value="{{ optional($pegawaiData)->nama }}">
                 </div>
             </div>
             <div class="form-container">
                 <div class="input-layout">
                     <label class="input-label" for="jenis_kelamin">Jenis Kelamin</label>
-                    <select name="jenis_kelamin" id="jenis_kelamin"
-                        class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                    <select name="jenis_kelamin" id="jenis_kelamin" class="input-field-form">
                         <option disabled selected>{{ $pegawaiData->jenis_kelamin }}</option>
                         <option>Laki-Laki</option>
                         <option>Perempuan</option>
@@ -37,9 +39,7 @@
                 </div>
                 <div class="input-layout">
                     <label class="input-label">Agama</label>
-                    <select
-                        class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                        name="label-agama">
+                    <select class="input-field-form" name="label-agama">
                         <option disabled selected>{{ $pegawaiData->agama }}</option>
                         <option>Islam</option>
                         <option>Kristen</option>
@@ -50,7 +50,7 @@
                     </select>
                 </div>
             </div>
-            <div class="form-container w-full">
+            <div class="form-container">
                 <div class="input-layout">
                     <label class="input-label" for="input-kotaKelahiran">Kota
                         Kelahiran</label>
@@ -64,7 +64,7 @@
                         value="{{ optional($pegawaiData)->tanggal_lahir }}">
                 </div>
             </div>
-            <div class="form-container w-full">
+            <div class="form-container">
                 <div class="input-layout">
                     <label class="input-label" for="input-tahunLahir">Tahun
                         Lahir</label>
@@ -80,7 +80,7 @@
                         min="0" maxlength="16" value="{{ optional($pegawaiData)->no_ktp }}">
                 </div>
             </div>
-            <div class="form-container w-full">
+            <div class="form-container">
                 <div class="input-layout">
                     <label class="input-label" for="input-ibuKandung">Nama Ibu
                         Kandung</label>
@@ -107,9 +107,9 @@
         <div class="form-layout">
             {{-- KTP --}}
             <div class="flex flex-col justify-center items-center gap-4 w-full">
-                <span class="flex justify-start items-start w-full mt-2 font-medium tracking-wide">Alamat
+                <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat
                     KTP</span>
-                <div class="form-container w-full">
+                <div class="form-container">
                     <div class="input-layout">
                         <label class="input-label" for="input-alamatKTP">Alamat
                             Lengkap</label>
@@ -158,9 +158,9 @@
 
             {{-- Domisili --}}
             <div class="flex flex-col justify-center items-center gap-4 w-full">
-                <span class="flex justify-start items-start w-full mt-2 font-medium tracking-wide">Alamat
+                <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat
                     Domisili</span>
-                <div class="form-container w-full">
+                <div class="form-container">
                     <div class="input-layout">
                         <label class="input-label" for="input-alamatDomisili">Alamat
                             Lengkap</label>
@@ -222,15 +222,14 @@
     <!-- First Contnet -->
     <div data-hs-stepper-content-item='{"index": 3}'>
         <div class="form-layout">
-            <div class="flex flex-col w-full gap-2">
-                <h2 class="font-semibold">Riwayat Pendidikan</h2>
-                <div class="form-container w-full">
-                    <div class="flex flex-col justify-center items-start gap-2 self-stretch w-1/4">
+            <div class="flex flex-col justify-center items-center gap-4 w-full">
+                <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Riwayat
+                    Pendidikan</span>
+                <div class="form-container">
+                    <div class="input-layout">
                         <label class="input-label" for="input-pendidikan">Pendidikan
                             Terakhir</label>
-                        <select name="pendidikan_terakhir"
-                            class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                            id="input-pendidikan">
+                        <select name="pendidikan_terakhir" class="input-field-form" id="input-pendidikan">
                             <option disabled selected>{{ $pegawaiData->pendidikan_terakhir }}
                             </option>
                             <option>SMA/Sederajat</option>
@@ -250,20 +249,22 @@
                         <input name="jurusan_pendidikan_terakhir" class="input-field-form" id="input-jurusan"
                             type="text" value="{{ optional($pegawaiData)->jurusan_pendidikan_terakhir }}">
                     </div>
+                </div>
+                <div class="form-container">
                     <div class="input-layout">
                         <label class="input-label" for="input-institusi">Nama
                             Institusi</label>
                         <input name="nama_institusi" class="input-field-form" id="input-institusi" type="text"
                             value="{{ optional($pegawaiData)->nama_institusi }}">
                     </div>
-                </div>
-                <div class="form-container w-full">
                     <div class="input-layout">
                         <label class="input-label" for="input-kotaInstitusi">Kota
                             Institusi</label>
                         <input name="kota_institusi" class="input-field-form" id="input-kotaInstitusi"
                             type="text" value="{{ optional($pegawaiData)->kota_institusi }}">
                     </div>
+                </div>
+                <div class="form-container">
                     <div class="input-layout">
                         <label class="input-label" for="input-tahunKelulusan">Tahun
                             Kelulusan</label>
@@ -273,15 +274,13 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col w-full gap-2 mt-8">
-                <h2 class="font-semibold">Status Pernikahan</h2>
-                <div class="form-container w-full">
+            <div class="flex flex-col justify-center items-center gap-4 w-full">
+                <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Status
+                    Pernikahan</span>
+                <div class="form-container">
                     <div class="input-layout">
-                        <label class="input-label" for="input-statusPernikahan">Status
-                            Pernikahan</label>
-                        <select name="status_pernikahan"
-                            class="py-3 px-4 pe-9 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                            id="input-statusPernikahan">
+                        <label class="input-label" for="input-statusPernikahan">Status Pernikahan</label>
+                        <select name="status_pernikahan" class="input-field-form" id="input-statusPernikahan">
                             <option disabled selected>{{ $pegawaiData->status_pernikahan }}
                             </option>
                             <option>Belum Menikah</option>
@@ -297,7 +296,7 @@
                             value="{{ optional($pegawaiData)->tanggal_pernikahan }}">
                     </div>
                 </div>
-                <div class="form-container w-full">
+                <div class="form-container">
                     <div class="input-layout">
                         <label class="input-label" for="nama_pasangan">Nama Pasangan</label>
                         <input name="nama_pasangan" class="input-field-form" id="nama_pasangan" type="text"
@@ -320,7 +319,7 @@
         "index": 4
     }'>
         <div class="form-layout">
-            <div class="form-container w-full">
+            <div class="form-container">
                 <div class="input-layout">
                     <label class="input-label" for="input-nomorTsel">Nomor
                         Handphone
@@ -344,7 +343,7 @@
                     <p class="font-medium text-xs">Format : 08123456789</p>
                 </div>
             </div>
-            <div class="form-container w-full">
+            <div class="form-container">
                 <div class="input-layout">
                     <label class="input-label" for="input-namaKontakEmergency">Nama
                         Kontak
@@ -370,7 +369,7 @@
                     </select>
                 </div>
             </div>
-            <div class="form-container w-full">
+            <div class="form-container">
                 <div class="input-layout">
                     <label class="input-label" for="input-nomorEmergency">Nomor Handphone
                         Emergency</label>
@@ -381,7 +380,7 @@
                         pattern="[0-9]{10,14}">
                     <p class="font-medium text-xs">Format : 08123456789</p>
                 </div>
-                <div class="flex flex-col items-start gap-2 self-stretch w-full m-0 p-0">
+                <div class="input-layout">
                     <label class="input-label" for="input-emailPribadi">Email
                         Pribadi</label>
                     <input name="email_pribadi" class="input-field-form" id="input-emailPribadi" type="email"
@@ -392,33 +391,35 @@
     </div>
 
     <!-- Button Group -->
-    <div class="flex flex-row justify-between items-center mt-2 px-16">
-        <button
-            class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-            data-hs-stepper-back-btn type="button">
-            <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="m15 18-6-6 6-6"></path>
-            </svg>
-            Back
-        </button>
-        <button
-            class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-            data-hs-stepper-next-btn type="button">
-            Next
-            <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="m9 18 6-6-6-6"></path>
-            </svg>
-        </button>
+    <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-row justify-between items-center mt-2 px-16 w-1/2">
+            <button
+                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                data-hs-stepper-back-btn type="button">
+                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                Back
+            </button>
+            <button
+                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                data-hs-stepper-next-btn type="button">
+                Next
+                <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"></path>
+                </svg>
+            </button>
 
-        <button
-            class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-            data-hs-stepper-finish-btn type="submit" style="display: none;">
-            Finish
-        </button>
+            <button
+                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                data-hs-stepper-finish-btn type="submit" style="display: none;">
+                Finish
+            </button>
+        </div>
     </div>
     <!-- End Button Group -->
 </div>

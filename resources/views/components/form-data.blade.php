@@ -245,7 +245,8 @@
                     <div class="form-layout">
                         {{-- Alamat KTP --}}
                         <div class="flex flex-col justify-center items-center gap-4 w-full">
-                            <span class="flex justify-start items-start w-1/2 mt-2 font-semibold tracking-wide">Alamat
+                            <span
+                                class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat
                                 KTP</span>
                             <div class="form-container">
                                 <div class="input-layout">
@@ -296,7 +297,8 @@
 
                         {{-- Domisili --}}
                         <div class="flex flex-col justify-center items-center gap-4 w-full">
-                            <span class="flex justify-start items-start w-1/2 mt-2 font-semibold tracking-wide">Alamat
+                            <span
+                                class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat
                                 Domisili</span>
                             <div class="form-container">
                                 <div class="input-layout">
@@ -359,7 +361,9 @@
                   }'>
                     <div class="form-layout">
                         <div class="flex flex-col justify-center items-center gap-4 w-full">
-                            <span class="flex justify-start items-start w-1/2 mt-2 font-semibold tracking-wide">Riwayat Pendidikan</span>
+                            <span
+                                class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Riwayat
+                                Pendidikan</span>
                             <div class="form-container">
                                 <div class="input-layout">
                                     <label class="input-label" for="input-pendidikan">Pendidikan
@@ -399,19 +403,18 @@
                                 </div>
                             </div>
                             <div class="form-container">
-                                <div
-                                    class="flex flex-col justify-center items-start gap-2 self-stretch w-full md:w-[640px]">
+                                <div class="input-label">
                                     <label class="input-label" for="input-tahunKelulusan">Tahun
                                         Kelulusan</label>
-                                    <input name="lulus_thn_pendidikan_terakhir"
-                                        class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize;"
-                                        id="input-tahunKelulusan" type="number" required
-                                        placeholder="Masukan Tahun Kelulusan">
+                                    <input name="lulus_thn_pendidikan_terakhir" class="input-field-form"
+                                        type="number" required placeholder="Masukan Tahun Kelulusan">
                                 </div>
                             </div>
                         </div>
                         <div class="flex flex-col justify-center items-center gap-4 w-full">
-                            <span class="flex justify-start items-start w-1/2 mt-2 font-semibold tracking-wide">Status Pernikahan</span>
+                            <span
+                                class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Status
+                                Pernikahan</span>
                             <div class="form-container">
                                 <div class="input-layout">
                                     <label class="input-label" for="input-statusPernikahan">Status Pernikahan</label>
