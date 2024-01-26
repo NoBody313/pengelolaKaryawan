@@ -11,7 +11,11 @@
 }
 
 .input-field-form {
-    @apply py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none;
+    @apply py-3 px-4 block w-80 border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize;
+}
+
+.input-role {
+    @apply py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase;
 }
 
 .form-layout {
@@ -24,4 +28,8 @@
 
 .input-label {
     @apply block text-sm font-medium mb-2;
+}
+
+.input-layout {
+    @apply flex flex-col justify-center items-start gap-2 self-stretch min-w-max
 }

@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\Models\PegawaiData;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Concerns\WithStartRow;
+class PegawaiImport implements ToModel, WithStartRow
 
-class PegawaiImport implements ToModel
 {
     /**
      * @param array $row
@@ -68,27 +69,26 @@ class PegawaiImport implements ToModel
         ]);
     }
 
+    public function startRow(): int
+    {
+        return 2;
+    }
+
     private function parseDate($date)
     {
         try {
-            // Attempt to create a Carbon date instance
             return Carbon::createFromFormat('Y-m-d', $date)->toDateString();
         } catch (\Exception $e) {
-            // Handle invalid date format
-            // You can log the error or perform other actions here
             return null;
         }
     }
     private function parseInteger($value)
     {
-        // Attempt to cast the value to an integer
         return is_numeric($value) ? (int) $value : null;
     }
 
     private function parseNoKtp($value)
     {
-        // Your parsing logic here
-        // You might need to remove non-numeric characters or handle expressions
         return (int) preg_replace('/[^0-9]/', '', $value);
     }
 }
