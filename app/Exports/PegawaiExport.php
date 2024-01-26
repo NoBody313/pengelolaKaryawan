@@ -4,8 +4,11 @@ namespace App\Exports;
 
 use App\Models\PegawaiData;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class PegawaiExport implements FromCollection
+class PegawaiExport implements FromCollection, WithHeadings, WithStyles
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -62,4 +65,61 @@ class PegawaiExport implements FromCollection
 
         return $pegawaiData;
     }
+
+    public function headings(): array
+    {
+        return [
+            'Urutan',
+            'NIK Admedika',
+            'NIK TG',
+            'Nama',
+            'Jenis Kelamin',
+            'Agama',
+            'Kota Lahir',
+            'Tanggal Lahir',
+            'Tahun Lahir',
+            'No KTP',
+            'Nama Ibu',
+            'Nama Ayah',
+            'Alamat KTP',
+            'Provinsi KTP',
+            'Kabupaten/Kota KTP',
+            'Kecamatan KTP',
+            'Kelurahan KTP',
+            'Kodepos KTP',
+            'Alamat Domisili',
+            'Provinsi Domisili',
+            'Kabupaten/Kota Domisili',
+            'Kecamatan Domisili',
+            'Kelurahan Domisili',
+            'Kodepos Domisili',
+            'Status Pernikahan',
+            'Tanggal Pernikahan',
+            'Nama Pasangan',
+            'Jumlah Anak',
+            'Pendidikan Terakhir',
+            'Jurusan Pendidikan Terakhir',
+            'Nama Institusi',
+            'Kota Institusi',
+            'Lulus Tahun Pendidikan Terakhir',
+            'No HP (Tsel)',
+            'No HP (Nontsel)',
+            'Nama Kontak Emergency',
+            'Hubungan Kontak Emergency',
+            'No HP Emergency',
+            'Email Pribadi',
+            'Role',
+        ];
+    }
+
+    public function styles(Worksheet $sheet)
+    {
+        // Make the first row bold
+        $sheet->getStyle('A1:' . $sheet->getHighestColumn() . '1')->applyFromArray([
+            'font' => [
+                'bold' => true,
+            ],
+        ]);
+    }
+
 }

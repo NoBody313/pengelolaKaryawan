@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('pegawai_datas', function (Blueprint $table) {
             $table->id();
             $table->integer('urutan')->nullable();
-            $table->integer('nik_admedika')->nullable();
-            $table->integer('nik_tg')->nullable();
+            $table->char('nik_admedika')->nullable();
+            $table->char('nik_tg')->nullable();
             $table->string('nama')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('agama')->nullable();
@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('kodepos_domisili')->nullable();
 
             $table->string('status_pernikahan')->nullable();
-            $table->date('tanggal_pernikahan')->default('-')->nullable();
+            $table->date('tanggal_pernikahan')->nullable();
             $table->string('nama_pasangan')->nullable();
             $table->integer('jumlah_anak')->nullable();
             $table->string('pendidikan_terakhir')->nullable();
