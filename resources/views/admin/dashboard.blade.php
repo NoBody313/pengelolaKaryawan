@@ -13,7 +13,7 @@
 <body>
     <div class="flex flex-row gap-10">
         @include('shared.admin-sidebar')
-        <div class="w-full mt-14 mr-14">
+        <div class="w-full mx-auto">
             @include('components.header')
         </div>
     </div>
