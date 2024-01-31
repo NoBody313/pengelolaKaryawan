@@ -134,7 +134,7 @@
             <!-- End Stepper Nav -->
 
             <div class="flex flex-col justify-center items-center py-4">
-                <form action="{{ route('update-data', ['nik_admedika' => $pegawaiData->nik_admedika]) }}"
+                <form id="updateForm" action="{{ route('update-data', ['nik_admedika' => $pegawaiData->nik_admedika]) }}"
                     method="POST" class="flex flex-col w-full">
                     @csrf
                     @method('PUT')
@@ -144,6 +144,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const finishButton = document.querySelector('[data-hs-stepper-finish-btn]');
+            finishButton.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                // Tampilkan dialog konfirmasi
+                const isDataCorrect = confirm('Apakah data sudah sesuai?');
+
+                // Jika pengguna menekan OK, submit formulir
+                if (isDataCorrect) {
+                    document.getElementById('updateForm').submit();
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

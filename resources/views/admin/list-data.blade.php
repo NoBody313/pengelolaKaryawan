@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token( ) }}">
     <title>List Data</title>
 
     @include('helper.helper')
@@ -29,8 +29,8 @@
 
                 <!-- Breadcrumb -->
                 <ol class="ms-3 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
-                    <li class="flex items-center text-sm text-gray-800">
-                        Admin
+                    <li class="flex items-center text-sm text-gray-800 capitalize">
+                        {{ $data->role }}
                         <svg class="flex-shrink-0 mx-3 overflow-visible h-2.5 w-2.5 text-gray-400"
                             width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14"
@@ -47,9 +47,9 @@
                 <h1 class="py-3 font-medium text-base">Daftar Data Karyawan</h1>
                 <div class="flex flex-col lg:flex-row justify-center items-center gap-2">
                     <form action="{{ route('import_excel', ['nik_admedika' => $data->nik_admedika]) }}" method="post"
-                        enctype="multipart/form-data" class="flex flex-col lg:flex-row justify-between gap-2">
+                        enctype="multipart/form-data" class="flex flex-col lg:flex-row justify-between gap-2" id="form-import">
                         @csrf
-                        <label for="file" class="sr-only">Choose file</label>
+                        <p id="import" for="file" class="sr-only">Choose file</p>
                         <input type="file" name="file" accept=".xlsx, .xls"
                             class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:border-0 file:bg-gray-100 file:me-4 file:p-4">
                         <button type="submit"
