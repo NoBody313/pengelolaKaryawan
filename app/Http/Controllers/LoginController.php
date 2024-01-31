@@ -23,6 +23,12 @@ class LoginController extends Controller
         $nik_admedika = $request->input('nik_admedika');
         $tanggal_lahir = $request->input('tanggal_lahir');
 
+        $request->validate([
+            'nik_admedika' => 'required',
+            'tanggal_lahir' => 'required',
+            'h-captcha-response' => ['hcaptcha'],
+        ]);
+
         $user = PegawaiData::where('nik_admedika', $nik_admedika)
             ->where('tanggal_lahir', $tanggal_lahir)
             ->first();
