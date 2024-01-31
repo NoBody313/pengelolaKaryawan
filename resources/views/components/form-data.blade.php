@@ -254,6 +254,8 @@
                                         Lengkap</label>
                                     <input name="alamat_ktp" class="input-field-form" id="alamatKTP" type="text"
                                         required placeholder="Masukkan alamat lengkap KTP">
+                                    <p class="text-xs">Format : Jalan, RT, RW, Kelurahan, Kecamatan, <br>
+                                        Kabupaten/Kota, Provinsi dan Kode Pos.</p>
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-provinsiKTP">Provinsi</label>
@@ -306,6 +308,8 @@
                                         Lengkap</label>
                                     <input name="alamat_domisili" class="input-field-form" id="alamatDomisili"
                                         type="text" required placeholder="Masukkan alamat lengkap Domisili">
+                                    <p class="text-xs">Format : Jalan, RT, RW, Kelurahan, Kecamatan, <br>
+                                        Kabupaten/Kota, Provinsi dan Kode Pos.</p>
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-provinsiDomisili">Provinsi</label>
