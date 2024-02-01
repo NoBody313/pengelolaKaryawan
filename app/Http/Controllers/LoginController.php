@@ -4,18 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\PegawaiData;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
     public function showForm()
     {
-        if (Session::has('pegawai') || Session::has('admin')) {
-            $nik_admedika = Session::get('pegawai') ?? Session::get('admin');
+        if (Session::has('pegawai')) {
+            $nik_admedika = Session::get('pegawai');
             return redirect("/user/{$nik_admedika}");
+        } elseif (Session::has('admin')) {
+            $nik_admedika = Session::get('admin');
+            return redirect("/admin/{$nik_admedika}");
+        } else {
+            return view('login');
         }
-        return view('login');
     }
 
     public function cekData(Request $request)

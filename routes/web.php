@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerifikasiDataController;
@@ -20,21 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // User Dashboard
-Route::group(['middleware' => 'web'], function () {
-    // Definisi rute-rute Anda di sini
-    Route::get('/user/{nik_admedika}', [UserController::class, 'index'])->name('user-dashboard');
-    Route::get('/user/edit-data/{nik_admedika}', [UserController::class, 'edit'])->name('edit-data');
-    Route::put('/user/update-data/{nik_admedika}', [UserController::class, 'update'])->name('update-data');
-    Route::get('/logout/{nik_admedika}', [UserController::class, 'logout'])->name('logout');
-});
+Route::get('/user/{nik_admedika}', [UserController::class, 'index'])->name('user-dashboard');
+Route::get('/user/edit-data/{nik_admedika}', [UserController::class, 'edit'])->name('edit-data');
+Route::put('/user/update-data/{nik_admedika}', [UserController::class, 'update'])->name('update-data');
+Route::get('/logout/{nik_admedika}', [UserController::class, 'logout'])->name('logout');
+Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
 
 // Login Routes
-Route::middleware('check.session')->group(function () {
-});
-
 Route::get('/', [LoginController::class, 'showForm'])->name('login.form');
 Route::post('/cek-data', [LoginController::class, 'cekData'])->name('login.cekData');
-// Logout
 
 // Admin Dashboard
 Route::get('/admin/{nik_admedika}', [AdminDashboardController::class, 'index'])->name('dashboard-admin');
@@ -47,9 +42,6 @@ Route::delete('/admin/{nik_admedika}/delete-data/{id}', [AdminDashboardControlle
 Route::get('/admin/{nik_admedika}/list-data/export_excel', [AdminDashboardController::class, 'export_excel'])->name('karyawan-export');
 Route::post('/admin/{nik_admedika}/list-data/import_excel', [AdminDashboardController::class, 'import'])->name('import_excel');
 Route::get('/admin/logout/{nik_admedika}', [AdminDashboardController::class, 'logout'])->name('logout');
-
-// User Dashboard
-Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
 
 Route::get('selectProv', [WilayahIndonesiaController::class, 'provinsi'])->name('provinsi.index');
 Route::get('selectKab/{id}', [WilayahIndonesiaController::class, 'kabupaten']);
