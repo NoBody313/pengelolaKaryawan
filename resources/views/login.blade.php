@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
+    <meta name="desccription" content="Web Admedika">
     @include('helper.helper')
 </head>
 
@@ -14,7 +15,7 @@
         <form class="flex flex-col justify-center items-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 gap-4"
             action="{{ route('login.cekData') }}" method="post">
             @csrf
-            <img src="{{ asset('images/admedLogo.png') }}" alt="logo-admedika" class="mx-auto" width="96">
+            <img src="{{ asset('images/admedLogo.png') }}" alt="logo-admedika" class="mx-auto w-auto h-auto" width="96">
             <div class="w-full mt-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="nik_admedika">
                     NIK Admedika
@@ -33,7 +34,7 @@
             </div>
             <div class="flex items-center justify-center mb-2">
                 <button
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit">
                     Login
                 </button>
