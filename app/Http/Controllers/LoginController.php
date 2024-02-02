@@ -88,7 +88,7 @@ class LoginController extends Controller
                 if ($inputKTP === $request->input('ktp_start') . $request->input('ktp_end')) {
                     Session::put('isVerified', true);
 
-                    $role = ($pegawaiData->role === 'pegawai') ? 'user' : 'admin';
+                    $role = ($pegawaiData->role === 'pegawai') ? 'pegawai' : 'admin';
                     return redirect("/{$role}/{$nik_admedika}")->with('success', 'Verifikasi KTP berhasil!');
                 } else {
                     return redirect()->back()->with('pesanError', 'Verifikasi KTP gagal. Nomor KTP tidak cocok.');
