@@ -12,7 +12,7 @@ class LoginController extends Controller
     {
         if (Session::has('pegawai')) {
             $nik_admedika = Session::get('pegawai');
-            return redirect("/user/{$nik_admedika}");
+            return redirect("/pegawai/{$nik_admedika}");
         } elseif (Session::has('admin')) {
             $nik_admedika = Session::get('admin');
             return redirect("/admin/{$nik_admedika}");
