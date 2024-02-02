@@ -51,13 +51,13 @@
                         @csrf
                         <p id="import" for="file" class="sr-only">Choose file</p>
                         <input type="file" name="file" accept=".xlsx, .xls"
-                            class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-600 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none file:border-0 file:bg-gray-100 file:me-4 file:p-4">
+                            class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:border-0 file:bg-gray-100 file:me-4 file:p-4">
                         <button type="submit"
-                            class="inline-flex w-full lg:w-44 justify-center items-center bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2 lg:mt-0 p-4 lg:p-3">Import
+                            class="inline-flex w-full lg:w-44 justify-center items-center bg-blue-500 text-white rounded-md mt-2 lg:mt-0 p-4 lg:p-3">Import
                             Excel</button>
                     </form>
                     <a href="{{ route('karyawan-export', ['nik_admedika' => $data->nik_admedika]) }}"
-                        class="w-full lg:w-40 flex justify-center p-4 bg-green-600 hover:bg-green-700 font-medium text-base text-white rounded-md" target="_blank">Export
+                        class="w-full lg:w-40 flex justify-center p-4 bg-green-600 font-medium text-base text-white rounded-md" target="_blank">Export
                         ke
                         Excel</a>
                 </div>
@@ -105,9 +105,9 @@
                             </td>
                             <td class="flex flex-col lg:flex-row mx-auto justify-center items-center gap-1">
                                 <a href="{{ route('edit-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
-                                    class="p-2 px-7 text-center bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 m-2 rounded-md">Edit</a>
+                                    class="p-2 px-7 text-center bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 m-2 rounded-md">Edit</a>
                                 <a href="#" onclick="openConfirmationModal('{{ $pegawaiData->nik_admedika }}')"
-                                    class="p-2 px-5 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 m-2 rounded-md cursor-pointer">Hapus</a>
+                                    class="p-2 px-5 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 m-2 rounded-md cursor-pointer">Hapus</a>
                                 <!-- Modal -->
                                 <div class="fixed inset-0 overflow-y-auto hidden"
                                     id="confirmationModal-{{ $pegawaiData->nik_admedika }}">
@@ -135,11 +135,11 @@
                                             <div
                                                 class="flex flex-row justify-center items-center gap-4 px-8 pb-4 pt-2 w-full">
                                                 <a onclick="closeConfirmationModal({{ $pegawaiData->nik_admedika }})"
-                                                    class="w-1/2 inline-flex justify-center rounded-md p-[10px] bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:text-sm cursor-pointer">
+                                                    class="w-1/2 inline-flex justify-center rounded-md px-5 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:text-sm">
                                                     Batal
                                                 </a>
                                                 <a href="{{ route('delete-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
-                                                    class="w-1/2 p-2 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 m-2 rounded-md cursor-pointer"
+                                                    class="w-1/2 p-2 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 m-2 rounded-md cursor-pointer"
                                                     onclick="event.preventDefault(); document.getElementById('delete-form-{{ $pegawaiData->id }}').submit();">Hapus</a>
                                                 <form id="delete-form-{{ $pegawaiData->id }}"
                                                     action="{{ route('delete-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
