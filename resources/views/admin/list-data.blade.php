@@ -107,7 +107,7 @@
                                 <a href="{{ route('edit-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
                                     class="p-2 px-7 text-center bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 m-2 rounded-md">Edit</a>
                                 <a href="#" onclick="openConfirmationModal('{{ $pegawaiData->nik_admedika }}')"
-                                    class="p-2 px-5 text-center bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 m-2 rounded-md cursor-pointer">Hapus</a>
+                                    class="p-2 px-5 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 m-2 rounded-md cursor-pointer">Hapus</a>
                                 <!-- Modal -->
                                 <div class="fixed inset-0 overflow-y-auto hidden"
                                     id="confirmationModal-{{ $pegawaiData->nik_admedika }}">
@@ -139,7 +139,7 @@
                                                     Batal
                                                 </a>
                                                 <a href="{{ route('delete-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
-                                                    class="w-1/2 p-2 text-center bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 m-2 rounded-md cursor-pointer"
+                                                    class="w-1/2 p-2 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 m-2 rounded-md cursor-pointer"
                                                     onclick="event.preventDefault(); document.getElementById('delete-form-{{ $pegawaiData->id }}').submit();">Hapus</a>
                                                 <form id="delete-form-{{ $pegawaiData->id }}"
                                                     action="{{ route('delete-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
