@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // User Dashboard
-Route::get('/user/{nik_admedika}', [UserController::class, 'index'])->name('user-dashboard');
-Route::get('/user/edit-data/{nik_admedika}', [UserController::class, 'edit'])->name('edit-data');
-Route::put('/user/update-data/{nik_admedika}', [UserController::class, 'update'])->name('update-data');
+Route::get('/pegawai/{nik_admedika}', [UserController::class, 'index'])->name('user-dashboard');
+Route::get('/pegawai/edit-data/{nik_admedika}', [UserController::class, 'edit'])->name('edit-data');
+Route::put('/pegawai/update-data/{nik_admedika}', [UserController::class, 'update'])->name('update-data');
 Route::get('/logout/{nik_admedika}', [UserController::class, 'logout'])->name('logout');
 Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
 
