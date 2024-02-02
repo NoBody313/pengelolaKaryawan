@@ -118,7 +118,7 @@
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-provinsi">Provinsi</label>
-                        <select name="provinsi_ktp" class="input-field-form" id="input-provinsi">
+                        <select name="provinsi_ktp" class="input-field-form" id="input-provinsi-ktp">
                             <option>{{ $pegawaiData->provinsi_ktp }}</option>
                         </select>
                     </div>
@@ -127,13 +127,13 @@
                 <div class="form-container">
                     <div class="input-layout">
                         <label class="input-label" for="input-kabKota">Kab/Kota</label>
-                        <select name="kab_kota_ktp" class="input-field-form" id="input-kabKota">
+                        <select name="kab_kota_ktp" class="input-field-form" id="input-kabKota-ktp">
                             <option>{{ $pegawaiData->kab_kota_ktp }}</option>
                         </select>
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-kabKota">Kecamatan</label>
-                        <select name="kec_ktp" class="input-field-form" id="input-kabKota">
+                        <select name="kec_ktp" class="input-field-form" id="input-kecamatan-ktp">
                             <option>{{ $pegawaiData->kec_ktp }}</option>
                         </select>
                     </div>
@@ -305,7 +305,7 @@
                     <div class="input-layout">
                         <label class="input-label" for="input-jumlah-anak">Jumlah
                             Anak</label>
-                        <input name="jumlah_anak" class="input-field-form" id="input-kotaKelahiran" type="number"
+                        <input name="jumlah_anak" class="input-field-form" id="input-jumlahAnak" type="number"
                             value="{{ optional($pegawaiData)->jumlah_anak }}">
                     </div>
                 </div>
@@ -335,7 +335,7 @@
                     <label class="input-label" for="input-nomorNon-tsel">Nomor
                         Handphone
                         Non Telkomsel</label>
-                    <input name="no_hp_nontsel" class="input-field-form" id="input-nama" type="tel"
+                    <input name="no_hp_nontsel" class="input-field-form" id="input-noHpNonTsel" type="tel"
                         inputmode="numeric"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         value="{{ optional($pegawaiData)->no_hp_nontsel }}" min="10" maxlength="15"
