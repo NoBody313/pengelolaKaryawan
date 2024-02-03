@@ -29,7 +29,7 @@
                 </label>
                 <input
                     class="appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="tangal_lahir" type="date" name="tanggal_lahir" required>
+                    id="tanggal_lahir" type="date" name="tanggal_lahir" required>
             </div>
             <div class="flex items-center justify-center mb-2">
                 <button
