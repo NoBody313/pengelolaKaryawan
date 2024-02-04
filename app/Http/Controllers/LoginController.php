@@ -26,21 +26,25 @@ class LoginController extends Controller
     {
         $nik_admedika = $request->input('nik_admedika');
         $tanggal_lahir = $request->input('tanggal_lahir');
+        $no_ktp = $request->input('no_ktp');
 
         $request->validate([
             'nik_admedika' => 'required',
             'tanggal_lahir' => 'required',
-            // 'h-captcha-response' => ['hcaptcha'],
+            'no_ktp' => 'required',
+            'h-captcha-response' => ['hcaptcha'],
         ]);
 
         $user = PegawaiData::where('nik_admedika', $nik_admedika)
             ->where('tanggal_lahir', $tanggal_lahir)
+            ->where('no_ktp', $no_ktp)
             ->first();
 
         if ($user && ($user->role === 'pegawai' || $user->role === 'admin')) {
             Session::put($user->role, $nik_admedika);
             Cache::forget("login_attempts:{$nik_admedika}");
-            return redirect()->route('verification.form');
+            $role = ($user->role === 'pegawai') ? 'pegawai' : 'admin';
+            return redirect("/{$role}/{$nik_admedika}");
         }
 
         $attempts = Cache::get("login_attempts:{$nik_admedika}", 0);
@@ -61,61 +65,10 @@ class LoginController extends Controller
                 Cache::forget("login_attempts:{$nik_admedika}");
             }
         } else {
-            $pesanError = 'Username atau password salah';
+            $pesanError = 'NIK Admedika atau Tanggal Lahir atau No KTP anda salah';
             Cache::put("login_attempts:{$nik_admedika}", $attempts, now()->addMinutes(1));
         }
 
         return redirect()->back()->with('pesanError', $pesanError);
-    }
-
-    public function showVerificationForm()
-    {
-        if (Session::has('pegawai') || Session::has('admin')) {
-            $isVerified = Session::get('isVerified', false);
-
-            if (!$isVerified) {
-                return view('verification');
-            } else {
-                $role = Session::get('pegawai') ? 'pegawai' : 'admin';
-                $nik_admedika = Session::get($role);
-
-                return redirect("/{$role}/{$nik_admedika}")->with('pesanError', 'Anda sudah diverifikasi sebelumnya.');
-            }
-        } else {
-            return redirect('/')->with('pesanError', 'Silakan login terlebih dahulu.');
-        }
-    }
-
-    public function verifyKTP(Request $request)
-    {
-        if (Session::has('pegawai') || Session::has('admin')) {
-            $nik_admedika = Session::get('pegawai') ?? Session::get('admin');
-
-            $request->validate([
-                'ktp_start' => 'required|digits:4',
-                'ktp_end' => 'required|digits:4',
-            ]);
-
-            $pegawaiData = PegawaiData::where('nik_admedika', $nik_admedika)->first();
-
-            if ($pegawaiData) {
-                $noKTP = $pegawaiData->no_ktp;
-
-                $inputKTP = substr($noKTP, 0, 4) . substr($noKTP, -4);
-
-                if ($inputKTP === $request->input('ktp_start') . $request->input('ktp_end')) {
-                    Session::put('isVerified', true);
-
-                    $role = ($pegawaiData->role === 'pegawai') ? 'pegawai' : 'admin';
-                    return redirect("/{$role}/{$nik_admedika}")->with('success', 'Verifikasi KTP berhasil!');
-                } else {
-                    return redirect()->back()->with('pesanError', 'Verifikasi KTP gagal. Nomor KTP tidak cocok.');
-                }
-            } else {
-                return redirect()->back()->with('pesanError', 'Data Pegawai tidak ditemukan.');
-            }
-        } else {
-            return redirect('/')->with('pesanError', 'Silakan login terlebih dahulu.');
-        }
     }
 }
