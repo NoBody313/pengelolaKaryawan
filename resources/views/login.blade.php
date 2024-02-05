@@ -25,11 +25,6 @@
                     @endif
                 </div>
             @endif
-            @if ($errors->has('g-recaptcha-response'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                </span>
-            @endif
             <div class="w-full mt-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="nik_admedika">
                     NIK Admedika
