@@ -32,7 +32,9 @@ class LoginController extends Controller
             'nik_admedika' => 'required',
             'tanggal_lahir' => 'required',
             'no_ktp' => 'required',
-            'h-captcha-response' => ['required' , 'hcaptcha'],
+            // 'h-captcha-response' => ['required' , 'hcaptcha'],
+            'g-recaptcha-response' => 'required|captcha'
+
         ]);
 
         $user = PegawaiData::where('nik_admedika', $nik_admedika)
