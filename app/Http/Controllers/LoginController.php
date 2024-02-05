@@ -29,7 +29,12 @@ class LoginController extends Controller
         $request->validate([
             'nik_admedika' => 'required',
             'tanggal_lahir' => 'required',
+<<<<<<< Updated upstream
             'h-captcha-response' => ['hcaptcha'],
+=======
+            'no_ktp' => 'required',
+            'h-captcha-response' => ['required' , 'hcaptcha'],
+>>>>>>> Stashed changes
         ]);
 
         $user = PegawaiData::where('nik_admedika', $nik_admedika)

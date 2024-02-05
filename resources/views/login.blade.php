@@ -22,7 +22,13 @@
                 </label>
                 <input
                     class="appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+<<<<<<< Updated upstream
                     id="nik_admedika" type="text" placeholder="Masukan NIK Admedika" name="nik_admedika" required>
+=======
+                    id="nik_admedika" type="text" placeholder="Masukan NIK Admedika" name="nik_admedika"
+                    required @if (session('timeLeft')) disabled @endif
+                    {{-- pattern="[0-9]{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '');" --}}>
+>>>>>>> Stashed changes
             </div>
             <div class="w-full">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="tanggal_lahir">
@@ -30,9 +36,27 @@
                 </label>
                 <input
                     class="appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+<<<<<<< Updated upstream
                     id="tanggal_lahir" type="date" name="tanggal_lahir" required>
             </div>
             <div class="flex items-center justify-center mb-2">
+=======
+                    id="tanggal_lahir" type="date" name="tanggal_lahir" required
+                    @if (session('timeLeft')) disabled @endif>
+            </div>
+            <div class="w-full">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="no_ktp">
+                    Nomor KTP
+                </label>
+                <input
+                    class="appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="no_ktp" type="text" inputmode="numeric" name="no_ktp"
+                    placeholder="Masukkan Nomor KTP anda" required @if (session('timeLeft')) disabled @endif
+                    {{-- pattern="[0-9]{16}" oninput="this.value = this.value.replace(/[^0-9]/g, '');" --}}>
+
+            </div>
+            <div class="flex w-full items-center justify-center">
+>>>>>>> Stashed changes
                 <button
                     class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit">
@@ -40,8 +64,11 @@
                 </button>
             </div>
 
-            {!! HCaptcha::display() !!}
-            {!! HCaptcha::script() !!}
+            {!! NoCaptcha::display() !!}
+            {!! NoCaptcha::renderJs() !!}
+
+            {{-- {!! HCaptcha::display() !!}
+            {!! HCaptcha::script() !!} --}}
 
         </form>
         <p class="text-center text-gray-500 text-xs tracking-wider">
