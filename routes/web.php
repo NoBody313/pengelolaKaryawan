@@ -31,12 +31,6 @@ Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
 Route::get('/', [LoginController::class, 'showForm'])->name('login.form');
 Route::post('/cek-data', [LoginController::class, 'cekData'])->name('login.cekData');
 
-// Rute untuk menampilkan halaman verifikasi KTP
-Route::get('/verification', [LoginController::class, 'showVerificationForm'])->name('verification.form');
-
-// Rute untuk memproses verifikasi KTP
-Route::post('/verify-ktp', [LoginController::class, 'verifyKTP'])->name('verify.ktp');
-
 // Admin Dashboard
 Route::get('/admin/{nik_admedika}', [AdminDashboardController::class, 'index'])->name('dashboard-admin');
 Route::get('/admin/{nik_admedika}/tambah-data', [AdminDashboardController::class, 'create'])->name('create-data-form');
