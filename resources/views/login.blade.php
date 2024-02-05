@@ -25,15 +25,19 @@
                     @endif
                 </div>
             @endif
+            @if ($errors->has('g-recaptcha-response'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                </span>
+            @endif
             <div class="w-full mt-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="nik_admedika">
                     NIK Admedika
                 </label>
                 <input
                     class="appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="nik_admedika" type="text" placeholder="Masukan NIK Admedika" name="nik_admedika"
-                    required @if (session('timeLeft')) disabled @endif
-                    {{-- pattern="[0-9]{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '');" --}}>
+                    id="nik_admedika" type="text" placeholder="Masukan NIK Admedika" name="nik_admedika" required
+                    @if (session('timeLeft')) disabled @endif {{-- pattern="[0-9]{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '');" --}}>
             </div>
             <div class="w-full">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="tanggal_lahir">

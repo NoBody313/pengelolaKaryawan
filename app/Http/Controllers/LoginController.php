@@ -33,8 +33,10 @@ class LoginController extends Controller
             'tanggal_lahir' => 'required',
             'no_ktp' => 'required',
             // 'h-captcha-response' => ['required' , 'hcaptcha'],
-            'g-recaptcha-response' => 'required|captcha'
-
+            'g-recaptcha-response' => [
+                'required' => 'Please verify that you are not a robot.',
+                'captcha' => 'Captcha error! try again later or contact site admin.',
+            ],
         ]);
 
         $user = PegawaiData::where('nik_admedika', $nik_admedika)
