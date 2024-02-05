@@ -114,7 +114,6 @@ class PegawaiExport implements FromCollection, WithHeadings, WithStyles
 
     public function styles(Worksheet $sheet)
     {
-        // Make the first row bold
         $sheet->getStyle('A1:' . $sheet->getHighestColumn() . '1')->applyFromArray([
             'font' => [
                 'bold' => true,

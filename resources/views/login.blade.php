@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <div class="flex flex-col justify-center items-center w-full h-screen">
-        <form class="flex flex-col justify-center items-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 gap-4"
+    <div class="flex flex-col justify-center items-center w-screen h-screen">
+        <form class="flex flex-col justify-center items-center px-8 pt-6 pb-8 mb-4 gap-4"
             action="{{ route('login.cekData') }}" method="post">
             @csrf
             <img src="{{ asset('images/admedLogo.png') }}" alt="logo-admedika" class="mx-auto" width="96">

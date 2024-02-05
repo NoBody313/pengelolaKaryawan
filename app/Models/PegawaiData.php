@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+use Laravel\Scout\Searchable;
 
 class PegawaiData extends Model
 {
+    use Searchable, HasFactory;
+
     protected $table = 'pegawai_datas';
 
     protected $fillable = [
@@ -60,14 +62,12 @@ class PegawaiData extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            // Set the next sequence number if not provided
             if (!$model->urutan) {
                 $model->urutan = self::getNextSequenceNumber();
             }
         });
 
         static::deleted(function ($model) {
-            // Reassign sequence numbers after deletion
             self::reassignSequenceNumbers();
         });
     }
@@ -87,5 +87,13 @@ class PegawaiData extends Model
         }
     }
 
-    use HasFactory;
+    public function toSearchableArray()
+    {
+        return [
+            'nik_admedika'  => $this->nik_admedika,
+            'nik_tg'        => $this->nik_tg,
+            'nama'          => $this->nama,
+            'role'       => $this->role,
+        ];
+    }
 }

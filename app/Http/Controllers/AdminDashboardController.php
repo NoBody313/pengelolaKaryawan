@@ -81,8 +81,22 @@ class AdminDashboardController extends Controller
             abort(404);
         }
 
-        $pegawaiDatas = PegawaiData::paginate(10);
-        return view('admin.list-data', ['pegawaiDatas' => $pegawaiDatas, 'nik_admedika' => $nik_admedika, 'data' => $data]);
+        $search_param = request()->input('query');
+
+        request()->validate([
+            'query' => 'nullable|string|max:50',
+        ]);
+
+        $pegawai_query = PegawaiData::search($search_param);
+
+        $pegawaiDatas = $pegawai_query->orderBy('urutan')->paginate(10);
+
+        return view('admin.list-data', [
+            'pegawaiDatas' => $pegawaiDatas,
+            'nik_admedika' => $nik_admedika,
+            'data' => $data,
+            'search_param' => $search_param,
+        ]);
     }
 
     // Tambahkan action edit
