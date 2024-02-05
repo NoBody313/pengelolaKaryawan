@@ -70,6 +70,8 @@
             {!! NoCaptcha::display() !!}
             {!! NoCaptcha::renderJs() !!}
 
+            {{-- //Test --}}
+
             {{-- {!! HCaptcha::display() !!}
             {!! HCaptcha::script() !!} --}}
 
