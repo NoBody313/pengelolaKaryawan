@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <div class="flex flex-col justify-center items-center w-screen h-screen">
+    <div class="flex flex-col justify-center items-center w-screen h-screen" style="background-image: url('{{ asset('images/BG4.png') }}'); background-size: cover;">
         <form class="flex flex-col justify-center items-center px-8 pt-6 pb-8 mb-4 gap-4"
             action="{{ route('login.cekData') }}" method="post">
             @csrf
-            <img src="{{ asset('images/admedLogo.png') }}" alt="logo-admedika" class="mx-auto" width="96">
+            <img src="{{ asset('images/AdMedika Logo RedWhite.png') }}" alt="logo-admedika" class="mx-auto" width="96">
             @if (session('pesanError'))
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4"
                     role="alert">
@@ -26,7 +26,7 @@
                 </div>
             @endif
             <div class="w-full mt-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="nik_admedika">
+                <label class="block text-white text-sm font-bold mb-2" for="nik_admedika">
                     NIK Admedika
                 </label>
                 <input
@@ -35,7 +35,7 @@
                     @if (session('timeLeft')) disabled @endif {{-- pattern="[0-9]{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '');" --}}>
             </div>
             <div class="w-full">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="tanggal_lahir">
+                <label class="block text-white text-sm font-bold mb-2" for="tanggal_lahir">
                     Tanggal Lahir
                 </label>
                 <input
@@ -44,7 +44,7 @@
                     @if (session('timeLeft')) disabled @endif>
             </div>
             <div class="w-full">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="no_ktp">
+                <label class="block text-white text-sm font-bold mb-2" for="no_ktp">
                     Nomor KTP
                 </label>
                 <input
@@ -75,7 +75,7 @@
             {!! HCaptcha::script() !!} --}}
 
         </form>
-        <p class="text-center text-gray-500 text-xs tracking-wider">
+        <p class="text-center text-white text-xs tracking-wider">
             &copy; 2002 - 2024 | PT. Administrasi Medika
         </p>
 

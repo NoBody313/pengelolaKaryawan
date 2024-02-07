@@ -84,7 +84,7 @@ class AdminDashboardController extends Controller
         $search_param = request()->input('query');
 
         request()->validate([
-            'query' => 'nullable|string|max:50',
+            'query' => 'nullable|regex:/^[a-zA-Z0-9]+$/|max:50',
         ]);
 
         $pegawai_query = PegawaiData::search($search_param);
