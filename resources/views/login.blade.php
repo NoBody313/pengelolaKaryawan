@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <div class="flex flex-col justify-center items-center w-screen h-screen" style="background-image: url('{{ asset('images/BG4.png') }}'); background-size: cover;">
+    <div class="flex flex-col justify-center items-center w-screen h-screen" style="background-image: url('{{ asset('images/BG5.jpg') }}'); background-size: cover;">
         <form class="flex flex-col justify-center items-center px-8 pt-6 pb-8 mb-4 gap-4"
             action="{{ route('login.cekData') }}" method="post">
             @csrf
-            <img src="{{ asset('images/AdMedika Logo RedWhite.png') }}" alt="logo-admedika" class="mx-auto" width="96">
+            <img src="{{ asset('images/AdMedika Logo RedWhite.png') }}" alt="logo-admedika" class="mx-auto" width="128">
             @if (session('pesanError'))
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4"
                     role="alert">
