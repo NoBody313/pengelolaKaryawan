@@ -76,7 +76,7 @@
 
         </form>
         <p class="text-center text-white text-xs tracking-wider">
-            &copy; 2002 - 2024 | PT. Administrasi Medika
+            &copy; 2024 | PT. Administrasi Medika
         </p>
 
         <script>
