@@ -2,21 +2,18 @@
 
 namespace App\Imports;
 
+use Carbon\Carbon;
 use App\Models\PegawaiData;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Carbon\Carbon;
-use Maatwebsite\Excel\Cell;
 use Maatwebsite\Excel\Concerns\WithStartRow;
-use PhpOffice\PhpSpreadsheet\Cell\DataType;
 
 class PegawaiImport implements ToModel, WithStartRow
 
 {
     public function model(array $row)
     {
-
-        // $tanggal_lahir = $this->parseDate($row[7]);
-        $tahun_lahir = substr($row[8], 0, 10);
+        $tanggal_masuk = $this->parseDate($row[4]);
+        $tanggal_lahir = $this->parseDate($row[8]);
         $no_ktp = $this->parseNoKtp($row[9]);
         $tanggal_pernikahan = $this->parseDate($row[24]);
         $jumlah_anak = (int) $row[26];
@@ -28,11 +25,11 @@ class PegawaiImport implements ToModel, WithStartRow
             'nik_admedika' => $row[1],
             'nik_tg' => $row[2],
             'nama' => $row[3],
-            'tanggal_masuk' => Carbon::parse($row[4])->format('Y/m/d'),
+            'tanggal_masuk' => $tanggal_masuk,
             'jenis_kelamin' => substr($row[5], 0, 10),
             'agama' => substr($row[6], 0, 50),
             'kota_lahir' => $row[7],
-            'tanggal_lahir' => Carbon::parse($row[8])->format('Y/m/d'),
+            'tanggal_lahir' => $tanggal_lahir,
             // 'tahun_lahir' => $tahun_lahir,
             'no_ktp' => $no_ktp,
             'nama_ibu' => $row[9],
@@ -76,7 +73,7 @@ class PegawaiImport implements ToModel, WithStartRow
     private function parseDate($date)
     {
         try {
-            return Carbon::createFromFormat('Y-m-d', $date)->toDateString();
+            return Carbon::createFromFormat('d/m/Y', $date)->toDateString();
         } catch (\Exception $e) {
             return null;
         }
