@@ -178,9 +178,9 @@
                     @endforelse
                 </tbody>
             </table>
-        </div>
-        <div class=" py-4">
-            {{ $pegawaiDatas->links('pagination::tailwind') }}
+            <div class=" py-4 my-4">
+                {{ $pegawaiDatas->links('pagination::tailwind') }}
+            </div>
         </div>
 
 

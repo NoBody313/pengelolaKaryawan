@@ -20,12 +20,16 @@
             </div>
             <div class="form-container">
                 <div class="input-layout">
-                    <label
-                        class="input-label flex flex-col justify-center items-start gap-2 self-stretch w-full md:w-[640px]"
-                        for="input-nama">Nama</label>
+                    <label class="input-label" for="input-nama">Nama</label>
                     <input name="nama"
-                        class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize"
+                        class="input-field-form"
                         id="input-nama" type="text" value="{{ optional($pegawaiData)->nama }}">
+                </div>
+                <div class="input-layout">
+                    <label class="input-label" for="input-tanggal_masuk">Tanggal Masuk Admedika</label>
+                    <input name="tanggal_masuk"
+                        class="input-field-form"
+                        id="input-nama" type="date" value="{{ optional($pegawaiData)->tanggal_masuk }}">
                 </div>
             </div>
             <div class="form-container">
