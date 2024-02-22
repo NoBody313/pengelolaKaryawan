@@ -17,6 +17,7 @@ class PegawaiData extends Model
         'nik_admedika',
         'nik_tg',
         'nama',
+        'tanggal_masuk',
         'jenis_kelamin',
         'agama',
         'kota_lahir',

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->char('nik_admedika')->nullable();
             $table->char('nik_tg')->nullable();
             $table->string('nama')->nullable();
+            $table->date('tanggal_masuk')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('agama')->nullable();
             $table->string('kota_lahir')->nullable();

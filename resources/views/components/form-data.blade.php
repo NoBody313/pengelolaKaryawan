@@ -156,6 +156,14 @@
                                     class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize;"
                                     id="input-nama" type="text" required placeholder="Masukkan nama sesuai KTP">
                             </div>
+                            <div class="input-layout">
+                                <label
+                                    class="input-label flex flex-col justify-center items-start gap-2 self-stretch w-full md:w-[640px]"
+                                    for="input-tanggal_masuk">Nama</label>
+                                <input name="tanggal_masuk"
+                                    class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize;"
+                                    id="input-tanggal_masuk" type="date" required placeholder="Tanggal Masuk">
+                            </div>
                         </div>
                         <div class="form-container">
                             <div class="input-layout">
