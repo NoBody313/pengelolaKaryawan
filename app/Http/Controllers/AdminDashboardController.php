@@ -119,7 +119,7 @@ class AdminDashboardController extends Controller
             abort(404);
         }
 
-        session()->put('provinsi', $pegawaiData->provinsi_ktp);
+        // session()->put('provinsi', $pegawaiData->provinsi_ktp);
         $provinsiList = Provinsi::all();
 
         return view('admin.edit-data', ['provinsiList' => $provinsiList, 'pegawaiData' => $pegawaiData, 'data' => $data]);
@@ -145,7 +145,7 @@ class AdminDashboardController extends Controller
         }
 
         $pegawaiData->update($request->all());
-        session()->remove('provinsi');
+        // session()->remove('provinsi');
         return redirect()->route('dashboard-admin', ['nik_admedika' => $data->nik_admedika])->with('success', 'Data Pegawai berhasil diupdate.');
     }
 

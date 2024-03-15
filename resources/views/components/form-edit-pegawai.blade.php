@@ -7,15 +7,11 @@
                     <label class="input-label" for="nik_admedika">NIK
                         Admedika</label>
                     <input name="nik_admedika" class="input-field-form" id="nik_admedika" type="number"
-                        inputmode="numeric"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        maxlength="6" pattern="[0-9]{6}" value="{{ optional($pegawaiData)->nik_admedika }}">
+                        inputmode="numeric" disabled value="{{ optional($pegawaiData)->nik_admedika }}">
                 </div>
                 <div class="input-layout">
                     <label class="input-label" for="input-nikTg">NIK TG</label>
-                    <input name="nik_tg" class="input-field-form" id="input-nikTg" type="number" inputmode="numeric"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        maxlength="6" pattern="[0-9]{6}" value="{{ optional($pegawaiData)->nik_tg }}">
+                    <input name="nik_tg" class="input-field-form" id="input-nikTg" type="number" inputmode="numeric" disabled value="{{ optional($pegawaiData)->nik_tg }}">
                 </div>
             </div>
             <div class="form-container">
@@ -60,16 +56,15 @@
                         value="{{ optional($pegawaiData)->kota_lahir }}">
                 </div>
                 <div class="input-layout">
-                    <label class="input-label" for="tanggal_lahir">Tanggal
+                    <label class="input-label" for="input-ttl">Tanggal
                         Lahir</label>
-                    <input name="tanggal_lahir" class="input-field-form" id="tanggal_lahir" type="date"
+                    <input name="tanggal_lahir" class="input-field-form" id="input-ttl" type="date"
                         value="{{ optional($pegawaiData)->tanggal_lahir }}">
                 </div>
             </div>
             <div class="form-container">
                 <div class="input-layout">
-                    <label class="input-label" for="input-tahunLahir">Tahun
-                        Lahir</label>
+                    <label class="input-label" for="input-tahunLahir">Tahun Lahir</label>
                     <input name="tahun_lahir" class="input-field-form" id="input-tahunLahir" type="number"
                         inputmode="numeric"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -84,8 +79,7 @@
             </div>
             <div class="form-container">
                 <div class="input-layout">
-                    <label class="input-label" for="input-ibuKandung">Nama Ibu
-                        Kandung</label>
+                    <label class="input-label" for="input-ibuKandung">Nama Ibu Kandung</label>
                     <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
                         value="{{ optional($pegawaiData)->nama_ibu }}">
                 </div>
@@ -93,8 +87,7 @@
                     <label for="nama_ayah" class="input-label">
                         Nama Ayah Kandung
                     </label>
-                    <input type="text" name="nama_ayah" id="nama_ayah" value="{{ $pegawaiData->nama_ayah }}"
-                        class="input-field-form">
+                    <input class="input-field-form" type="text" name="nama_ayah" id="nama_ayah" value="{{ $pegawaiData->nama_ayah }}">
                 </div>
             </div>
 
@@ -115,7 +108,8 @@
                     <div class="input-layout">
                         <label class="input-label" for="input-alamatKTP">Alamat
                             Lengkap</label>
-                        <textarea name="alamat_ktp" class="input-field-form" id="input-alamatKTP" type="text" rows="3">{{ $pegawaiData->alamat_ktp }}</textarea>
+                        <input name="alamat_ktp" class="input-field-form" id="input-alamatKTP" type="text"
+                            value="{{ $pegawaiData->alamat_ktp }}">
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
@@ -124,7 +118,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="form-container">
                     <div class="input-layout">
                         <label class="input-label" for="input-kabKota">Kecamatan</label>
@@ -159,13 +152,12 @@
 
             {{-- Domisili --}}
             <div class="flex flex-col justify-center items-center gap-4 w-full">
-                <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat
-                    Domisili</span>
+                <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat Domisili</span>
                 <div class="form-container">
                     <div class="input-layout">
-                        <label class="input-label" for="input-alamatDomisili">Alamat
-                            Lengkap</label>
-                        <textarea name="alamat_domisili" class="input-field-form" id="alamat_domisili" type="text" rows="3">{{ $pegawaiData->alamat_domisili }}</textarea>
+                        <label class="input-label" for="input-alamatDomisili">Alamat Lengkap</label>
+                        <input name="alamat_ktp" class="input-field-form" id="input-alamatDomisili" type="text"
+                            value="{{ optional($pegawaiData)->alamat_domisili }}">
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
@@ -241,17 +233,14 @@
                         </select>
                     </div>
                     <div class="input-layout">
-                        <label class="input-label" for="input-jurusan">Jurusan
-                            Pendidikan
-                            Terakhir</label>
+                        <label class="input-label" for="input-jurusan">Jurusan Pendidikan Terakhir</label>
                         <input name="jurusan_pendidikan_terakhir" class="input-field-form" id="input-jurusan"
                             type="text" value="{{ optional($pegawaiData)->jurusan_pendidikan_terakhir }}">
                     </div>
                 </div>
                 <div class="form-container">
                     <div class="input-layout">
-                        <label class="input-label" for="input-institusi">Nama
-                            Institusi</label>
+                        <label class="input-label" for="input-institusi">Nama Institusi</label>
                         <input name="nama_institusi" class="input-field-form" id="input-institusi" type="text"
                             value="{{ optional($pegawaiData)->nama_institusi }}">
                     </div>
@@ -267,7 +256,7 @@
                         <label class="input-label" for="input-tahunKelulusan">Tahun
                             Kelulusan</label>
                         <input name="lulus_thn_pendidikan_terakhir" class="input-field-form" id="input-tahunKelulusan"
-                            type="text" value="{{ optional($pegawaiData)->lulus_thn_pendidikan_terakhir }}">
+                            type="number" value="{{ optional($pegawaiData)->lulus_thn_pendidikan_terakhir }}">
                     </div>
                 </div>
             </div>
@@ -318,9 +307,7 @@
         <div class="form-layout">
             <div class="form-container">
                 <div class="input-layout">
-                    <label class="input-label" for="input-nomorTsel">Nomor
-                        Handphone
-                        Telkomsel</label>
+                    <label class="input-label" for="input-nomorTsel">Nomor Handphone Telkomsel</label>
                     <input name="no_hp_tsel" class="input-field-form" id="input-nomorTsel" type="tel"
                         inputmode="numeric"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -328,9 +315,7 @@
                     <p class="font-medium text-xs">Format : 08123456789</p>
                 </div>
                 <div class="input-layout">
-                    <label class="input-label" for="input-nomorNon-tsel">Nomor
-                        Handphone
-                        Non Telkomsel</label>
+                    <label class="input-label" for="input-nomorNon-tsel">Nomor Handphone Non Telkomsel</label>
                     <input name="no_hp_nontsel" class="input-field-form" id="input-noHpNonTsel" type="tel"
                         inputmode="numeric"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -341,9 +326,7 @@
             </div>
             <div class="form-container">
                 <div class="input-layout">
-                    <label class="input-label" for="input-namaKontakEmergency">Nama
-                        Kontak
-                        Emergency</label>
+                    <label class="input-label" for="input-namaKontakEmergency">Nama Kontak Emergency</label>
                     <input name="nama_kontak_emergency" class="input-field-form" id="input-namaKontakEmergency"
                         type="text" value="{{ optional($pegawaiData)->nama_kontak_emergency }}">
                 </div>

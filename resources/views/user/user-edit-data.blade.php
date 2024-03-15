@@ -139,7 +139,7 @@
                     @csrf
                     @method('PUT')
                     <!-- Stepper Content -->
-                    @include('components.form-edit-data')
+                    @include('components.form-edit-pegawai')
                 </form>
             </div>
         </div>

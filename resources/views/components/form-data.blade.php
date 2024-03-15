@@ -150,36 +150,33 @@
                         <div class="form-container">
                             <div class="input-layout">
                                 <label
-                                    class="input-label flex flex-col justify-center items-start gap-2 self-stretch w-full md:w-[640px]"
+                                    class="input-label"
                                     for="input-nama">Nama</label>
                                 <input name="nama"
-                                    class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize;"
-                                    id="input-nama" type="text" required placeholder="Masukkan nama sesuai KTP">
+                                    class="input-field-form" id="input-nama" type="text" required placeholder="Masukkan nama sesuai KTP">
                             </div>
                             <div class="input-layout">
                                 <label
-                                    class="input-label flex flex-col justify-center items-start gap-2 self-stretch w-full md:w-[640px]"
-                                    for="input-tanggal_masuk">Nama</label>
+                                    class="input-label"
+                                    for="input-tanggal_masuk">Tanggal Masuk Admedika</label>
                                 <input name="tanggal_masuk"
-                                    class="py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize;"
-                                    id="input-tanggal_masuk" type="date" required placeholder="Tanggal Masuk">
+                                    class="input-field-form" id="input-tanggal_masuk" type="date" required placeholder="Tanggal Masuk">
                             </div>
                         </div>
                         <div class="form-container">
                             <div class="input-layout">
-                                <label class="input-label" for="hs-select"
-                                    name="
-                                    -label-jenisKelamin">Jenis
+                                <label class="input-label" for="jenis-kelamin"
+                                    name="jenis-kelamin">Jenis
                                     Kelamin</label>
                                 <select name="jenis_kelamin" class="input-field-form" required>
                                     <option disabled selected>Buka untuk memilih</option>
                                     <option>Laki-Laki</option>
                                     <option>Perempuan</option>
-                                </select name="agama">
+                                </select>
                             </div>
                             <div class="input-layout">
-                                <label class="input-label" for="hs-select name="" -label-agama">Agama</label>
-                                <select name="agama" class="input-field-form" id="hs-select" required>
+                                <label class="input-label" for="agama">Agama</label>
+                                <select name="agama" class="input-field-form" id="agama" required>
                                     <option disabled selected>Buka untuk memilih</option>
                                     <option>Islam</option>
                                     <option>Kristen</option>
@@ -228,8 +225,7 @@
                                     required placeholder="Masukan nama ibu kandung">
                             </div>
                             <div class="input-layout">
-                                <label class="input-label" for="nama_ibu">Nama Ayah
-                                    Kandung</label>
+                                <label class="input-label" for="nama_ibu">Nama Ayah Kandung</label>
                                 <input name="nama_ayah" class="input-field-form" id="nama_ibu" type="text"
                                     required placeholder="Masukan nama ayah kandung">
                             </div>
@@ -443,7 +439,7 @@
                                     <label class="input-label" for="input-tgl-menikah">Tanggal
                                         Menikah</label>
                                     <input name="tanggal_pernikahan" class="input-field-form" id="input-tgl-menikah"
-                                        type="date" placeholder="Masukkan tanggal lahir sesuai KTP">
+                                        type="date" placeholder="Masukkan Tanggal Pernikahan">
                                 </div>
                             </div>
                             <div class="form-container">
