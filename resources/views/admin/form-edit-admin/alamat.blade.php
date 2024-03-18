@@ -138,9 +138,9 @@
                     </div>
                     <div class="form-container">
                         <div class="input-layout">
-                            <label class="input-label" for="input-provinsi">Provinsi</label>
-                            <select name="provinsi_ktp" class="input-field-form" id="input-provinsi-ktp" required>
-                                <option>{{ $pegawaiData->provinsi_ktp }}</option>
+                            <label class="input-label" for="input-provinsiKTP">Provinsi</label>
+                            <select name="provinsi_ktp" id="selectProvKTP" class="input-field-form">
+                                <option disabled selected>Pilih Provinsi</option>
                             </select>
                         </div>
                         <div class="input-layout">
@@ -194,11 +194,9 @@
                     </div>
                     <div class="form-container">
                         <div class="input-layout">
-                            <label class="input-label" for="input-provinsi">Provinsi</label>
-                            <select name="provinsi_domisili" class="input-field-form" id="selectProvDomisili" required>
-                                <option>
-                                    {{ $pegawaiData->provinsi_domisili }}
-                                </option>
+                            <label class="input-label" for="input-provinsiDomisili">Provinsi</label>
+                            <select name="provinsi_domisili" id="selectProvDomisili" class="input-field-form">
+                                <option disabled selected>Pilih Provinsi</option>
                             </select>
                         </div>
                         <div class="input-layout">

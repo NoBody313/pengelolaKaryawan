@@ -121,11 +121,6 @@
                         <input name="nama" class="input-field-form" id="input-nama" type="text" required
                             value="{{ optional($data)->nama }}">
                     </div>
-                    <div class="input-layout">
-                        <label class="input-label" for="input-tanggal_masuk">Tanggal Masuk Admedika</label>
-                        <input name="tanggal_masuk" class="input-field-form" id="input-nama" type="date"
-                            value="{{ optional($data)->tanggal_masuk }}">
-                    </div>
                 </div>
                 <div class="form-container">
                     <div class="input-layout">

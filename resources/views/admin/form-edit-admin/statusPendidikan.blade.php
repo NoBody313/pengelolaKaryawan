@@ -176,20 +176,20 @@
                             <label class="input-label" for="input-tgl-menikah">Tanggal
                                 Menikah</label>
                             <input name="tanggal_pernikahan" class="input-field-form" id="input-ttl" type="date"
-                                required value="{{ optional($pegawaiData)->tanggal_pernikahan }}">
+                                 value="{{ optional($pegawaiData)->tanggal_pernikahan }}">
                         </div>
                     </div>
                     <div class="form-container">
                         <div class="input-layout">
                             <label class="input-label" for="nama_pasangan">Nama Pasangan</label>
                             <input name="nama_pasangan" class="input-field-form" id="nama_pasangan" type="text"
-                                required value="{{ $pegawaiData->nama_pasangan }}">
+                                 value="{{ $pegawaiData->nama_pasangan }}">
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-jumlah-anak">Jumlah
                                 Anak</label>
                             <input name="jumlah_anak" class="input-field-form" id="input-jumlahAnak" type="number"
-                                required value="{{ optional($pegawaiData)->jumlah_anak }}">
+                                 value="{{ optional($pegawaiData)->jumlah_anak }}">
                         </div>
                     </div>
                 </div>

@@ -126,11 +126,6 @@
                             <input name="nama" class="input-field-form" id="input-nama" type="text" required
                                 placeholder="Masukkan nama sesuai KTP">
                         </div>
-                        <div class="input-layout">
-                            <label class="input-label" for="input-tanggal_masuk">Tanggal Masuk Admedika</label>
-                            <input name="tanggal_masuk" class="input-field-form" id="input-tanggal_masuk" type="date"
-                                required placeholder="Tanggal Masuk">
-                        </div>
                     </div>
                     <div class="form-container">
                         <div class="input-layout">

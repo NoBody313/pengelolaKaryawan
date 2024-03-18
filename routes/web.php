@@ -6,14 +6,12 @@ use App\Http\Controllers\AdminTambahDataController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiEditDataController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\VerifikasiDataController;
 use App\Http\Controllers\WilayahIndonesiaController;
 use Illuminate\Support\Facades\Route;
 
 // User Dashboard
 Route::get('/pegawai/{nik_admedika}', [UserController::class, 'index'])->name('user-dashboard');
 Route::get('/logout/{nik_admedika}', [UserController::class, 'logout'])->name('logout');
-Route::get('/verifikasi-data', [VerifikasiDataController::class, 'index']);
 
 // Login Routes
 Route::get('/', [LoginController::class, 'showForm'])->name('login.form');
