@@ -112,6 +112,7 @@
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 placeholder="Masukan nomor Telkomsel" min="10" maxlength="15"
                                 pattern="[0-9]{10,14}">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-nomorNon-tsel">Nomor Handphone
@@ -119,7 +120,7 @@
                             <input name="no_hp_nontsel" class="input-field-form" id="input-nama" type="tel"
                                 inputmode="numeric"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                required placeholder="Masukan nomor non Telkomsel" min="10" maxlength="15"
+                                placeholder="Masukan nomor non Telkomsel" min="10" maxlength="15"
                                 pattern="[0-9]{10,14}">
                         </div>
                     </div>
@@ -129,6 +130,7 @@
                                 Emergency</label>
                             <input name="nama_kontak_emergency" class="input-field-form" id="input-namaKontakEmergency"
                                 type="text" required placeholder="Masukan nama kontak Emergency">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-hubunganKontakEmergency">Hubungan Kontak
@@ -145,6 +147,7 @@
                                 <option>Paman</option>
                                 <option>Bibi</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -156,12 +159,14 @@
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 required placeholder="Masukan nomor Telkomsel" min="10" maxlength="15"
                                 pattern="[0-9]{10,14}">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-emailPribadi">Email
                                 Pribadi</label>
                             <input name="email_pribadi" class="input-field-form" id="input-emailPribadi" type="email"
                                 required placeholder="Masukan Email pribadi">
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">

@@ -113,7 +113,7 @@
                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             required maxlength="6" pattern="[0-9]{6}"
                             value="{{ optional($pegawaiData)->nik_admedika }}">
-                        <p class="text-black text-sm font-semibold"><span class="text-red-500">* </span>Harus diisi!</p>
+                        @include('components.required-kol')
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-nikTg">NIK TG</label>
@@ -121,6 +121,7 @@
                             inputmode="numeric"
                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             required maxlength="6" pattern="[0-9]{6}" value="{{ optional($pegawaiData)->nik_tg }}">
+                        @include('components.required-kol')
                     </div>
                 </div>
                 <div class="form-container">
@@ -128,6 +129,7 @@
                         <label class="input-label" for="input-nama">Nama</label>
                         <input name="nama" class="input-field-form" id="input-nama" type="text" required
                             value="{{ optional($pegawaiData)->nama }}">
+                        @include('components.required-kol')
                     </div>
                 </div>
                 <div class="form-container">
@@ -138,6 +140,7 @@
                             <option>Laki-Laki</option>
                             <option>Perempuan</option>
                         </select>
+                        @include('components.required-kol')
                     </div>
                     <div class="input-layout">
                         <label class="input-label">Agama</label>
@@ -150,6 +153,7 @@
                             <option>Budha</option>
                             <option>Konghucu</option>
                         </select>
+                        @include('components.required-kol')
                     </div>
                 </div>
                 <div class="form-container">
@@ -158,12 +162,14 @@
                             Kelahiran</label>
                         <input name="kota_lahir" class="input-field-form" id="input-kotaKelahiran" type="text"
                             required required value="{{ optional($pegawaiData)->kota_lahir }}">
+                        @include('components.required-kol')
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="tanggal_lahir">Tanggal
                             Lahir</label>
                         <input name="tanggal_lahir" class="input-field-form" id="tanggal_lahir" type="date" required
                             value="{{ optional($pegawaiData)->tanggal_lahir }}">
+                        @include('components.required-kol')
                     </div>
                 </div>
                 <div class="form-container">
@@ -174,6 +180,7 @@
                             inputmode="numeric"
                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             required min="0" maxlength="4" value="{{ optional($pegawaiData)->tahun_lahir }}">
+                        @include('components.required-kol')
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-noKTP">No. KTP</label>
@@ -181,6 +188,7 @@
                             inputmode="numeric"
                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             required min="0" maxlength="16" value="{{ optional($pegawaiData)->no_ktp }}">
+                        @include('components.required-kol')
                     </div>
                 </div>
                 <div class="form-container">
@@ -189,6 +197,7 @@
                             Kandung</label>
                         <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text" required
                             value="{{ optional($pegawaiData)->nama_ibu }}">
+                        @include('components.required-kol')
                     </div>
                     <div class="input-layout">
                         <label for="nama_ayah" class="input-label">
@@ -196,6 +205,7 @@
                         </label>
                         <input type="text" name="nama_ayah" id="nama_ayah" required
                             value="{{ $pegawaiData->nama_ayah }}" class="input-field-form">
+                        @include('components.required-kol')
                     </div>
                 </div>
             </div>

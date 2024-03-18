@@ -111,6 +111,7 @@
                                 inputmode="numeric"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 maxlength="6" pattern="[0-9]{6}" placeholder="Masukkan NIK Admedika">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-nikTg">NIK TG</label>
@@ -118,6 +119,7 @@
                                 inputmode="numeric"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 maxlength="6" pattern="[0-9]{6}" placeholder="Masukkan NIK TG">
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -125,6 +127,7 @@
                             <label class="input-label" for="input-nama">Nama</label>
                             <input name="nama" class="input-field-form" id="input-nama" type="text" required
                                 placeholder="Masukkan nama sesuai KTP">
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -136,6 +139,7 @@
                                 <option>Laki-Laki</option>
                                 <option>Perempuan</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="agama">Agama</label>
@@ -148,6 +152,7 @@
                                 <option>Budha</option>
                                 <option>Konghucu</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -156,11 +161,13 @@
                                 Kelahiran</label>
                             <input name="kota_lahir" class="input-field-form" id="input-kotaKelahiran" type="text"
                                 required placeholder="Masukkan kota kelahiran">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-ttl">Tanggal Lahir</label>
                             <input name="tanggal_lahir" class="input-field-form" id="input-ttl" type="date" required
                                 placeholder="Masukkan tanggal lahir sesuai KTP">
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -171,6 +178,7 @@
                                 required inputmode="numeric"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 min="0" maxlength="4" placeholder="Masukkan tahun lahir sesuai KTP">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-noKTP">No. KTP</label>
@@ -178,6 +186,7 @@
                                 inputmode="numeric"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 min="0" maxlength="16" placeholder="Masukkan nomor KTP">
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -186,11 +195,13 @@
                                 Kandung</label>
                             <input name="nama_ibu" class="input-field-form" id="input-ibuKandung" type="text"
                                 required placeholder="Masukan nama ibu kandung">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="nama_ibu">Nama Ayah Kandung</label>
                             <input name="nama_ayah" class="input-field-form" id="nama_ibu" type="text" required
                                 placeholder="Masukan nama ayah kandung">
+                            @include('components.required-kol')
                         </div>
                     </div>
                 </div>

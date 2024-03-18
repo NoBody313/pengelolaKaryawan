@@ -122,12 +122,14 @@
                                         <option>S2</option>
                                         <option>S3</option>
                                     </select>
+                                    @include('components.required-kol')
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-jurusan">Jurusan Pendidikan
                                         Terakhir</label>
                                     <input name="jurusan_pendidikan_terakhir" class="input-field-form" id="input-jurusan"
                                         type="text" required placeholder="Masukan Jurusan Pendidikan Terakhir">
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                             <div class="form-container">
@@ -135,12 +137,14 @@
                                     <label class="input-label" for="input-institusi">Nama Perguruan Tinggi</label>
                                     <input name="nama_institusi" class="input-field-form" id="input-institusi"
                                         type="text" required placeholder="Masukan nama institusi">
+                                    @include('components.required-kol')
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-kotaInstitusi">Kota
                                         Perguruan Tinggi</label>
                                     <input name="kota_institusi" class="input-field-form" id="input-kotaInstitusi"
                                         type="text" required placeholder="Masukan kota institusi">
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                             <div class="form-container">
@@ -149,6 +153,7 @@
                                         Kelulusan</label>
                                     <input name="lulus_thn_pendidikan_terakhir" class="input-field-form" type="number"
                                         required placeholder="Masukan Tahun Kelulusan">
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                         </div>
@@ -166,6 +171,7 @@
                                         <option>Janda</option>
                                         <option>Duda</option>
                                     </select>
+                                    @include('components.required-kol')
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-tgl-menikah">Tanggal

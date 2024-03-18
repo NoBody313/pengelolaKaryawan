@@ -114,6 +114,7 @@
                             required value="{{ optional($pegawaiData)->no_hp_tsel }}" min="10" maxlength="15"
                             pattern="[0-9]{10,14}">
                         <p class="font-medium text-xs">Format : 08123456789</p>
+                        @include('components.required-kol')
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-nomorNon-tsel">Nomor
@@ -134,6 +135,7 @@
                             Emergency</label>
                         <input name="nama_kontak_emergency" class="input-field-form" id="input-namaKontakEmergency"
                             required type="text" value="{{ optional($pegawaiData)->nama_kontak_emergency }}">
+                        @include('components.required-kol')
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-hubunganKontakEmergency">Hubungan
@@ -151,6 +153,7 @@
                             <option>Paman</option>
                             <option>Bibi</option>
                         </select>
+                        @include('components.required-kol')
                     </div>
                 </div>
                 <div class="form-container">
@@ -163,12 +166,14 @@
                             value="{{ optional($pegawaiData)->no_hp_emergency }}" min="10" maxlength="15" required
                             pattern="[0-9]{10,14}">
                         <p class="font-medium text-xs">Format : 08123456789</p>
+                        @include('components.required-kol')
                     </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-emailPribadi">Email
                             Pribadi</label>
                         <input name="email_pribadi" class="input-field-form" id="input-emailPribadi" type="email"
                             required value="{{ optional($pegawaiData)->email_pribadi }}">
+                        @include('components.required-kol')
                     </div>
                 </div>
             </div>

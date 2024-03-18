@@ -123,6 +123,7 @@
                                 <option>S2</option>
                                 <option>S3</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-jurusan">Jurusan
@@ -130,6 +131,7 @@
                                 Terakhir</label>
                             <input name="jurusan_pendidikan_terakhir" class="input-field-form" id="input-jurusan"
                                 required type="text" value="{{ optional($pegawaiData)->jurusan_pendidikan_terakhir }}">
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -138,12 +140,14 @@
                                 Institusi</label>
                             <input name="nama_institusi" class="input-field-form" id="input-institusi" type="text"
                                 required value="{{ optional($pegawaiData)->nama_institusi }}">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kotaInstitusi">Kota
                                 Institusi</label>
                             <input name="kota_institusi" class="input-field-form" id="input-kotaInstitusi" required
                                 type="text" value="{{ optional($pegawaiData)->kota_institusi }}">
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -153,6 +157,7 @@
                             <input name="lulus_thn_pendidikan_terakhir" class="input-field-form" required
                                 id="input-tahunKelulusan" type="text"
                                 value="{{ optional($pegawaiData)->lulus_thn_pendidikan_terakhir }}">
+                            @include('components.required-kol')
                         </div>
                     </div>
                 </div>
@@ -171,25 +176,26 @@
                                 <option>Janda</option>
                                 <option>Duda</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-tgl-menikah">Tanggal
                                 Menikah</label>
                             <input name="tanggal_pernikahan" class="input-field-form" id="input-ttl" type="date"
-                                 value="{{ optional($pegawaiData)->tanggal_pernikahan }}">
+                                value="{{ optional($pegawaiData)->tanggal_pernikahan }}">
                         </div>
                     </div>
                     <div class="form-container">
                         <div class="input-layout">
                             <label class="input-label" for="nama_pasangan">Nama Pasangan</label>
                             <input name="nama_pasangan" class="input-field-form" id="nama_pasangan" type="text"
-                                 value="{{ $pegawaiData->nama_pasangan }}">
+                                value="{{ $pegawaiData->nama_pasangan }}">
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-jumlah-anak">Jumlah
                                 Anak</label>
                             <input name="jumlah_anak" class="input-field-form" id="input-jumlahAnak" type="number"
-                                 value="{{ optional($pegawaiData)->jumlah_anak }}">
+                                value="{{ optional($pegawaiData)->jumlah_anak }}">
                         </div>
                     </div>
                 </div>

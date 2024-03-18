@@ -112,12 +112,14 @@
                                 Lengkap</label>
                             <input name="alamat_ktp" class="input-field-form" id="input-alamatKTP" type="text"
                                 value="{{ $data->alamat_ktp }}" required>
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
                             <select name="kel_ktp" class="input-field-form" id="input-kelurahan" required>
                                 <option>{{ $data->kel_ktp }}</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -126,12 +128,14 @@
                             <select name="kec_ktp" class="input-field-form" id="input-kecamatan-ktp" required>
                                 <option>{{ $data->kec_ktp }}</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kabKota">Kab/Kota</label>
                             <select name="kab_kota_ktp" class="input-field-form" id="input-kabKota-ktp" required>
                                 <option>{{ $data->kab_kota_ktp }}</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -140,6 +144,7 @@
                             <select name="provinsi_ktp" id="selectProvKTP" class="input-field-form">
                                 <option disabled selected>Pilih Provinsi</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kodePos">Kode
@@ -148,6 +153,7 @@
                                 inputmode="numeric" required
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 min="0" maxlength="5" value="{{ $data->kodepos_ktp }}">
+                            @include('components.required-kol')
                         </div>
                     </div>
                 </div>
@@ -161,6 +167,7 @@
                             <label class="input-label" for="input-alamatDomisili">Alamat Lengkap</label>
                             <input name="alamat_ktp" required class="input-field-form" id="input-alamatDomisili"
                                 type="text" value="{{ optional($data)->alamat_domisili }}">
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
@@ -169,6 +176,7 @@
                                     {{ $data->kel_domisili }}
                                 </option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -179,6 +187,7 @@
                                     {{ $data->kec_domisili }}
                                 </option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kabKota">Kab/Kota</label>
@@ -187,6 +196,7 @@
                                     {{ $data->kab_kota_domisili }}
                                 </option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
@@ -195,6 +205,7 @@
                             <select name="provinsi_domisili" id="selectProvDomisili" class="input-field-form">
                                 <option disabled selected>Pilih Provinsi</option>
                             </select>
+                            @include('components.required-kol')
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kodePos">Kode
@@ -203,6 +214,7 @@
                                 type="number" inputmode="numeric"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 min="0" maxlength="5" value="{{ optional($data)->kodepos_domisili }}">
+                            @include('components.required-kol')
                         </div>
                     </div>
                 </div>

@@ -117,12 +117,14 @@
                                         required placeholder="Masukkan alamat lengkap KTP">
                                     <p class="text-xs">Format : Jalan, RT, RW, Kelurahan, Kecamatan, <br>
                                         Kabupaten/Kota, Provinsi dan Kode Pos.</p>
+                                    @include('components.required-kol')
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-provinsiKTP">Provinsi</label>
                                     <select name="provinsi_ktp" id="selectProvKTP" class="input-field-form" required>
                                         <option disabled selected>Pilih Provinsi</option>
                                     </select>
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                             <div class="form-container">
@@ -131,12 +133,14 @@
                                     <select name="kab_kota_ktp" id="selectKabKTP" class="input-field-form" required>
                                         <option disabled selected>Pilih Kabupaten</option>
                                     </select>
+                                    @include('components.required-kol')
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-provinsi">Kecamatan</label>
                                     <select name="kec_ktp" id="selectKecKTP" class="input-field-form"
                                         id="input-provinsi" type="text" required
                                         placeholder="Masukkan provinsi sesuai KTP"></select>
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                             <div class="form-container">
@@ -145,14 +149,15 @@
                                         Kelurahan</label>
                                     <select name="kel_ktp" id="selectKelKTP" class="input-field-form" required
                                         placeholder="Masukkan Kab/Kota sesuai KTP"></select>
+                                    @include('components.required-kol')
                                 </div>
-
                                 <div class="input-layout">
                                     <label class="input-label" for="input-kodePos">Kode Pos</label>
                                     <input name="kodepos_ktp" class="input-field-form" id="kodePosKTP" type="number"
                                         inputmode="numeric"
                                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                         required min="0" maxlength="5" placeholder="Masukan kode pos sesuai KTP">
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                         </div>
@@ -169,6 +174,7 @@
                                         type="text" required placeholder="Masukkan alamat lengkap Domisili">
                                     <p class="text-xs">Format : Jalan, RT, RW, Kelurahan, Kecamatan, <br>
                                         Kabupaten/Kota, Provinsi dan Kode Pos.</p>
+                                    @include('components.required-kol')
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-provinsiDomisili">Provinsi</label>
@@ -176,6 +182,7 @@
                                         required>
                                         <option disabled selected>Pilih Provinsi</option>
                                     </select>
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                             <div class="form-container">
@@ -185,12 +192,14 @@
                                         required>
                                         <option value="" disabled selected>Pilih Kabupaten</option>
                                     </select>
+                                    @include('components.required-kol')
                                 </div>
                                 <div class="input-layout">
                                     <label class="input-label" for="input-provinsi">Kecamatan</label>
                                     <select name="kec_domisili" id="selectKecDomisili" class="input-field-form"
                                         id="input-provinsi" type="text" required
                                         placeholder="Masukkan provinsi sesuai Domisili"></select>
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                             <div class="form-container">
@@ -199,6 +208,7 @@
                                         Kelurahan</label>
                                     <select name="kel_domisili" id="selectKelDomisili" class="input-field-form"
                                         type="text" required placeholder="Masukkan Kelurahan/Desa"></select>
+                                    @include('components.required-kol')
                                 </div>
 
                                 <div class="input-layout">
@@ -209,6 +219,7 @@
                                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                         required min="0" maxlength="5"
                                         placeholder="Masukan kode pos sesuai Domisili">
+                                    @include('components.required-kol')
                                 </div>
                             </div>
                         </div>
