@@ -35,12 +35,12 @@
 <div class="w-full pt-2 px-4 sm:px-6 md:px-8 lg:ps-72 mt-4 lg:mt-8">
     <!-- Page Heading -->
     <header
-        class="flex flex-col justify-center items-start p-6 gap-4 h-fit w-full bg-red-50 border-[1px] rounded-md border-red-950">
+        class="flex flex-col justify-center items-start p-6 gap-4 h-fit w-full bg-blue-100 border-blue-400 border rounded-md">
         <div class="flex flex-row items-center gap-3">
-            <h1 class="font-normal text-lg tracking-wide">Selamat datang</h1>
-            <p class="font-semibold text-lg tracking-wide">{{ $data->nama }}</p>
+            <h1 class="font-medium text-lg tracking-wide text-blue-950">Selamat datang</h1>
+            <p class="font-semibold text-lg tracking-wide text-blue-950">{{ $data->nama }}</p>
         </div>
-        <p class="font-normal text-base tracking-wide">Silahkan validasi data anda dahulu!</p>
+        <p class="font-normal text-base tracking-wide text-blue-950">Silahkan validasi data anda dahulu!</p>
     </header>
     <!-- End Page Heading -->
 </div>

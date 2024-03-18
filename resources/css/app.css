@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 * {
-    @apply font-plusjkt text-red-950;
+    @apply font-plusjkt text-slate-900;
 }
 
 .menu-active {
-    @apply border rounded-md border-red-950;
+    @apply border rounded-md border-blue-950;
 }
 
 .input-field-form {
-    @apply py-3 px-4 block w-80 border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase placeholder:capitalize;
+    @apply py-3 px-4 block w-80 border-2 border-blue-500 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none capitalize;
 }
 
 .input-role {
-    @apply py-3 px-4 block w-full border-[1.5px] border-red-900 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none uppercase;
+    @apply py-3 px-4 block w-full border-2 border-blue-500 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none capitalize;
 }
 
 .form-layout {
@@ -27,7 +27,7 @@
 }
 
 .input-label {
-    @apply block text-sm font-medium mb-2;
+    @apply block text-sm font-semibold tracking-wide text-slate-700 mb-2;
 }
 
 .input-layout {

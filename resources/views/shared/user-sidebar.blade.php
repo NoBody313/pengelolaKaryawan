@@ -7,8 +7,8 @@
 
     <nav class="hs-accordion-group p-6 gap-4 mt-4 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
         <div class="flex flex-col w-full justify-center items-center gap-4">
-            <a href="{{ route('edit-data', $data->nik_admedika) }}"
-                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
+            <a href="{{ route('edit-pegawai-data-pribadi', $data->nik_admedika) }}"
+                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-blue-950 decoration-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">
                     <mask id="mask0_80_68" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
@@ -31,7 +31,7 @@
 
         <div class="w-full">
             <a href="{{ route('logout', ['nik_admedika' => $data->nik_admedika]) }}"
-                class="flex w-full items-center px-4 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-red-950 decoration-0">
+                class="flex w-full items-center px-4 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-[1px] hover:border-blue-950 decoration-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">
                     <mask id="mask0_80_74" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"

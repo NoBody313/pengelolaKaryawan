@@ -12,7 +12,7 @@
 
 <body>
     <div class="m-8">
-        @include('components.form-data')
+        @yield('formTambah')
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -151,7 +151,6 @@
             }
         });
     </script>
-
 </body>
 
 </html>

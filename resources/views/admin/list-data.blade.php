@@ -15,7 +15,7 @@
     <div class="flex flex-row gap-10">
         @include('shared.admin-sidebar')
         <div class="flex flex-col ms-3 lg:ms-0 w-full pt-2 px-4 sm:px-6 md:px-8 lg:ps-80 mt-4 lg:mt-8">
-            <div class="flex items-center py-4">
+            <div class="flex items-center py-2">
                 <!-- Navigation Toggle -->
                 <button type="button" class="text-gray-500 hover:text-gray-600 lg:hidden"
                     data-hs-overlay="#application-sidebar" aria-controls="application-sidebar"
@@ -69,33 +69,34 @@
             <div class="flex flex-row w-full justify-end items-center my-4">
                 <form action="{{ route('list-data-karyawan', ['nik_admedika' => $data->nik_admedika]) }}" method="GET"
                     class="flex items-center">
-                    <input type="text" name="query" placeholder="Cari pegawai" pattern="[a-zA-Z0-9]+" minlength="0" maxlength="50"
-                        class="px-5 py-2 border border-gray-300 rounded">
+                    <input type="text" name="query" placeholder="Cari pegawai" pattern="[a-zA-Z0-9]+"
+                        minlength="0" maxlength="50" class="px-5 py-2 border border-gray-300 rounded">
                     <button type="submit"
                         class="ml-2 px-5 py-2 bg-blue-500 hover:bg-blue-800 font-medium text-white rounded">Cari</button>
                 </form>
             </div>
-            <table class="w-full divide-y divide-gray-200 border-2 border-red-100 my-4 lg:my-0">
-                <thead class="bg-red-100">
+            <table class="w-full divide-y divide-gray-200 lg:my-0">
+                <thead class="bg-blue-400">
                     <tr>
-                        <th scope="col" class="px-4 py-4 text-center text-xs lg:text-base font-medium">
+                        <th scope="col" class="px-4 py-4 text-center text-xs lg:text-base font-medium text-blue-950">
                             No.
                         </th>
-                        <th scope="col" class="px-4 py-4 text-center text-xs lg:text-base font-medium">
+                        <th scope="col" class="px-4 py-4 text-center text-xs lg:text-base font-medium text-blue-950">
                             NIK Admedika
                         </th>
                         <th scope="col"
-                            class="px-4 py-4 text-center text-xs lg:text-base font-medium hidden lg:table-cell">
+                            class="px-4 py-4 text-center text-xs lg:text-base font-medium hidden lg:table-cell text-blue-950">
                             NIK TG
                         </th>
-                        <th scope="col" class="px-4 py-4 text-center text-xs lg:text-base font-medium">
+                        <th scope="col" class="px-4 py-4 text-center text-xs lg:text-base font-medium text-blue-950">
                             Nama
                         </th>
                         <th scope="col"
-                            class="py-4 text-center text-xs lg:text-base font-medium hidden lg:table-cell">
+                            class="py-4 text-center text-xs lg:text-base font-medium hidden lg:table-cell text-blue-950">
                             Role
                         </th>
-                        <th scope="col" class="w-8 px-4 py-4 text-center text-xs lg:text-base font-medium">
+                        <th scope="col"
+                            class="w-8 px-4 py-4 text-center text-xs lg:text-base font-medium text-blue-950">
                             Action
                         </th>
                     </tr>
@@ -121,7 +122,7 @@
                                 {{ $pegawaiData->role }}
                             </td>
                             <td class="flex flex-col lg:flex-row mx-auto justify-center items-center gap-1">
-                                <a href="{{ route('edit-data-karyawan', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
+                                <a href="{{ route('edit-data-pribadi', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
                                     class="p-2 px-7 text-center bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 m-2 rounded-md">Edit</a>
                                 <a href="#" onclick="openConfirmationModal('{{ $pegawaiData->nik_admedika }}')"
                                     class="p-2 px-5 text-center bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 m-2 rounded-md cursor-pointer">Hapus</a>

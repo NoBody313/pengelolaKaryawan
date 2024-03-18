@@ -99,59 +99,8 @@ class AdminDashboardController extends Controller
         ]);
     }
 
-    // Tambahkan action edit
-    public function edit($nik_admedika, $id)
-    {
-
-        if (!Session::has('admin')) {
-            return redirect('/');
-        }
-
-        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
-
-        if (!$data) {
-            abort(404);
-        }
-
-        $pegawaiData = PegawaiData::find($id);
-
-        if (!$pegawaiData) {
-            abort(404);
-        }
-
-        // session()->put('provinsi', $pegawaiData->provinsi_ktp);
-        $provinsiList = Provinsi::all();
-
-        return view('admin.edit-data', ['provinsiList' => $provinsiList, 'pegawaiData' => $pegawaiData, 'data' => $data]);
-    }
-
-    public function update(Request $request, $nik_admedika, $id)
-    {
-
-        if (!Session::has('admin')) {
-            return redirect('/');
-        }
-
-        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
-
-        if (!$data) {
-            abort(404);
-        }
-
-        $pegawaiData = PegawaiData::find($id);
-
-        if (!$pegawaiData) {
-            abort(404);
-        }
-
-        $pegawaiData->update($request->all());
-        // session()->remove('provinsi');
-        return redirect()->route('dashboard-admin', ['nik_admedika' => $data->nik_admedika])->with('success', 'Data Pegawai berhasil diupdate.');
-    }
-
     public function destroy($nik_admedika, $id)
     {
-
         if (!Session::has('admin')) {
             return redirect('/');
         }
