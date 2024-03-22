@@ -262,7 +262,9 @@
                     jumlahAnak.value = "";
                 } else if (statusPernikahan.value === "JANDA" || statusPernikahan.value === "DUDA") {
                     tanggalMenikah.disabled = true;
+                    tanggalMenikah.value = "";
                     namaPasangan.disabled = true;
+                    namaPasangan.value = "";
                     jumlahAnak.disabled = false;
                 } else {
                     tanggalMenikah.disabled = false;
