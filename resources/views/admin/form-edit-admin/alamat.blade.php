@@ -117,7 +117,7 @@
                         </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
-                            <select name="kel_ktp" class="input-field-form" id="input-kelurahan" required>
+                            <select name="kel_ktp" class="input-field-form" id="input-kelurahan-ktp" required>
                                 <option>{{ $pegawaiData->kel_ktp }}</option>
                             </select>
                             @include('components.required-kol')

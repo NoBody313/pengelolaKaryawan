@@ -76,37 +76,37 @@
                 $.ajax({
                     url: "{{ url('selectKab') }}/" + idProvinsi,
                     success: function(data) {
-                        fillDropdown('#selectKabKTP', data, '{{ $pegawaiData->kab_kota_ktp }}');
+                        fillDropdown('#input-kabKota-ktp', data, '{{ $pegawaiData->kab_kota_ktp }}');
                         fillKecamatanDropdown();
                     }
                 });
             }
 
-            $("#selectKabKTP").change(function() {
+            $("#input-kabKota-ktp").change(function() {
                 fillKecamatanDropdown();
             });
 
             function fillKecamatanDropdown() {
-                let idKabupaten = $('#selectKabKTP').val();
+                let idKabupaten = $('#input-kabKota-ktp').val();
                 $.ajax({
                     url: "{{ url('selectKec') }}/" + idKabupaten,
                     success: function(data) {
-                        fillDropdown('#selectKecKTP', data, '{{ $pegawaiData->kec_ktp }}');
+                        fillDropdown('#input-kecamatan-ktp', data, '{{ $pegawaiData->kec_ktp }}');
                         fillKelurahanDropdown();
                     }
                 });
             }
 
-            $("#selectKecKTP").change(function() {
+            $("#input-kecamatan-ktp").change(function() {
                 fillKelurahanDropdown();
             });
 
             function fillKelurahanDropdown() {
-                let idKecamatan = $('#selectKecKTP').val();
+                let idKecamatan = $('#input-kecamatan-ktp').val();
                 $.ajax({
                     url: "{{ url('selectKel') }}/" + idKecamatan,
                     success: function(data) {
-                        fillDropdown('#selectKelKTP', data, '{{ $pegawaiData->kel_ktp }}');
+                        fillDropdown('#input-kelurahan-ktp', data, '{{ $pegawaiData->kel_ktp }}');
                     }
                 });
             }
