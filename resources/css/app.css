@@ -14,6 +14,10 @@
     @apply py-3 px-4 block w-80 border-2 border-blue-500 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none capitalize;
 }
 
+.input-field-form-alamat {
+    @apply py-3 px-4 block w-full border-2 border-blue-500 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none capitalize;
+}
+
 .input-role {
     @apply py-3 px-4 block w-full border-2 border-blue-500 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none capitalize;
 }
@@ -26,10 +30,18 @@
     @apply flex flex-col md:flex-row justify-center items-center self-stretch gap-4 w-full;
 }
 
+.form-container-alamat {
+    @apply flex flex-col justify-center items-center gap-4 w-[660px];
+}
+
 .input-label {
     @apply block text-sm font-semibold tracking-wide text-slate-700 mb-2;
 }
 
 .input-layout {
     @apply flex flex-col justify-center items-start gap-2 self-stretch min-w-max
+}
+
+.input-layout-alamat {
+    @apply flex flex-col justify-center items-start gap-2 self-stretch w-[660px]
 }

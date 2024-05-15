@@ -1,10 +1,10 @@
-@extends('user.form-liat-user.index')
+@extends('admin.form-edit-admin.index')
 
 @section('stepNav')
     <div class="flex flex-col md:flex-row items-center justify-center">
         <ul class="flex flex-wrap justify-center items-center gap-4 w-full max-w-4xl">
             <li>
-                <a href="{{ url('/pegawai', ['nik_admedika' => $data->nik_admedika]) }}"
+                <a href="{{ url('/admin', ['nik_admedika' => $data->nik_admedika]) }}"
                     class="w-fit my-4 mx-10 py-2 px-2 text-sm flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
                         <mask id="mask0_418_673" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -42,7 +42,7 @@
             <li class="flex items-center shrink basis-0 flex-1">
                 <span class="min-h-[28px] inline-flex items-center text-xs align-middle">
                     <span
-                        class="w-7 h-7 flex justify-center items-center flex-shrink-0 bg-blue-300 font-medium rounded-full">
+                        class="w-7 h-7 flex justify-center items-center flex-shrink-0 bg-gray-200 font-medium rounded-full">
                         <span class="text-blue-950 font-bold">2</span>
                         <svg class="hidden flex-shrink-0 h-3 w-3 hs-stepper-success:block"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -52,7 +52,25 @@
                         </svg>
                     </span>
                     <span class="ms-3 text-sm font-semibold text-slate-900 tracking-wide">
-                        Alamat
+                        Alamat KTP
+                    </span>
+                </span>
+            </li>
+
+            <li class="flex items-center shrink basis-0 flex-1">
+                <span class="min-h-[28px] inline-flex items-center text-xs align-middle">
+                    <span
+                        class="w-7 h-7 flex justify-center items-center flex-shrink-0 bg-blue-300 font-medium rounded-full">
+                        <span class="text-blue-950 font-bold">3</span>
+                        <svg class="hidden flex-shrink-0 h-3 w-3 hs-stepper-success:block"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </span>
+                    <span class="ms-3 text-sm font-semibold text-slate-900 tracking-wide">
+                        Alamat Domisili
                     </span>
                 </span>
             </li>
@@ -61,7 +79,7 @@
                 <div class="min-h-[28px] inline-flex items-center text-xs align-middle">
                     <div
                         class="w-7 h-7 flex justify-center items-center flex-shrink-0 bg-gray-200 font-medium rounded-full">
-                        <p class="text-blue-950 font-bold">3</p>
+                        <p class="text-blue-950 font-bold">4</p>
                         <svg class="hidden flex-shrink-0 h-3 w-3 hs-stepper-success:block"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
@@ -79,7 +97,7 @@
                 <div class="min-h-[28px] inline-flex items-center text-xs align-middle">
                     <div
                         class="w-7 h-7 flex justify-center items-center flex-shrink-0 bg-gray-200 font-medium rounded-full">
-                        <p class="text-blue-950 font-bold">4</p>
+                        <p class="text-blue-950 font-bold">5</p>
                         <svg class="hidden flex-shrink-0 h-3 w-3 hs-stepper-success:block"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
@@ -96,124 +114,67 @@
     </div>
 @endsection
 
-@section('form')
-    <form id="updateForm" action="{{ route('post-pegawai-edit-alamat', ['nik_admedika' => $data->nik_admedika]) }}"
-        method="POST" class="flex flex-col w-full">
+@section('contentForm')
+    <form id="updateForm"
+        action="{{ route('post-edit-alamat-domisili', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
+        method="POST" class="flex flex-col w-full" id="formData">
         @csrf
         <div class="flex flex-col my-4 w-full">
             <div class="form-layout">
-                {{-- KTP --}}
-                <div class="flex flex-col justify-center items-center gap-4 w-full">
-                    <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat
-                        KTP</span>
-                    <div class="form-container">
-                        <div class="input-layout">
-                            <label class="input-label" for="input-alamatKTP">Alamat
-                                Lengkap</label>
-                            <input name="alamat_ktp" class="input-field-form" id="input-alamatKTP" type="text"
-                                value="{{ $data->alamat_ktp }}" required>
-                            @include('components.required-kol')
-                        </div>
-                        <div class="input-layout">
-                            <label class="input-label" for="input-provinsiKTP">Provinsi</label>
-                            <select name="provinsi_ktp" id="selectProvKTP" class="input-field-form">
-                                <option disabled selected>Pilih Provinsi</option>
-                            </select>
-                            @include('components.required-kol')
-                        </div>
-                    </div>
-                    <div class="form-container">
-                        <div class="input-layout">
-                            <label class="input-label" for="select-kabKota-ktp">Kab/Kota</label>
-                            <select name="kab_kota_ktp" class="input-field-form" id="select-kabKota-ktp" required>
-                                <option>{{ $data->kab_kota_ktp }}</option>
-                            </select>
-                            @include('components.required-kol')
-                        </div>
-                        <div class="input-layout">
-                            <label class="input-label" for="input-kabKota">Kecamatan</label>
-                            <select name="kec_ktp" class="input-field-form" id="selectKecKTP" required>
-                                <option>{{ $data->kec_ktp }}</option>
-                            </select>
-                            @include('components.required-kol')
-                        </div>
-                    </div>
-                    <div class="form-container">
-                        <div class="input-layout">
-                            <label class="input-label" for="selectKelKTP">Desa / Kelurahan</label>
-                            <select name="kel_ktp" class="input-field-form" id="selectKelKTP" required>
-                                <option>{{ $data->kel_ktp }}</option>
-                            </select>
-                            @include('components.required-kol')
-                        </div>
-                        <div class="input-layout">
-                            <label class="input-label" for="input-kodePos">Kode
-                                Pos</label>
-                            <input name="kodepos_ktp" class="input-field-form" id="input-kodePos" type="number"
-                                inputmode="numeric" required
-                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                min="0" maxlength="5" value="{{ $data->kodepos_ktp }}">
-                            @include('components.required-kol')
-                        </div>
-                    </div>
-                </div>
 
                 {{-- Domisili --}}
                 <div class="flex flex-col justify-center items-center gap-4 w-full">
                     <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat
                         Domisili</span>
-                    <div class="form-container">
-                        <div class="input-layout">
-                            <label class="input-label" for="input-alamatDomisili">Alamat Lengkap</label>
-                            <input name="alamat_ktp" required class="input-field-form" id="input-alamatDomisili"
-                                type="text" value="{{ optional($data)->alamat_domisili }}">
+                    <div class="form-container-alamat">
+                        <div class="input-layout-alamat">
+                            <label class="input-label" for="input-alamatDomisili">Alamat
+                                Lengkap</label>
+                            <textarea name="alamat_domisili" required class="input-field-form-alamat" id="alamat_domisili" type="text"
+                                rows="3">{{ $pegawaiData->alamat_domisili }}</textarea>
                             @include('components.required-kol')
                         </div>
-                        <div class="input-layout">
+                        <div class="input-layout-alamat">
                             <label class="input-label" for="input-provinsiDomisili">Provinsi</label>
-                            <select name="provinsi_domisili" id="selectProvDomisili" class="input-field-form">
+                            <select name="provinsi_domisili" id="selectProvDomisili" class="input-field-form-alamat">
                                 <option disabled selected>Pilih Provinsi</option>
                             </select>
                             @include('components.required-kol')
                         </div>
-                    </div>
-                    <div class="form-container">
-                        <div class="input-layout">
+                        <div class="input-layout-alamat">
                             <label class="input-label" for="input-kabKota">Kab/Kota</label>
-                            <select name="kab_kota_domisili" required class="input-field-form" id="selectKabDomisili">
+                            <select name="kab_kota_domisili" class="input-field-form-alamat" id="selectKabDomisili">
                                 <option>
-                                    {{ $data->kab_kota_domisili }}
+                                    {{ $pegawaiData->kab_kota_domisili }}
                                 </option>
                             </select>
                             @include('components.required-kol')
                         </div>
-                        <div class="input-layout">
+                        <div class="input-layout-alamat">
                             <label class="input-label" for="input-kabKota">Kecamatan</label>
-                            <select name="kec_domisili" required class="input-field-form" id="selectKecDomisili">
+                            <select name="kec_domisili" class="input-field-form-alamat" id="selectKecDomisili">
                                 <option>
-                                    {{ $data->kec_domisili }}
+                                    {{ $pegawaiData->kec_domisili }}
                                 </option>
                             </select>
                             @include('components.required-kol')
                         </div>
-                    </div>
-                    <div class="form-container">
-                        <div class="input-layout">
+                        <div class="input-layout-alamat">
                             <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
-                            <select name="kel_domisili" required class="input-field-form" id="selectKelDomisili">
+                            <select name="kel_domisili" class="input-field-form-alamat" id="selectKelDomisili">
                                 <option>
-                                    {{ $data->kel_domisili }}
+                                    {{ $pegawaiData->kel_domisili }}
                                 </option>
                             </select>
                             @include('components.required-kol')
                         </div>
-                        <div class="input-layout">
+                        <div class="input-layout-alamat">
                             <label class="input-label" for="input-kodePos">Kode
                                 Pos</label>
-                            <input name="kodepos_domisili" class="input-field-form" id="input-kodePosDomisili" required
+                            <input name="kodepos_domisili" class="input-field-form-alamat" id="input-kodePosDomisili" required
                                 type="number" inputmode="numeric"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                min="0" maxlength="5" value="{{ optional($data)->kodepos_domisili }}">
+                                min="0" maxlength="5" value="{{ optional($pegawaiData)->kodepos_domisili }}">
                             @include('components.required-kol')
                         </div>
                     </div>
@@ -221,21 +182,20 @@
             </div>
         </div>
 
-        <!-- Button Group -->
         <div class="flex flex-row justify-around items-center">
-            <a href="{{ route('edit-pegawai-data-pribadi', ['nik_admedika' => $data->nik_admedika, 'id' => $data->id]) }}"
+            <a href="{{ route('edit-alamat-ktp', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
                 class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                 <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <path d="m15 18-6-6 6-6"></path>
                 </svg>
-                Kembali
+                Back
             </a>
             <button
                 class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:pointer-events-none"
                 type="submit">
-                Selanjutnya
+                Next
                 <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">

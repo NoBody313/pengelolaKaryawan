@@ -50,10 +50,10 @@ class AdminEditDataController extends Controller
 
         $pegawaiData->update($request->all());
 
-        return redirect()->route('edit-alamat', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]);
+        return redirect()->route('edit-alamat-ktp', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]);
     }
 
-    public function dataAlamat($nik_admedika, $id)
+    public function dataAlamatKTP($nik_admedika, $id)
     {
         if (!Session::has('admin')) {
             return redirect('/');
@@ -74,10 +74,58 @@ class AdminEditDataController extends Controller
         session()->put('provinsi', $pegawaiData->provinsi_ktp);
         $provinsiList = Provinsi::all();
 
-        return view('admin.form-edit-admin.alamat', compact('provinsiList', 'pegawaiData', 'data'));
+        return view('admin.form-edit-admin.alamatKTP', compact('provinsiList', 'pegawaiData', 'data'));
     }
 
-    public function updateAlamat(Request $request, $nik_admedika, $id)
+    public function updateAlamatKTP(Request $request, $nik_admedika, $id)
+    {
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        $pegawaiData = PegawaiData::find($id);
+
+        if (!$pegawaiData) {
+            abort(404);
+        }
+
+        $pegawaiData->update($request->all());
+        session()->remove('provinsi');
+
+        return redirect()->route('edit-alamat-domisili', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]);
+    }
+
+    public function dataAlamatDomisili($nik_admedika, $id)
+    {
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        $pegawaiData = PegawaiData::find($id);
+
+        if (!$pegawaiData) {
+            abort(404);
+        }
+
+        session()->put('provinsi', $pegawaiData->provinsi_ktp);
+        $provinsiList = Provinsi::all();
+
+        return view('admin.form-edit-admin.alamatDomisili', compact('provinsiList', 'pegawaiData', 'data'));
+    }
+
+    public function updateAlamatDomisili(Request $request, $nik_admedika, $id)
     {
         if (!Session::has('admin')) {
             return redirect('/');

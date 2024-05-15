@@ -36,8 +36,10 @@ Route::get('selectKel/{id}', [WilayahIndonesiaController::class, 'kelurahan']);
 Route::get('/admin/{nik_admedika}/edit-data/{id}', [AdminEditDataController::class, 'index'])->name('edit-data-admin.index');
 Route::get('/admin/{nik_admedika}/edit-data/{id}/data-pribadi', [AdminEditDataController::class, 'dataPribadi'])->name('edit-data-pribadi');
 Route::post('admin/{nik_admedika}/edit-data/{id}/data-pribadi', [AdminEditDataController::class, 'updateDataPribadi'])->name('post-edit-data-pribadi');
-Route::get('/admin/{nik_admedika}/edit-data/{id}/data-alamat', [AdminEditDataController::class, 'dataAlamat'])->name('edit-alamat');
-Route::post('admin/{nik_admedika}/edit-data/{id}/data-alamat', [AdminEditDataController::class, 'updateAlamat'])->name('post-edit-alamat');
+Route::get('/admin/{nik_admedika}/edit-data/{id}/data-alamat-ktp', [AdminEditDataController::class, 'dataAlamatKTP'])->name('edit-alamat-ktp');
+Route::post('admin/{nik_admedika}/edit-data/{id}/data-alamat-ktp', [AdminEditDataController::class, 'updateAlamatKTP'])->name('post-edit-alamat-ktp');
+Route::get('/admin/{nik_admedika}/edit-data/{id}/data-alamat-domisili', [AdminEditDataController::class, 'dataAlamatDomisili'])->name('edit-alamat-domisili');
+Route::post('admin/{nik_admedika}/edit-data/{id}/data-alamat-domisili', [AdminEditDataController::class, 'updateAlamatDomisili'])->name('post-edit-alamat-domisili');
 Route::get('/admin/{nik_admedika}/edit-data/{id}/data-status', [AdminEditDataController::class, 'dataStatus'])->name('edit-status');
 Route::post('admin/{nik_admedika}/edit-data/{id}/data-status', [AdminEditDataController::class, 'updateStatus'])->name('post-edit-status');
 Route::get('/admin/{nik_admedika}/edit-data/{id}/data-kontak', [AdminEditDataController::class, 'dataKontak'])->name('edit-kontak');
@@ -46,8 +48,10 @@ Route::post('admin/{nik_admedika}/edit-data/{id}/data-kontak', [AdminEditDataCon
 // Tambah Data Admin
 Route::get('/admin/{nik_admedika}/tambah-data/data-pribadi', [AdminTambahDataController::class, 'createPribadi'])->name('tambah-data-pribadi');
 Route::post('/admin/{nik_admedika}/tambah-data/data-pribadi', [AdminTambahDataController::class, 'storePribadi'])->name('store-tambah-data-pribadi');
-Route::get('/admin/{nik_admedika}/tambah-data/data-alamat', [AdminTambahDataController::class, 'createAlamat'])->name('tambah-data-alamat');
-Route::post('/admin/{nik_admedika}/tambah-data/data-alamat', [AdminTambahDataController::class, 'storeAlamat'])->name('store-tambah-data-alamat');
+Route::get('/admin/{nik_admedika}/tambah-data/data-alamat-ktp', [AdminTambahDataController::class, 'createAlamatKTP'])->name('tambah-data-alamat-ktp');
+Route::post('/admin/{nik_admedika}/tambah-data/data-alamat-ktp', [AdminTambahDataController::class, 'storeAlamatKTP'])->name('store-tambah-data-alamat-ktp');
+Route::get('/admin/{nik_admedika}/tambah-data/data-alamat-domisili', [AdminTambahDataController::class, 'createAlamatDomisili'])->name('tambah-data-alamat-domisili');
+Route::post('/admin/{nik_admedika}/tambah-data/data-alamat-domisili', [AdminTambahDataController::class, 'storeAlamatDomisili'])->name('store-tambah-data-alamat-domisili');
 Route::get('/admin/{nik_admedika}/tambah-data/data-status', [AdminTambahDataController::class, 'createStatus'])->name('tambah-data-status');
 Route::post('/admin/{nik_admedika}/tambah-data/data-status', [AdminTambahDataController::class, 'storeStatus'])->name('store-tambah-data-status');
 Route::get('/admin/{nik_admedika}/tambah-data/data-kontak', [AdminTambahDataController::class, 'createKontak'])->name('tambah-data-kontak');
@@ -56,8 +60,10 @@ Route::post('/admin/{nik_admedika}/tambah-data/data-kontak', [AdminTambahDataCon
 // Edit Data Pegawai
 Route::get('/pegawai/{nik_admedika}/edit-data/data-pribadi', [PegawaiEditDataController::class, 'dataPribadi'])->name('edit-pegawai-data-pribadi');
 Route::post('pegawai/{nik_admedika}/edit-data/data-pribadi', [PegawaiEditDataController::class, 'updateDataPribadi'])->name('post-pegawai-edit-data-pribadi');
-Route::get('/pegawai/{nik_admedika}/edit-data/data-alamat', [PegawaiEditDataController::class, 'dataAlamat'])->name('edit-pegawai-alamat');
-Route::post('pegawai/{nik_admedika}/edit-data/data-alamat', [PegawaiEditDataController::class, 'updateAlamat'])->name('post-pegawai-edit-alamat');
+Route::get('/pegawai/{nik_admedika}/edit-data/data-alamat-ktp', [PegawaiEditDataController::class, 'dataAlamatKTP'])->name('edit-pegawai-alamat-ktp');
+Route::post('pegawai/{nik_admedika}/edit-data/data-alamat-ktp', [PegawaiEditDataController::class, 'updateAlamatKTP'])->name('post-pegawai-edit-alamat-ktp');
+Route::get('/pegawai/{nik_admedika}/edit-data/data-alamat-domisili', [PegawaiEditDataController::class, 'dataAlamatDomisili'])->name('edit-pegawai-alamat-domisili');
+Route::post('pegawai/{nik_admedika}/edit-data/data-alamat-domisili', [PegawaiEditDataController::class, 'updateAlamatDomisili'])->name('post-pegawai-edit-alamat-domisili');
 Route::get('/pegawai/{nik_admedika}/edit-data/data-status', [PegawaiEditDataController::class, 'dataStatus'])->name('edit-pegawai-status');
 Route::post('pegawai/{nik_admedika}/edit-data/data-status', [PegawaiEditDataController::class, 'updateStatus'])->name('post-pegawai-edit-status');
 Route::get('/pegawai/{nik_admedika}/edit-data/data-kontak', [PegawaiEditDataController::class, 'dataKontak'])->name('edit-pegawai-kontak');

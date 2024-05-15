@@ -181,7 +181,7 @@
                         <div class="input-layout">
                             <label class="input-label" for="input-tgl-menikah">Tanggal
                                 Menikah</label>
-                            <input name="tanggal_pernikahan" class="input-field-form" id="input-ttl" type="date"
+                            <input name="tanggal_pernikahan" class="input-field-form" id="input-tgl-menikah" type="date"
                                 value="{{ optional($pegawaiData)->tanggal_pernikahan }}">
                         </div>
                     </div>
@@ -205,7 +205,7 @@
 
         <!-- Button Group -->
         <div class="flex flex-row justify-around items-center">
-            <a href="{{ route('edit-alamat', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
+            <a href="{{ route('edit-alamat-domisili', ['nik_admedika' => $data->nik_admedika, 'id' => $pegawaiData->id]) }}"
                 class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                 <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -226,4 +226,57 @@
             </button>
         </div>
     </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var inputElements = document.querySelectorAll("input, select");
+            inputElements.forEach(function(element) {
+                element.addEventListener("input", function() {
+                    if (this.tagName.toLowerCase() === "select") {
+                        var selectedIndex = this.selectedIndex;
+                        if (selectedIndex !== -1) {
+                            this.options[selectedIndex].text = this.options[selectedIndex].text
+                                .toUpperCase();
+                        }
+                    } else {
+                        this.value = this.value.toUpperCase();
+                    }
+                });
+            });
+
+            const statusPernikahan = document.getElementById("input-statusPernikahan");
+            const tanggalMenikah = document.getElementById("input-tgl-menikah");
+            const namaPasangan = document.getElementById("nama_pasangan");
+            const jumlahAnak = document.getElementById("jumlah_anak");
+
+            function handleStatusPernikahan() {
+                // Jika status pernikahan adalah "Belum Menikah"
+                if (statusPernikahan.value === "BELUM MENIKAH") {
+                    // Set semua elemen lain ke disabled dan kosongkan nilainya
+                    tanggalMenikah.disabled = true;
+                    tanggalMenikah.value = "";
+                    namaPasangan.disabled = true;
+                    namaPasangan.value = "";
+                    jumlahAnak.disabled = true;
+                    jumlahAnak.value = "";
+                } else if (statusPernikahan.value === "JANDA" || statusPernikahan.value === "DUDA") {
+                    tanggalMenikah.disabled = true;
+                    tanggalMenikah.value = "";
+                    namaPasangan.disabled = true;
+                    namaPasangan.value = "";
+                    jumlahAnak.disabled = false;
+                } else {
+                    tanggalMenikah.disabled = false;
+                    namaPasangan.disabled = false;
+                    jumlahAnak.disabled = false;
+                }
+            }
+
+            // Tambahkan event listener untuk perubahan pada elemen status pernikahan
+            statusPernikahan.addEventListener("change", handleStatusPernikahan);
+
+            // Panggil fungsi untuk menangani status pernikahan saat halaman dimuat
+            handleStatusPernikahan();
+        });
+    </script>
 @endsection

@@ -199,7 +199,7 @@
 
                 <!-- Button Group -->
                 <div class="flex flex-row justify-around items-center">
-                    <a href="{{ route('tambah-data-alamat', ['nik_admedika' => $data->nik_admedika]) }}"
+                    <a href="{{ route('tambah-data-alamat-domisili', ['nik_admedika' => $data->nik_admedika]) }}"
                         class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                         <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
@@ -225,14 +225,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Mengambil semua elemen input dan select dalam dokumen
             var inputElements = document.querySelectorAll("input, select");
-
-            // Menggunakan loop untuk menerapkan perubahan pada setiap elemen input dan select
             inputElements.forEach(function(element) {
-                // Menambahkan event listener untuk setiap elemen input dan select
                 element.addEventListener("input", function() {
-                    // Mengonversi nilai input atau teks opsi select menjadi huruf kapital
                     if (this.tagName.toLowerCase() === "select") {
                         var selectedIndex = this.selectedIndex;
                         if (selectedIndex !== -1) {

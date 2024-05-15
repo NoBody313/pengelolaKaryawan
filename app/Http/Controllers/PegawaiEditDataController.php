@@ -37,10 +37,10 @@ class PegawaiEditDataController extends Controller
         }
 
         $data->update($request->all());
-        return redirect()->route('edit-pegawai-alamat', ['nik_admedika' => $data->nik_admedika]);
+        return redirect()->route('edit-pegawai-alamat-ktp', ['nik_admedika' => $data->nik_admedika]);
     }
 
-    public function dataAlamat($nik_admedika)
+    public function dataAlamatKTP($nik_admedika)
     {
         if (!Session::has('pegawai')) {
             return redirect('/');
@@ -55,10 +55,46 @@ class PegawaiEditDataController extends Controller
         session()->put('provinsi', $data->provinsi_ktp);
         $provinsiList = Provinsi::all();
 
-        return view('user.form-liat-user.alamat', compact('provinsiList', 'data'));
+        return view('user.form-liat-user.alamatKTP', compact('provinsiList', 'data'));
     }
 
-    public function updateAlamat(Request $request, $nik_admedika)
+    public function updateAlamatKTP(Request $request, $nik_admedika)
+    {
+        if (!Session::has('pegawai')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        $data->update($request->all());
+        session()->remove('provinsi');
+
+        return redirect()->route('edit-pegawai-alamat-domisili', ['nik_admedika' => $data->nik_admedika]);
+    }
+
+    public function dataAlamatDomisili($nik_admedika)
+    {
+        if (!Session::has('pegawai')) {
+            return redirect('/');
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        session()->put('provinsi', $data->provinsi_ktp);
+        $provinsiList = Provinsi::all();
+
+        return view('user.form-liat-user.alamatDomisili', compact('provinsiList', 'data'));
+    }
+
+    public function updateAlamatDomisili(Request $request, $nik_admedika)
     {
         if (!Session::has('pegawai')) {
             return redirect('/');

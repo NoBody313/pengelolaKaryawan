@@ -32,10 +32,10 @@ class AdminTambahDataController extends Controller
         $nik_admedika = Session::get('admin');
 
         Session::put('temp_pribadi',  $request->all());
-        return redirect()->route('tambah-data-alamat', ['nik_admedika' => $nik_admedika]);
+        return redirect()->route('tambah-data-alamat-ktp', ['nik_admedika' => $nik_admedika]);
     }
 
-    public function createAlamat($nik_admedika)
+    public function createAlamatKTP($nik_admedika)
     {
         if (!Session::has('admin')) {
             return redirect('/');
@@ -53,10 +53,10 @@ class AdminTambahDataController extends Controller
             abort(404);
         }
 
-        return view('admin.form-tambah-admin.alamat', ['data' => $data]);
+        return view('admin.form-tambah-admin.alamatKTP', ['data' => $data]);
     }
 
-    public function storeAlamat(Request $request)
+    public function storeAlamatKTP(Request $request)
     {
         if (!Session::has('admin')) {
             return redirect('/');
@@ -64,7 +64,40 @@ class AdminTambahDataController extends Controller
 
         $nik_admedika = Session::get('admin');
 
-        Session::put('temp_alamat', $request->all());
+        Session::put('temp_alamat_KTP', $request->all());
+        return redirect()->route('tambah-data-alamat-domisili', ['nik_admedika' => $nik_admedika]);
+    }
+
+    public function createAlamatDomisili($nik_admedika)
+    {
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $dataPribadi = Session::get('temp_pribadi');
+
+        if (!$dataPribadi) {
+            return redirect()->route('tambah-data-pribadi', ['nik_admedika' => $nik_admedika]);
+        }
+
+        $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
+
+        if (!$data) {
+            abort(404);
+        }
+
+        return view('admin.form-tambah-admin.alamatDomisili', ['data' => $data]);
+    }
+
+    public function storeAlamatDomisili(Request $request)
+    {
+        if (!Session::has('admin')) {
+            return redirect('/');
+        }
+
+        $nik_admedika = Session::get('admin');
+
+        Session::put('temp_alamat_domisili', $request->all());
         return redirect()->route('tambah-data-status', ['nik_admedika' => $nik_admedika]);
     }
 
@@ -120,7 +153,8 @@ class AdminTambahDataController extends Controller
         Session::put('temp_kontak',  $request->all());
 
         $dataPribadi = Session::get('temp_pribadi');
-        $dataAlamat = Session::get('temp_alamat');
+        $dataAlamat = Session::get('temp_alamat_KTP');
+        $dataAlamat = Session::get('temp_alamat_domisili');
         $dataStatus = Session::get('temp_status');
         $dataKontak = Session::get('temp_kontak');
 
@@ -133,7 +167,8 @@ class AdminTambahDataController extends Controller
         PegawaiData::create($mergedData);
 
         Session::forget('temp_pribadi');
-        Session::forget('temp_alamat');
+        Session::forget('temp_alamat_KTP');
+        Session::forget('temp_alamat_domisili');
         Session::forget('temp_status');
         Session::forget('temp_kontak');
 
