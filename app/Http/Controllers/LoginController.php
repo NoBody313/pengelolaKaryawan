@@ -31,8 +31,8 @@ class LoginController extends Controller
         $request->validate([
             'nik_admedika' => 'required',
             'tanggal_lahir' => 'required',
-            // 'no_ktp' => 'required',
-            // 'g-recaptcha-response' => 'required|captcha'
+            'no_ktp' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         $user = PegawaiData::where('nik_admedika', $nik_admedika)

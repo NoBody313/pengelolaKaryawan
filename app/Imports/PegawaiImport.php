@@ -14,6 +14,7 @@ class PegawaiImport implements ToModel, WithStartRow
     {
         $tanggal_masuk = $this->parseDate($row[4]);
         $tanggal_lahir = $this->parseDate($row[8]);
+        $tahun_lahir = substr($row[9], 0, 10);
         $no_ktp = $this->parseNoKtp($row[10]);
         $tanggal_pernikahan = $this->parseDate($row[26]);
         $jumlah_anak = (int) $row[28];
@@ -30,7 +31,7 @@ class PegawaiImport implements ToModel, WithStartRow
             'agama' => substr($row[6], 0, 50),
             'kota_lahir' => $row[7],
             'tanggal_lahir' => $tanggal_lahir,
-            // 'tahun_lahir' => $tahun_lahir,
+            'tahun_lahir' => $tahun_lahir,
             'no_ktp' => $no_ktp,
             'nama_ibu' => $row[11],
             'nama_ayah' => $row[12],
@@ -73,7 +74,7 @@ class PegawaiImport implements ToModel, WithStartRow
     private function parseDate($date)
     {
         try {
-            return Carbon::createFromFormat('d/m/Y', $date)->toDateString();
+            return Carbon::createFromFormat('m/d/Y', $date)->toDateString();
         } catch (\Exception $e) {
             return null;
         }

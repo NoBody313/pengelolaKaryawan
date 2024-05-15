@@ -112,31 +112,31 @@
                             value="{{ $pegawaiData->alamat_ktp }}">
                     </div>
                     <div class="input-layout">
-                        <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
-                        <select name="kel_ktp" class="input-field-form" id="input-kelurahan">
-                            <option>{{ $pegawaiData->kel_ktp }}</option>
+                        <label class="input-label" for="input-provinsi">Provinsi</label>
+                        <select name="provinsi_ktp" class="input-field-form" id="input-provinsi-ktp">
+                            <option>{{ $pegawaiData->provinsi_ktp }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-container">
-                    <div class="input-layout">
-                        <label class="input-label" for="input-kabKota">Kecamatan</label>
-                        <select name="kec_ktp" class="input-field-form" id="input-kecamatan-ktp">
-                            <option>{{ $pegawaiData->kec_ktp }}</option>
-                        </select>
-                    </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-kabKota">Kab/Kota</label>
                         <select name="kab_kota_ktp" class="input-field-form" id="input-kabKota-ktp">
                             <option>{{ $pegawaiData->kab_kota_ktp }}</option>
                         </select>
                     </div>
+                    <div class="input-layout">
+                        <label class="input-label" for="input-kabKota">Kecamatan</label>
+                        <select name="kec_ktp" class="input-field-form" id="input-kecamatan-ktp">
+                            <option>{{ $pegawaiData->kec_ktp }}</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-container">
                     <div class="input-layout">
-                        <label class="input-label" for="input-provinsi">Provinsi</label>
-                        <select name="provinsi_ktp" class="input-field-form" id="input-provinsi-ktp">
-                            <option>{{ $pegawaiData->provinsi_ktp }}</option>
+                        <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
+                        <select name="kel_ktp" class="input-field-form" id="input-kelurahan">
+                            <option>{{ $pegawaiData->kel_ktp }}</option>
                         </select>
                     </div>
                     <div class="input-layout">
@@ -160,23 +160,15 @@
                             value="{{ optional($pegawaiData)->alamat_domisili }}">
                     </div>
                     <div class="input-layout">
-                        <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
-                        <select name="kel_domisili" class="input-field-form" id="selectKelDomisili">
+                        <label class="input-label" for="input-provinsi">Provinsi</label>
+                        <select name="provinsi_domisili" class="input-field-form" id="selectProvDomisili">
                             <option>
-                                {{ $pegawaiData->kel_domisili }}
+                                {{ $pegawaiData->provinsi_domisili }}
                             </option>
                         </select>
                     </div>
                 </div>
                 <div class="form-container">
-                    <div class="input-layout">
-                        <label class="input-label" for="input-kabKota">Kecamatan</label>
-                        <select name="kec_domisili" class="input-field-form" id="selectKecDomisili">
-                            <option>
-                                {{ $pegawaiData->kec_domisili }}
-                            </option>
-                        </select>
-                    </div>
                     <div class="input-layout">
                         <label class="input-label" for="input-kabKota">Kab/Kota</label>
                         <select name="kab_kota_domisili" class="input-field-form" id="selectKabDomisili">
@@ -185,13 +177,21 @@
                             </option>
                         </select>
                     </div>
+                    <div class="input-layout">
+                        <label class="input-label" for="input-kabKota">Kecamatan</label>
+                        <select name="kec_domisili" class="input-field-form" id="selectKecDomisili">
+                            <option>
+                                {{ $pegawaiData->kec_domisili }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-container">
                     <div class="input-layout">
-                        <label class="input-label" for="input-provinsi">Provinsi</label>
-                        <select name="provinsi_domisili" class="input-field-form" id="selectProvDomisili">
+                        <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
+                        <select name="kel_domisili" class="input-field-form" id="selectKelDomisili">
                             <option>
-                                {{ $pegawaiData->provinsi_domisili }}
+                                {{ $pegawaiData->kel_domisili }}
                             </option>
                         </select>
                     </div>
