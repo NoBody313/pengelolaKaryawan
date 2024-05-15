@@ -115,34 +115,34 @@
                             @include('components.required-kol')
                         </div>
                         <div class="input-layout">
-                            <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
-                            <select name="kel_ktp" class="input-field-form" id="input-kelurahan" required>
-                                <option>{{ $data->kel_ktp }}</option>
+                            <label class="input-label" for="input-provinsiKTP">Provinsi</label>
+                            <select name="provinsi_ktp" id="selectProvKTP" class="input-field-form">
+                                <option disabled selected>Pilih Provinsi</option>
                             </select>
                             @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
                         <div class="input-layout">
-                            <label class="input-label" for="input-kabKota">Kecamatan</label>
-                            <select name="kec_ktp" class="input-field-form" id="input-kecamatan-ktp" required>
-                                <option>{{ $data->kec_ktp }}</option>
-                            </select>
-                            @include('components.required-kol')
-                        </div>
-                        <div class="input-layout">
-                            <label class="input-label" for="input-kabKota">Kab/Kota</label>
-                            <select name="kab_kota_ktp" class="input-field-form" id="input-kabKota-ktp" required>
+                            <label class="input-label" for="select-kabKota-ktp">Kab/Kota</label>
+                            <select name="kab_kota_ktp" class="input-field-form" id="select-kabKota-ktp" required>
                                 <option>{{ $data->kab_kota_ktp }}</option>
                             </select>
                             @include('components.required-kol')
                         </div>
+                        <div class="input-layout">
+                            <label class="input-label" for="input-kabKota">Kecamatan</label>
+                            <select name="kec_ktp" class="input-field-form" id="selectKecKTP" required>
+                                <option>{{ $data->kec_ktp }}</option>
+                            </select>
+                            @include('components.required-kol')
+                        </div>
                     </div>
                     <div class="form-container">
                         <div class="input-layout">
-                            <label class="input-label" for="input-provinsiKTP">Provinsi</label>
-                            <select name="provinsi_ktp" id="selectProvKTP" class="input-field-form">
-                                <option disabled selected>Pilih Provinsi</option>
+                            <label class="input-label" for="selectKelKTP">Desa / Kelurahan</label>
+                            <select name="kel_ktp" class="input-field-form" id="selectKelKTP" required>
+                                <option>{{ $data->kel_ktp }}</option>
                             </select>
                             @include('components.required-kol')
                         </div>
@@ -170,25 +170,14 @@
                             @include('components.required-kol')
                         </div>
                         <div class="input-layout">
-                            <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
-                            <select name="kel_domisili" required class="input-field-form" id="selectKelDomisili">
-                                <option>
-                                    {{ $data->kel_domisili }}
-                                </option>
+                            <label class="input-label" for="input-provinsiDomisili">Provinsi</label>
+                            <select name="provinsi_domisili" id="selectProvDomisili" class="input-field-form">
+                                <option disabled selected>Pilih Provinsi</option>
                             </select>
                             @include('components.required-kol')
                         </div>
                     </div>
                     <div class="form-container">
-                        <div class="input-layout">
-                            <label class="input-label" for="input-kabKota">Kecamatan</label>
-                            <select name="kec_domisili" required class="input-field-form" id="selectKecDomisili">
-                                <option>
-                                    {{ $data->kec_domisili }}
-                                </option>
-                            </select>
-                            @include('components.required-kol')
-                        </div>
                         <div class="input-layout">
                             <label class="input-label" for="input-kabKota">Kab/Kota</label>
                             <select name="kab_kota_domisili" required class="input-field-form" id="selectKabDomisili">
@@ -198,12 +187,23 @@
                             </select>
                             @include('components.required-kol')
                         </div>
+                        <div class="input-layout">
+                            <label class="input-label" for="input-kabKota">Kecamatan</label>
+                            <select name="kec_domisili" required class="input-field-form" id="selectKecDomisili">
+                                <option>
+                                    {{ $data->kec_domisili }}
+                                </option>
+                            </select>
+                            @include('components.required-kol')
+                        </div>
                     </div>
                     <div class="form-container">
                         <div class="input-layout">
-                            <label class="input-label" for="input-provinsiDomisili">Provinsi</label>
-                            <select name="provinsi_domisili" id="selectProvDomisili" class="input-field-form">
-                                <option disabled selected>Pilih Provinsi</option>
+                            <label class="input-label" for="input-kelurahan">Desa / Kelurahan</label>
+                            <select name="kel_domisili" required class="input-field-form" id="selectKelDomisili">
+                                <option>
+                                    {{ $data->kel_domisili }}
+                                </option>
                             </select>
                             @include('components.required-kol')
                         </div>

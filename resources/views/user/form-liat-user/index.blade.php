@@ -77,18 +77,18 @@
                 $.ajax({
                     url: "{{ url('selectKab') }}/" + idProvinsi,
                     success: function(data) {
-                        fillDropdown('#selectKabKTP', data, '{{ $data->kab_kota_ktp }}');
+                        fillDropdown('#select-kabKota-ktp', data, '{{ $data->kab_kota_ktp }}');
                         fillKecamatanDropdown();
                     }
                 });
             }
 
-            $("#selectKabKTP").change(function() {
+            $("#select-kabKota-ktp").change(function() {
                 fillKecamatanDropdown();
             });
 
             function fillKecamatanDropdown() {
-                let idKabupaten = $('#selectKabKTP').val();
+                let idKabupaten = $('#select-kabKota-ktp').val();
                 $.ajax({
                     url: "{{ url('selectKec') }}/" + idKabupaten,
                     success: function(data) {
