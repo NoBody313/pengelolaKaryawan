@@ -126,6 +126,7 @@
                 <div class="flex flex-col justify-center items-center gap-4 w-full">
                     <span class="flex justify-start items-start w-[660px] mt-2 font-semibold tracking-wide">Alamat
                         KTP</span>
+                        @include('components.alamat-hint')
                     <div class="form-container-alamat">
                         <div class="input-layout-alamat">
                             <label class="input-label" for="input-alamatKTP">Alamat

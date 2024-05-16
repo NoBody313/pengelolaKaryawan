@@ -191,7 +191,7 @@
                         <div class="input-layout">
                             <label class="input-label" for="input-jumlah-anak">Jumlah
                                 Anak</label>
-                            <input name="jumlah_anak" class="input-field-form" id="input-jumlahAnak" type="number"
+                            <input name="jumlah_anak" class="input-field-form" id="jumlah_anak" type="number"
                                 value="{{ optional($data)->jumlah_anak }}">
                             @include('components.required-kol')
                         </div>
@@ -247,7 +247,6 @@
             const jumlahAnak = document.getElementById("jumlah_anak");
 
             function handleStatusPernikahan() {
-                // Jika status pernikahan adalah "Belum Menikah"
                 if (statusPernikahan.value === "BELUM MENIKAH") {
                     // Set semua elemen lain ke disabled dan kosongkan nilainya
                     tanggalMenikah.disabled = true;

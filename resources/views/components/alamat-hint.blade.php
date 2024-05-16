@@ -1,0 +1,1 @@
+<p class="flex justify-start items-start w-[660px] mt-1 mb-1 text-sm italic font-medium tracking-wide text-red-500">Apabila saat mengubah Kab, Kota, Kec, atau Kel. Pilihan tidak muncul, harap untuk mengisi dari Provinsi terlebih dahulu.</p>
