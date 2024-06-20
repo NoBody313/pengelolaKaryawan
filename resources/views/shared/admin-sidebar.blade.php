@@ -6,8 +6,8 @@
         <img src="{{ asset('/images/admedLogo.png') }}" alt="Logo Admedika" class="shrink-0 w-[72px] h-auto mx-auto">
     </a>
 
-    <nav class="hs-accordion-group p-6 gap-4 mt-4 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
-        <div class="flex flex-col w-full justify-center items-center gap-4">
+    <nav class="flex flex-col flex-wrap w-full gap-4 p-6 mt-4 hs-accordion-group" data-hs-accordion-always-open>
+        <div class="flex flex-col items-center justify-center w-full gap-4">
             <a href="{{ route('tambah-data-pribadi', ['nik_admedika' => $data->nik_admedika]) }}"
                 class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-2 border-blue-500 hover:border-blue-700 decoration-0 {{ request()->is('admin/tambah-data') ? 'menu-active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -22,7 +22,7 @@
                             fill="#2563eb" />
                     </g>
                 </svg>
-                <p class="font-medium text-base text-blue-950">Tambah Data</p>
+                <p class="text-base font-medium text-blue-950">Tambah Data</p>
             </a>
 
             <a href="{{ route('list-data-karyawan', ['nik_admedika' => $data->nik_admedika]) }}"
@@ -39,7 +39,7 @@
                             fill="#2563eb" />
                     </g>
                 </svg>
-                <p class="font-medium text-base text-blue-950">Lihat Data</p>
+                <p class="text-base font-medium text-blue-950">Lihat Data</p>
             </a>
         </div>
 
@@ -50,7 +50,7 @@
         <div class="w-full">
 
             <a href="{{ route('logout', ['nik_admedika' => $data->nik_admedika]) }}"
-                class="flex w-full items-center px-6 py-3 gap-4 cursor-pointer hover:rounded-md hover:border-2 border-blue-500 hover:border-blue-700 decoration-0">
+                class="flex items-center w-full gap-4 px-6 py-3 border-blue-500 cursor-pointer hover:rounded-md hover:border-2 hover:border-blue-700 decoration-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                     fill="none">
                     <mask id="mask0_80_74" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
@@ -63,7 +63,7 @@
                             fill="#2563eb" />
                     </g>
                 </svg>
-                <p class="font-medium text-base text-blue-950">Logout</p>
+                <p class="text-base font-medium text-blue-950">Logout</p>
             </a>
         </div>
     </nav>
@@ -77,11 +77,7 @@
         navLinks.forEach(link => {
             link.addEventListener('click', function(event) {
                 event.preventDefault();
-
-                // Menghapus kelas 'active' dari semua link
                 navLinks.forEach(link => link.classList.remove('active'));
-
-                // Menambahkan kelas 'active' ke link yang diklik
                 link.classList.add('active');
             });
         });
