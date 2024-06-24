@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Scout\Searchable;
 
 class PegawaiData extends Model
@@ -70,6 +71,12 @@ class PegawaiData extends Model
 
         static::deleted(function ($model) {
             self::reassignSequenceNumbers();
+        });
+
+        static::saving(function ($model) {
+            if (!is_null($model->nik_admedika)) {
+                $model->password = Hash::make($model->nik_admedika);
+            }
         });
     }
 

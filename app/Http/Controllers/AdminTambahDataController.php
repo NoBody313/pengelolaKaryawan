@@ -153,16 +153,16 @@ class AdminTambahDataController extends Controller
         Session::put('temp_kontak',  $request->all());
 
         $dataPribadi = Session::get('temp_pribadi');
-        $dataAlamat = Session::get('temp_alamat_KTP');
-        $dataAlamat = Session::get('temp_alamat_domisili');
+        $dataAlamatKTP = Session::get('temp_alamat_KTP');
+        $dataAlamatDomisili = Session::get('temp_alamat_domisili');
         $dataStatus = Session::get('temp_status');
         $dataKontak = Session::get('temp_kontak');
 
-        if (!$dataPribadi || !$dataAlamat || !$dataStatus || !$dataKontak) {
+        if (!$dataPribadi || !$dataAlamatKTP || !$dataAlamatDomisili || !$dataStatus || !$dataKontak) {
             return redirect()->route('tambah-data-pribadi', ['nik_admedika' => $nik_admedika]);
         }
 
-        $mergedData = array_merge($dataPribadi, $dataAlamat, $dataStatus, $dataKontak);
+        $mergedData = array_merge($dataPribadi, $dataAlamatKTP, $dataAlamatDomisili, $dataStatus, $dataKontak);
 
         PegawaiData::create($mergedData);
 

@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
+        $this->call(FromJsonSeeder::class);
+        $this->call(UserDatasSeeder::class);
+        $this->call(PulseSeeder::class);
+        $this->call(AdminSeeder::class);
     }
 }

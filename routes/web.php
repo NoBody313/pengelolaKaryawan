@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminEditDataController;
 use App\Http\Controllers\AdminTambahDataController;
+use App\Http\Controllers\Auth\PulseLoginController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiEditDataController;
 use App\Http\Controllers\UserController;
@@ -68,3 +69,11 @@ Route::get('/pegawai/{nik_admedika}/edit-data/data-status', [PegawaiEditDataCont
 Route::post('pegawai/{nik_admedika}/edit-data/data-status', [PegawaiEditDataController::class, 'updateStatus'])->name('post-pegawai-edit-status');
 Route::get('/pegawai/{nik_admedika}/edit-data/data-kontak', [PegawaiEditDataController::class, 'dataKontak'])->name('edit-pegawai-kontak');
 Route::post('pegawai/{nik_admedika}/edit-data/data-kontak', [PegawaiEditDataController::class, 'updateKontak'])->name('post-pegawai-edit-kontak');
+
+Route::get('/login', [PulseLoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [PulseLoginController::class, 'login']);
+Route::post('/logout', [PulseLoginController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [PulseLoginController::class, 'dashboard'])->name('auth.dashboard');
+});
