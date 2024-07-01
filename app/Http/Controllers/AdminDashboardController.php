@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Exports\PegawaiExport;
 use App\Imports\PegawaiImport;
 use App\Models\Provinsi;
+use App\Rules\SafeInput;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -15,7 +16,7 @@ class AdminDashboardController extends Controller
     public function index($nik_admedika)
     {
         if (!Session::has('admin')) {
-            return view('/');
+            return redirect()->route('login.form');
         }
 
         $data = PegawaiData::where('nik_admedika', $nik_admedika)->first();
@@ -84,7 +85,7 @@ class AdminDashboardController extends Controller
         $search_param = request()->input('query');
 
         request()->validate([
-            'query' => 'nullable|regex:/^[a-zA-Z0-9]+$/|max:50',
+            'query' => 'nullable|regex:/^[a-zA-Z0-9]+$/|max:50', new SafeInput()
         ]);
 
         $pegawai_query = PegawaiData::search($search_param);

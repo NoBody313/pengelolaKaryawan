@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pegawai_datas', function (Blueprint $table) {
             $table->id();
             $table->integer('urutan')->nullable();
+            $table->char('nik_admedika')->nullable();
             $table->char('nik_tg')->nullable();
             $table->string('nama')->nullable();
             $table->date('tanggal_masuk')->nullable();
@@ -27,9 +28,6 @@ return new class extends Migration
             $table->bigInteger('no_ktp')->nullable();
             $table->text('nama_ibu')->nullable();
             $table->text('nama_ayah')->nullable();
-
-            $table->char('nik_admedika')->nullable();
-            $table->string('password');
 
             $table->text('alamat_ktp')->nullable();
             $table->text('provinsi_ktp')->nullable();
@@ -64,13 +62,17 @@ return new class extends Migration
 
             $table->enum('role', ['pegawai', 'admin'])->default('pegawai');
 
+            $table->string('password');
+            $table->string('username');
+
             $table->timestamps();
         });
 
         $records = DB::table('pegawai_datas')->whereNotNull('nik_admedika')->get();
         foreach ($records as $record) {
             DB::table('pegawai_datas')->where('id', $record->id)->update([
-                'password' => Hash::make($record->nik_admedika)
+                'password' => Hash::make($record->nik_admedika),
+                'username' => $record->nik_admedika,
             ]);
         }
     }

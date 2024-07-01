@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Scout\Searchable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class PegawaiData extends Model
+class PegawaiData extends Authenticatable implements AuthenticatableContract
 {
     use Searchable, HasFactory;
 
@@ -55,6 +57,8 @@ class PegawaiData extends Model
         'no_hp_emergency',
         'email_pribadi',
         'role',
+        'password',
+        'username',
         'created_at',
         'updated_at',
     ];
@@ -76,6 +80,7 @@ class PegawaiData extends Model
         static::saving(function ($model) {
             if (!is_null($model->nik_admedika)) {
                 $model->password = Hash::make($model->nik_admedika);
+                $model->username = $model->no_ktp;
             }
         });
     }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\PegawaiData;
+
 return [
 
     /*
@@ -38,8 +40,13 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'pegawai_datas',
         ],
+
+        // 'pegawai' => [
+        //     'driver' => 'session',
+        //     'provider' => 'pegawais',
+        // ]
     ],
 
     /*
@@ -65,10 +72,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'pegawai_datas' => [
+            'driver' => 'eloquent',
+            'model' => PegawaiData::class,
+        ],
     ],
 
     /*

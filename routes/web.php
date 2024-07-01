@@ -26,7 +26,7 @@ Route::get('/admin/{nik_admedika}/list-data', [AdminDashboardController::class, 
 Route::delete('/admin/{nik_admedika}/delete-data/{id}', [AdminDashboardController::class, 'destroy'])->name('delete-data-karyawan');
 Route::get('/admin/{nik_admedika}/list-data/export_excel', [AdminDashboardController::class, 'export_excel'])->name('karyawan-export');
 Route::post('/admin/{nik_admedika}/list-data/import_excel', [AdminDashboardController::class, 'import'])->name('import_excel');
-Route::get('/admin/logout/{nik_admedika}', [AdminDashboardController::class, 'logout'])->name('logout');
+Route::get('/admin/logout/{nik_admedika}', [AdminDashboardController::class, 'logout'])->name('admin.logout');
 
 Route::get('selectProv', [WilayahIndonesiaController::class, 'provinsi'])->name('provinsi.index');
 Route::get('selectKab/{id}', [WilayahIndonesiaController::class, 'kabupaten']);
@@ -72,7 +72,7 @@ Route::post('pegawai/{nik_admedika}/edit-data/data-kontak', [PegawaiEditDataCont
 
 Route::get('/login', [PulseLoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [PulseLoginController::class, 'login']);
-Route::post('/logout', [PulseLoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [PulseLoginController::class, 'logout'])->name('logout.pulse');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [PulseLoginController::class, 'dashboard'])->name('auth.dashboard');

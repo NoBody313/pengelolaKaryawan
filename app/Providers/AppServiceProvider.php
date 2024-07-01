@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\User;
+use App\Models\PegawaiData;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -20,13 +20,13 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Gate::define('viewPulse', function (User $user) {
-            return Auth::user()->role == 'Pimpinan';
+        Gate::define('viewPulse', function (PegawaiData $user) {
+            return Auth::user()->role == 'admin';
         });
 
         Pulse::user(fn ($user) => [
-            'name' => $user->name,
-            'extra' => $user->email,
+            'name' => $user->nama,
+            'extra' => $user->nik_admedika,
         ]);
     }
 }

@@ -14,19 +14,39 @@ class PulseLoginController extends Controller
         return view('auth.login');
     }
 
+    // public function login(Request $request)
+    // {
+    //     $request->validate([
+    //         'username' => 'required',
+    //         'password' => 'required',
+    //     ]);
+
+    //     if (Auth::attempt($request->only('username', 'password'))) {
+    //         return redirect()->intended('dashboard');
+    //     }
+
+    //     throw ValidationException::withMessages([
+    //         'username' => [trans('auth.failed')],
+    //     ]);
+    // }
+
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'username' => 'required|string',
+            'password' => 'required|string',
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
             return redirect()->intended('dashboard');
         }
 
-        throw ValidationException::withMessages([
-            'email' => [trans('auth.failed')],
+        return back()->withErrors([
+            'username' => 'The provided credentials do not match our records.',
         ]);
     }
 

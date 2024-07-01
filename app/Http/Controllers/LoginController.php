@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PegawaiData;
+use App\Rules\SafeInput;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
@@ -31,8 +32,9 @@ class LoginController extends Controller
         $request->validate([
             'nik_admedika' => 'required',
             'tanggal_lahir' => 'required',
-            // 'no_ktp' => 'required',
-            // 'g-recaptcha-response' => 'required|captcha'
+            'no_ktp' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
+            new SafeInput()
         ]);
 
         $user = PegawaiData::where('nik_admedika', $nik_admedika)
@@ -47,28 +49,6 @@ class LoginController extends Controller
             return redirect("/{$role}/{$nik_admedika}");
         }
 
-        $attempts = Cache::get("login_attempts:{$nik_admedika}", 0);
-        $attempts++;
-
-        if ($attempts >= 3) {
-            Cache::put("softlock:{$nik_admedika}", now()->addMinutes(1));
-            $lockExpiration = Cache::get("softlock:{$nik_admedika}");
-            $currentTime = now();
-
-            if ($currentTime <= $lockExpiration) {
-                $timeLeft = $lockExpiration->diffInSeconds($currentTime);
-                $timeLeft = max(0, $timeLeft);
-
-                return redirect()->back()->with('pesanError', 'Akun Anda terkunci sementara. Silakan coba lagi nanti.')->with('timeLeft', $timeLeft);
-            } else {
-                Cache::forget("softlock:{$nik_admedika}");
-                Cache::forget("login_attempts:{$nik_admedika}");
-            }
-        } else {
-            $pesanError = 'NIK Admedika atau Tanggal Lahir atau No KTP anda salah';
-            Cache::put("login_attempts:{$nik_admedika}", $attempts, now()->addMinutes(1));
-        }
-
-        return redirect()->back()->with('pesanError', $pesanError);
+        return redirect()->back();
     }
 }
