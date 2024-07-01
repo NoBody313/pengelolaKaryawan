@@ -22,9 +22,7 @@ class SecurityHeaders
         //     $response->headers->set('X-XSS-Protection', '1; mode=block');
         //     $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
 
-        $recaptchaNonce = base64_encode(openssl_random_pseudo_bytes(16));
-
-        $response->headers->set('Content-Security-Policy', "default-src 'self' https://fatihtest.my.id; script-src 'self' *.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdn.tailwindcss.com https://code.jquery.com; style-src 'self' *.cloudflare.com 'unsafe-inline' fonts.googleapis.com; img-src 'self' https://fatihtest.my.id; font-src 'self' data: fonts.gstatic.com; connect-src 'self' https://fatihtest.my.id; media-src 'self'; frame-src 'self' https://www.google.com/recaptcha/, https://recaptcha.google.com/recaptcha/ ; object-src 'none'; base-uri 'self'; ");
+        // $response->headers->set('Content-Security-Policy', "default-src 'self' https://fatihtest.my.id; script-src 'self' *.cloudflare.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdn.tailwindcss.com https://code.jquery.com; style-src 'self' *.cloudflare.com 'unsafe-inline' fonts.googleapis.com; img-src 'self' https://fatihtest.my.id; font-src 'self' data: fonts.gstatic.com; connect-src 'self' https://fatihtest.my.id; media-src 'self'; frame-src 'self' https://www.google.com/recaptcha/, https://recaptcha.google.com/recaptcha/ ; object-src 'none'; base-uri 'self'; ");
 
         //     $response->headers->set('Expect-CT', 'enforce, max-age=30');
         //     $response->headers->set('Permissions-Policy', 'autoplay=(self), camera=(), encrypted-media=(self), fullscreen=(), geolocation=(self), gyroscope=(self), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=(self), usb=()');

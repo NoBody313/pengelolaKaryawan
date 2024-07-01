@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Pulse\Facades\Pulse;
+use App\Policies\ContentPolicy;
+use Spatie\Csp\Csp;
+
 
 class AppServiceProvider extends ServiceProvider
 {
