@@ -71,7 +71,7 @@ Route::get('/pegawai/{nik_admedika}/edit-data/data-kontak', [PegawaiEditDataCont
 Route::post('pegawai/{nik_admedika}/edit-data/data-kontak', [PegawaiEditDataController::class, 'updateKontak'])->name('post-pegawai-edit-kontak');
 
 Route::get('/login', [PulseLoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [PulseLoginController::class, 'login']);
+Route::post('/login', [PulseLoginController::class, 'login'])->name('login.pulse');
 Route::post('/logout', [PulseLoginController::class, 'logout'])->name('logout.pulse');
 
 Route::middleware('auth')->group(function () {
