@@ -15,6 +15,7 @@
         "laravel/scout": "^10.8",
         "laravel/tinker": "^2.8",
         "maatwebsite/excel": "^3.1",
+        "spatie/laravel-csp": "^2.10",
         "teampanfu/laravel-hcaptcha": "^1.1"
     },
     "require-dev": {

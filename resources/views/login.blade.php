@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
     @include('helper.helper')
+    {{-- {!! NoCaptcha::renderJs() !!} --}}
+    <script src="https://www.google.com/recaptcha/api.js" nonce="{{ csp_nonce() }}" defer></script>
 </head>
 
 <body>
@@ -68,6 +70,7 @@
                 </button>
             </div>
 
+            {{-- {!! NoCaptcha::display() !!} --}}
             <div class="mt-4 g-recaptcha" data-sitekey={{config('services.recaptcha.key')}}></div>
 
         </form>
