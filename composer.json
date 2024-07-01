@@ -6,7 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "aaronfrancis/pulse-outdated": "^0.1.2",
         "anhskohbo/no-captcha": "^3.5",
+        "chrysanthos/pulse-requests": "^1.0",
+        "denniseilander/pulse-about-application": "^0.2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/pulse": "^1.2",

@@ -228,5 +228,9 @@ return [
                 '#^/telescope#', // Telescope dashboard...
             ],
         ],
+
+        \Chrysanthos\PulseRequests\Recorders\RequestRecorder::class => [],
+        \AaronFrancis\Pulse\Outdated\Recorders\OutdatedRecorder::class => [],
+
     ],
 ];
