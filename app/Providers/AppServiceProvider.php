@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\PegawaiData;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -20,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        config(['app.locale' => 'id']);
+        Carbon::setLocale('id');
+
         Gate::define('viewPulse', function (PegawaiData $user) {
             return Auth::user()->role == 'admin';
         });
