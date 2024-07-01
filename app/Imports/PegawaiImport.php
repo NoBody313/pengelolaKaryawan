@@ -20,7 +20,7 @@ class PegawaiImport implements ToModel, WithStartRow
         $jumlah_anak = (int) $row[28];
         $lulus_thn_pendidikan_terakhir = $this->parseInteger($row[33]);
         $possibleRoles = ['pegawai', 'admin'];
-        $role = in_array($row[38], $possibleRoles) ? $row[38] : 'pegawai';
+        $role = in_array($row[40], $possibleRoles) ? $row[40] : 'pegawai';
 
         return new PegawaiData([
             'nik_admedika' => $row[1],

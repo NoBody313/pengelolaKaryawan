@@ -80,6 +80,16 @@
                         @include('components.required-kol')
                     </div>
                 </div>
+                <div class="form-container">
+                    <div class="flex flex-col justify-center items-center gap-2 self-stretch w-full md:w-[660px]">
+                        <label class="input-label" name="role">Role</label>
+                        <select name="role" class="normal-case input-role">
+                            <option disabled selected value="{{ $pegawaiData->role }}">{{ $pegawaiData->role }}</option>
+                            <option class="normal-case" value="admin">Admin</option>
+                            <option class="normal-case" value="pegawai">Pegawai</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
 
