@@ -16,12 +16,15 @@ class SecurityHeaders
     public function handle($request, Closure $next)
     {
         $response = $next($request);
+        $nonce = base64_encode(openssl_random_pseudo_bytes(16));
 
         if (!app()->environment('local')) {
             $response->headers->set('Referrer-Policy', 'no-referrer-when-downgrade');
             $response->headers->set('X-XSS-Protection', '1; mode=block');
             $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-            $response->headers->set('Content-Security-Policy', "default-src 'self' https://fatihtest.my.id; script-src 'self' platform.twitter.com plausible.io utteranc.es *.cloudflare.com 'unsafe-inline' 'unsafe-eval' plausible.io/js/plausible.js utteranc.es/client.js hcaptcha.com https://www.gstatic.com/recaptcha/releases/MHBiAvbtvk5Wb2eTZHoP1dUd/recaptcha__id.js https://www.google.com/recaptcha/ https://cdn.tailwindcss.com https://js.hcaptcha.com https://code.jquery.com; style-src 'self' *.cloudflare.com 'unsafe-inline' fonts.googleapis.com; img-src 'self' https://fatihtest.my.id; font-src 'self' data: fonts.gstatic.com; connect-src 'self' plausible.io/api/event hcaptcha.com https://www.gstatic.com/recaptcha/releases/MHBiAvbtvk5Wb2eTZHoP1dUd/recaptcha__id.js https://www.google.com/recaptcha/ https://fatihtest.my.id; media-src 'self'; frame-src 'self' https://newassets.hcaptcha.com https://www.google.com; object-src 'none'; base-uri 'self';");
+
+            $response->headers->set('Content-Security-Policy', "default-src 'self' https://fatihtest.my.id; script-src 'nonce-{$nonce}' 'strict-dynamic' 'self' *.cloudflare.com https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/ https://cdn.tailwindcss.com https://code.jquery.com; style-src 'self' 'unsafe-inline' *.cloudflare.com fonts.googleapis.com; img-src 'self' https://fatihtest.my.id data:; font-src 'self' data: fonts.gstatic.com; connect-src 'self' https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/ https://fatihtest.my.id; media-src 'self'; frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; object-src 'none'; base-uri 'self';");
+
             $response->headers->set('Expect-CT', 'enforce, max-age=30');
             $response->headers->set('Permissions-Policy', 'autoplay=(self), camera=(), encrypted-media=(self), fullscreen=(), geolocation=(self), gyroscope=(self), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=(self), usb=()');
             $response->headers->set('Access-Control-Allow-Origin', 'https://fatihtest.my.id');
